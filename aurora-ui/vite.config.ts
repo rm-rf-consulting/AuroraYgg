@@ -2,9 +2,10 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import path from 'path'
+import { yggPeersPlugin } from './server/peersApi'
 
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  plugins: [react(), tailwindcss(), yggPeersPlugin()],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
@@ -13,7 +14,7 @@ export default defineConfig({
   server: {
     port: 3000,
     proxy: {
-      '/api': {
+      '/api/v1': {
         target: 'http://localhost:5600',
         changeOrigin: true,
         ws: true,
@@ -22,7 +23,6 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
-    // Generate a single CSS/JS bundle for easy daemon hosting
     cssCodeSplit: false,
     rollupOptions: {
       output: {

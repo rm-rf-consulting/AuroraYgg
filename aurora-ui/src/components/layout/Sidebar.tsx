@@ -7,9 +7,8 @@ import {
   ArrowLeftRight,
   FolderOpen,
   Heart,
-  MessageSquare,
+  Globe,
   Radio,
-  FileText,
   Bell,
 } from 'lucide-react'
 import { NavLink, useLocation } from 'react-router'
@@ -28,6 +27,7 @@ const mainNav: NavItem[] = [
   { label: 'Transfers', icon: ArrowLeftRight, path: '/transfers' },
   { label: 'Share', icon: FolderOpen, path: '/share' },
   { label: 'Favorites', icon: Heart, path: '/favorites' },
+  { label: 'Ygg Peers', icon: Globe, path: '/peers' },
 ]
 
 const sessionNav: NavItem[] = [

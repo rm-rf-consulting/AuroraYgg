@@ -13,6 +13,7 @@ import { HubSession } from '@/pages/sessions/HubSession'
 import { MessageSession } from '@/pages/sessions/MessageSession'
 import { FilelistSession } from '@/pages/sessions/FilelistSession'
 import { EventsSession } from '@/pages/sessions/EventsSession'
+import { PeersPage } from '@/pages/PeersPage'
 
 export default function App() {
   return (
@@ -32,6 +33,7 @@ export default function App() {
             <Route path="messages/:id" element={<MessageSession />} />
             <Route path="filelists/:id" element={<FilelistSession />} />
             <Route path="events" element={<EventsSession />} />
+            <Route path="peers" element={<PeersPage />} />
           </Route>
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
