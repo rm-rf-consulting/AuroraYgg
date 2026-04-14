@@ -65,6 +65,18 @@ const Login: React.FC<LoginProps> = () => {
   return (
     <div className="ui middle aligned center aligned grid login-grid">
       <div className="column">
+        <div className="aurora-login-brand">
+          <div className="aurora-login-logo">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24" cy="24" r="22" stroke="#0071e3" strokeWidth="2" fill="none" opacity="0.6"/>
+              <circle cx="24" cy="24" r="14" stroke="#0071e3" strokeWidth="1.5" fill="none" opacity="0.4"/>
+              <circle cx="24" cy="24" r="6" fill="#0071e3" opacity="0.8"/>
+              <path d="M24 2 L24 8 M24 40 L24 46 M2 24 L8 24 M40 24 L46 24" stroke="#0071e3" strokeWidth="1" opacity="0.3"/>
+            </svg>
+          </div>
+          <h1 className="aurora-login-title">AuroraYgg</h1>
+          <p className="aurora-login-subtitle">Secure file sharing on Yggdrasil</p>
+        </div>
         <form
           className="ui large form"
           autoComplete="on"

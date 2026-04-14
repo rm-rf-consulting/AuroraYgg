@@ -78,6 +78,24 @@ body {
   font-weight: 500 !important;
 }
 
+/* AuroraYgg nav brand */
+.aurora-nav-brand {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.aurora-nav-logo {
+  flex-shrink: 0;
+}
+
+.aurora-nav-title {
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.3px;
+  color: var(--aurora-text-primary) !important;
+}
+
 .ui.fixed.menu.site-header .logo {
   height: 22px !important;
   filter: brightness(0) invert(1);
@@ -608,31 +626,99 @@ h1, h2, h3, h4, h5 {
 }
 
 .login-grid .column {
-  max-width: 380px !important;
+  max-width: 400px !important;
+  width: 90% !important;
 }
 
+/* Branding */
+.aurora-login-brand {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.aurora-login-logo {
+  margin-bottom: 16px;
+  animation: aurora-pulse 3s ease-in-out infinite;
+}
+
+@keyframes aurora-pulse {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+.aurora-login-title {
+  font-family: var(--aurora-font) !important;
+  font-size: 32px !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.5px !important;
+  color: var(--aurora-text-primary) !important;
+  margin: 0 0 6px 0 !important;
+  line-height: 1.1 !important;
+}
+
+.aurora-login-subtitle {
+  font-size: 15px !important;
+  color: var(--aurora-text-tertiary) !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.2px;
+  margin: 0 !important;
+}
+
+/* Login card */
 .login-grid .ui.stacked.segment {
-  background: var(--aurora-glass-bg) !important;
-  -webkit-backdrop-filter: var(--aurora-glass-blur) !important;
-  backdrop-filter: var(--aurora-glass-blur) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  background: var(--aurora-bg-elevated) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
   border-radius: var(--aurora-radius-xl) !important;
-  padding: 32px !important;
-  box-shadow: var(--aurora-shadow-lg) !important;
+  padding: 28px 28px 20px !important;
+  box-shadow: 0 4px 40px rgba(0, 0, 0, 0.5) !important;
 }
 
+/* Login inputs — taller, more spacious */
+.login-grid .ui.form .field {
+  margin-bottom: 14px !important;
+}
+
+.login-grid .ui.input > input,
+.login-grid .ui.icon.input > input {
+  height: 46px !important;
+  font-size: 15px !important;
+  padding-left: 42px !important;
+  background: var(--aurora-bg-input) !important;
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+  border-radius: 10px !important;
+}
+
+.login-grid .ui.input > input:focus,
+.login-grid .ui.icon.input > input:focus {
+  border-color: var(--aurora-accent) !important;
+  box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.25) !important;
+}
+
+.login-grid .ui.icon.input > i.icon {
+  opacity: 0.4;
+}
+
+/* Login button */
 .login-grid .ui.large.form .ui.button {
   background: var(--aurora-accent) !important;
   color: white !important;
-  border-radius: var(--aurora-radius-md) !important;
+  border-radius: 10px !important;
   font-weight: 500 !important;
-  font-size: 15px !important;
-  height: 44px;
-  margin-top: 8px !important;
+  font-size: 16px !important;
+  height: 46px;
+  margin-top: 4px !important;
+  letter-spacing: -0.1px;
+  transition: all 0.2s ease !important;
 }
 
 .login-grid .ui.large.form .ui.button:hover {
   background: var(--aurora-accent-hover) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 113, 227, 0.4) !important;
+}
+
+.login-grid .ui.large.form .ui.button:active {
+  transform: translateY(0);
 }
 
 /* Hide the background image — use pure black */
@@ -871,19 +957,54 @@ a:hover {
    ============================================================ */
 
 .react-grid-item {
-  background: var(--aurora-bg-card) !important;
-  border: 1px solid var(--aurora-border) !important;
+  background: var(--aurora-bg-elevated) !important;
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
   border-radius: var(--aurora-radius-lg) !important;
   overflow: hidden;
+  transition: border-color 0.2s ease !important;
+}
+
+.react-grid-item:hover {
+  border-color: rgba(255, 255, 255, 0.12) !important;
 }
 
 .react-grid-item > .ui.card {
   border: none !important;
   border-radius: 0 !important;
+  background: transparent !important;
 }
 
 .react-grid-item .react-resizable-handle::after {
   border-color: var(--aurora-text-tertiary) !important;
+}
+
+/* Widget headers */
+.react-grid-item .content.header-row {
+  padding: 12px 16px 8px !important;
+  border-bottom: 1px solid var(--aurora-border) !important;
+}
+
+.react-grid-item .content.header-row .header {
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.3px !important;
+  color: var(--aurora-text-secondary) !important;
+}
+
+/* Widget body */
+.react-grid-item .content:not(.header-row) {
+  padding: 12px 16px !important;
+}
+
+/* Dashboard "Add widget" button */
+.add-widget-button,
+.react-grid-layout + div {
+  color: var(--aurora-text-tertiary) !important;
+}
+
+.add-widget-button:hover {
+  color: var(--aurora-text-primary) !important;
 }
 
 
@@ -971,6 +1092,66 @@ i.icon {
 
 
 /* ============================================================
+   SESSION SIDEBAR PANELS (Events, Hubs, Messages, etc.)
+   ============================================================ */
+
+.ui.right.vertical.sidebar {
+  background: var(--aurora-bg-secondary) !important;
+  border-left: 1px solid var(--aurora-border) !important;
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.4) !important;
+}
+
+.simple-layout,
+.session-layout,
+.ui.sidebar .content,
+.ui.sidebar > div {
+  background: var(--aurora-bg-secondary) !important;
+  color: var(--aurora-text-primary) !important;
+}
+
+/* Event log messages */
+.message-section,
+.log-message,
+.event-message {
+  color: var(--aurora-text-primary) !important;
+}
+
+.message-section .ui.label,
+.log-message .ui.label {
+  font-size: 11px !important;
+}
+
+/* Pusher dimmed overlay */
+.pusher.dimmed::after {
+  background: rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Hub session / chat panels */
+.hub-session,
+.private-chat-session,
+.filelist-session {
+  background: var(--aurora-bg-primary) !important;
+  color: var(--aurora-text-primary) !important;
+}
+
+/* Menu inside sessions (top bar with tabs) */
+.ui.menu:not(.fixed):not(.vertical) {
+  background: var(--aurora-bg-secondary) !important;
+  border-bottom: 1px solid var(--aurora-border) !important;
+  box-shadow: none !important;
+}
+
+.ui.menu:not(.fixed):not(.vertical) .item {
+  color: var(--aurora-text-secondary) !important;
+}
+
+.ui.menu:not(.fixed):not(.vertical) .active.item {
+  color: var(--aurora-text-primary) !important;
+  background: transparent !important;
+}
+
+
+/* ============================================================
    MISC OVERRIDES
    ============================================================ */
 
@@ -979,6 +1160,49 @@ i.icon {
   background: var(--aurora-bg-elevated) !important;
   color: var(--aurora-text-primary) !important;
   border: 1px solid var(--aurora-border) !important;
+}
+
+/* Catch remaining white backgrounds — force dark on all content areas */
+.ui.segment:not(.inverted),
+.ui.attached.segment,
+.ui.basic.segment {
+  background: var(--aurora-bg-card) !important;
+  color: var(--aurora-text-primary) !important;
+}
+
+/* Ensure all form areas inside panels are dark */
+.ui.form {
+  color: var(--aurora-text-primary) !important;
+}
+
+.ui.form .field > label,
+.ui.form .inline.field > label {
+  color: var(--aurora-text-secondary) !important;
+}
+
+/* Tab content areas */
+.ui.tab,
+.ui.tab.active {
+  background: transparent !important;
+  color: var(--aurora-text-primary) !important;
+}
+
+/* Fomantic items/lists */
+.ui.items > .item,
+.ui.items > .item > .content {
+  color: var(--aurora-text-primary) !important;
+}
+
+.ui.items > .item > .content > .header {
+  color: var(--aurora-text-primary) !important;
+}
+
+.ui.items > .item > .content > .description {
+  color: var(--aurora-text-secondary) !important;
+}
+
+.ui.items > .item > .content > .meta {
+  color: var(--aurora-text-tertiary) !important;
 }
 
 /* Footer/status bar areas */
