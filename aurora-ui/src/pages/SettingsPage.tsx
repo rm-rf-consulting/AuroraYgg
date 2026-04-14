@@ -26,10 +26,18 @@ export function SettingsPage() {
       const socket = getSocket()
       if (!socket) return
       try {
-        const data = await socket.get('settings')
-        setSettings(data as SettingsValues)
-      } catch {
-        // Settings may not be directly available as flat object
+        const data = await socket.post('settings/get', {
+          keys: [
+            'nick', 'description', 'email',
+            'tcp_port', 'udp_port', 'tls_port',
+            'upload_slots', 'min_upload_speed',
+          ],
+        }) as SettingsValues
+        if (data && typeof data === 'object') {
+          setSettings(data)
+        }
+      } catch (err) {
+        console.error('Settings fetch failed:', err)
       } finally {
         setLoading(false)
       }
@@ -147,7 +155,7 @@ function SettingRow({ label, value }: { label: string; value: string | undefined
     <div className="flex items-center justify-between py-2 border-b border-(--color-glass-border)">
       <span className="text-sm text-(--color-text-secondary)">{label}</span>
       <span className="text-sm text-(--color-text-primary)">
-        {value ?? '—'}
+        {value !== undefined && value !== '' ? String(value) : '—'}
       </span>
     </div>
   )

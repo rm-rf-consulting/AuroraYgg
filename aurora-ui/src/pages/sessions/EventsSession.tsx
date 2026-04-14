@@ -21,7 +21,7 @@ export function EventsSession() {
 
     const fetch = async () => {
       try {
-        const data = (await socket.get('events/messages/0')) as LogMessage[]
+        const data = (await socket.get('events/100')) as LogMessage[]
         setMessages(data)
       } catch {}
       setLoading(false)

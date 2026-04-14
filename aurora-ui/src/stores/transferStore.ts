@@ -35,8 +35,10 @@ export interface TransferStats {
   speed_down: number
   speed_up: number
   queued_bytes: number
-  session_down: number
-  session_up: number
+  session_downloaded: number
+  session_uploaded: number
+  downloads: number
+  uploads: number
 }
 
 interface TransferState {

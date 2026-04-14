@@ -28,8 +28,8 @@ export function TransfersPage() {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
           <MiniStat label="Download" value={formatSpeed(stats.speed_down)} color="text-(--color-success)" />
           <MiniStat label="Upload" value={formatSpeed(stats.speed_up)} color="text-(--color-link)" />
-          <MiniStat label="Session Down" value={formatBytes(stats.session_down)} />
-          <MiniStat label="Session Up" value={formatBytes(stats.session_up)} />
+          <MiniStat label="Session Down" value={formatBytes(stats.session_downloaded)} />
+          <MiniStat label="Session Up" value={formatBytes(stats.session_uploaded)} />
         </div>
       )}
 

@@ -32,7 +32,9 @@ export function HomePage() {
     const socket = getSocket()
     if (socket) {
       socket.get('share/stats').then((data) => {
-        setShareStats(data as ShareStats)
+        if (data && typeof data === 'object') {
+          setShareStats(data as ShareStats)
+        }
       }).catch(() => {})
     }
   }, [fetchTransfers])
@@ -69,14 +71,14 @@ export function HomePage() {
           icon={ArrowDownToLine}
           label="Download"
           value={stats ? formatSpeed(stats.speed_down) : '---'}
-          sub={stats ? `${formatBytes(stats.session_down)} this session` : undefined}
+          sub={stats ? `${formatBytes(stats.session_downloaded)} this session` : undefined}
           color="text-(--color-success)"
         />
         <StatCard
           icon={ArrowUpFromLine}
           label="Upload"
           value={stats ? formatSpeed(stats.speed_up) : '---'}
-          sub={stats ? `${formatBytes(stats.session_up)} this session` : undefined}
+          sub={stats ? `${formatBytes(stats.session_uploaded)} this session` : undefined}
           color="text-(--color-link)"
         />
         <StatCard

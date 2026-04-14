@@ -49,7 +49,7 @@ export function QueuePage() {
 
     const fetch = async () => {
       try {
-        const data = (await socket.get('queue/bundles/0?range_start=0&range_end=100')) as Bundle[]
+        const data = (await socket.get('queue/bundles/0/100')) as Bundle[]
         setBundles(data)
       } catch (err) {
         console.error('Failed to fetch queue:', err)
@@ -83,7 +83,7 @@ export function QueuePage() {
     const socket = getSocket()
     if (!socket) return
     try {
-      await socket.delete(`queue/bundles/${bundleId}`)
+      await socket.post(`queue/bundles/${bundleId}/remove`)
       setBundles((prev) => prev.filter((b) => b.id !== bundleId))
     } catch {}
   }

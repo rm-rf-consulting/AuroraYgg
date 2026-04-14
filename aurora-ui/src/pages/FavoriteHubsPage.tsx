@@ -28,7 +28,7 @@ export function FavoriteHubsPage() {
     const socket = getSocket()
     if (!socket) return
     try {
-      const data = (await socket.get('favorite_hubs')) as FavoriteHub[]
+      const data = (await socket.get('favorite_hubs/0/100')) as FavoriteHub[]
       setFavorites(data)
     } catch {
       // Ignore

@@ -76,7 +76,7 @@ export function SearchPage() {
       // Poll for results
       const pollResults = async () => {
         const res = (await socket.get(
-          `search/${instance.id}/results/0?range_start=0&range_end=100`
+          `search/${instance.id}/results/0/100`
         )) as SearchResult[]
         setResults(res)
       }
