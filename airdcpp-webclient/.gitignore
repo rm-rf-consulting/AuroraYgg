@@ -1,0 +1,44 @@
+.DS_Store
+
+#vim stuff
+*~
+*.swp
+
+# Output
+airdcppd/airdcppd
+airdcppd/airdcppd.app/
+node_modules
+package.json
+package-lock.json
+trace.txt
+
+*.o
+*.so
+*.so.?*
+*.so.?.?.?*
+*.so.?.??.?*
+*.a
+*.dylib
+lib/*
+
+# CMake
+/*.cmake
+*.dir
+CMakeFiles
+INSTALL.*
+ZERO_CHECK.*
+
+cmake_install.cmake
+CMakeCache.txt
+install_manifest.txt
+Makefile
+
+# Precompiled headers
+cotire
+*_cotire.cmake
+
+# SSH config
+buildroot/.ssh_config.user
+
+# Project files
+_*

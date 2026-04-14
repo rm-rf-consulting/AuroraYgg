@@ -1,0 +1,18 @@
+# Build artifacts
+airdcpp-webclient/build/
+airdcpp-webclient/node_modules/
+
+# Test config (contains keys/certs)
+testconfig/
+
+# Downloaded installers
+*.msi
+
+# IDE
+.vs/
+.vscode/
+*.user
+CMakeSettings.json
+
+# vcpkg (installed separately)
+/vcpkg/

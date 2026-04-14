@@ -1,0 +1,98 @@
+/*
+ * Copyright (C) 2001-2024 Jacek Sieka, arnetheduck on gmail point com
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ */
+
+#ifndef DCPLUSPLUS_DCPP_STDINC_H
+#define DCPLUSPLUS_DCPP_STDINC_H
+
+#include <airdcpp/core/header/compiler.h>
+
+#ifndef _DEBUG
+# define BOOST_DISABLE_ASSERTS 1
+#endif
+
+#ifndef BZ_NO_STDIO
+#define BZ_NO_STDIO 1
+#endif
+
+#ifdef _WIN32
+#include <airdcpp/core/header/w.h>
+#else
+#include <unistd.h>
+#define BOOST_PTHREAD_HAS_MUTEXATTR_SETTYPE
+#endif
+
+#if !defined(BOOST_THREAD_POLL_INTERVAL_MILLISECONDS)
+#define BOOST_THREAD_POLL_INTERVAL_MILLISECONDS 100
+#endif
+
+
+/*#ifndef _WIN64
+# undef memcpy
+# undef memset
+# undef memzero
+# define memcpy memcpy2
+# define memset memset2
+#endif*/
+
+#include <wchar.h>
+#include <ctype.h>
+#include <stdio.h>
+#include <stdarg.h>
+#include <memory.h>
+#include <sys/types.h>
+#include <time.h>
+#include <locale.h>
+#include <stdint.h>
+
+#include <algorithm>
+#include <atomic>
+#include <cinttypes>
+#include <deque>
+#include <functional>
+#include <list>
+#include <optional>
+#include <map>
+#include <memory>
+#include <ranges>
+#include <set>
+#include <string>
+#include <numeric>
+#include <limits>
+#include <unordered_map>
+#include <unordered_set>
+#include <utility>
+#include <vector>
+
+#include <boost/thread/mutex.hpp>
+#include <boost/thread/recursive_mutex.hpp>
+#include <boost/scoped_array.hpp>
+#include <boost/noncopyable.hpp>
+#include <boost/regex.hpp>
+
+namespace dcpp {
+	using namespace std;
+	
+#ifdef _WIN32
+	inline int stricmp(const string& a, const string& b) { return _stricmp(a.c_str(), b.c_str()); }
+	inline int strnicmp(const string& a, const string& b, size_t n) { return _strnicmp(a.c_str(), b.c_str(), n); }
+	inline int stricmp(const wstring& a, const wstring& b) { return _wcsicmp(a.c_str(), b.c_str()); }
+	inline int strnicmp(const wstring& a, const wstring& b, size_t n) { return _wcsnicmp(a.c_str(), b.c_str(), n); }
+#endif
+}
+
+#endif // !defined(STDINC_H)

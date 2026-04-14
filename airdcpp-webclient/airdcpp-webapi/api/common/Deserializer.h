@@ -1,0 +1,130 @@
+/*
+* Copyright (C) 2011-2024 AirDC++ Project
+*
+* This program is free software; you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation; either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program; if not, write to the Free Software
+* Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+*/
+
+#ifndef DCPLUSPLUS_DCPP_DESERIALIZER_H
+#define DCPLUSPLUS_DCPP_DESERIALIZER_H
+
+#include <airdcpp/core/header/typedefs.h>
+#include <airdcpp/user/HintedUser.h>
+#include <airdcpp/hash/value/MerkleTree.h>
+#include <airdcpp/message/Message.h>
+#include <airdcpp/core/types/Priority.h>
+
+#include <web-server/JsonUtil.h>
+
+
+namespace webserver {
+	using DownloadHandler = std::function<api_return (const string &, Priority)>;
+
+	class Deserializer {
+	public:
+		struct OfflineHintedUser : public HintedUser {
+			OfflineHintedUser(const UserPtr& aUser, const string& aHubUrl, const string& aNicks) : HintedUser(aUser, aHubUrl), nicks(aNicks) { }
+
+			string nicks;
+		};
+
+		static CID parseCID(const string& aCID);
+
+		// Get user with the provided CID
+		// Throws if the user is not found
+		static UserPtr getUser(const string& aCID, bool aAllowMe);
+		static UserPtr getUser(const CID& aCID, bool aAllowMe);
+
+		// Get or create a user
+		static UserPtr getOfflineUser(const string& aCID, const string& aNicks, const string& aHubUrl, bool aAllowMe);
+
+		static TTHValue parseTTH(const string& aTTH);
+		static HintedUser parseHintedUser(const json& aJson, const string& aFieldName, bool aAllowMe = false);
+
+		static UserPtr parseOfflineUser(const json& aJson, const string& aFieldName, bool aAllowMe = false, const string& aHubUrl = "");
+		static OfflineHintedUser parseOfflineHintedUser(const json& aJson, const string& aFieldName, bool aAllowMe = false);
+
+		static UserPtr deserializeUser(const json& aJson, bool aAllowMe, bool aOptional = false);
+		static HintedUser deserializeHintedUser(const json& aJson, bool aAllowMe = false, bool aOptional = false, const string& aFieldName = "user");
+
+		static TTHValue deserializeTTH(const json& aJson);
+		static Priority deserializePriority(const json& aJson, bool aAllowDefault);
+		static string deserializeTargetDirectory(const json& aJson, const Session* aSession, const string& aDefaultValue);
+
+		static void deserializeDownloadParams(const json& aJson, const Session* aSession, string& targetDirectory_, string& targetName_, Priority& priority_);
+
+		// Returns all connected hubs if the list is not found from the JSON
+		static StringList deserializeHubUrls(const json& aJson);
+		static ClientPtr deserializeClient(const json& aJson, bool aOptional = false);
+
+		struct ChatMessageInput {
+			string message;
+			bool thirdPerson;
+		};
+
+		static ChatMessageInput deserializeChatMessage(const json& aJson);
+
+		struct StatusMessageInput {
+			string message;
+			LogMessage::Severity severity;
+		};
+
+		struct ChatStatusMessageInput {
+			string message;
+			LogMessage::Severity severity;
+			LogMessage::Type type;
+			string ownerId;
+		};
+
+		static StatusMessageInput deserializeStatusMessage(const json& aJson);
+		static ChatStatusMessageInput deserializeChatStatusMessage(const json& aJson);
+
+		// Returns the default profile in case no profile was specified
+		static ProfileToken deserializeShareProfile(const json& aJson);
+
+		static OptionalProfileToken deserializeOptionalShareProfile(const json& aJson);
+
+		template <typename ItemT>
+		using ArrayDeserializerFunc = std::function<ItemT(const json& aJson, const string& aFieldName)>;
+
+		template <typename ItemT>
+		static vector<ItemT> deserializeList(const string& aFieldName, const json& aJson, const ArrayDeserializerFunc<ItemT>& aF, bool aAllowEmpty) {
+			const auto& arrayJson = JsonUtil::getArrayField(aFieldName, aJson, aAllowEmpty);
+
+			vector<ItemT> ret;
+			if (!arrayJson.is_null()) {
+				for (const auto& item: arrayJson) {
+					ret.push_back(aF(item, aFieldName));
+				}
+			}
+
+			return ret;
+		}
+
+		static TTHValue tthArrayValueParser(const json& aJson, const string& aFieldName);
+		static CID cidArrayValueParser(const json& aJson, const string& aFieldName);
+		static HintedUser hintedUserArrayValueParser(const json& aJson, const string& aFieldName);
+		static string directoryPathArrayValueParser(const json& aJson, const string& aFieldName);
+
+		template<typename IdT>
+		static IdT defaultArrayValueParser(const json& aJson, const string& aFieldName) {
+			return JsonUtil::parseValue<IdT>(aFieldName, aJson, false);
+		}
+	private:
+		static LogMessage::Severity parseSeverity(const string& aText);
+		static LogMessage::Type parseLogMessageType(const string& aText);
+	};
+}
+
+#endif
