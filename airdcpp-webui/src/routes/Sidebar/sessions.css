@@ -1,0 +1,226 @@
+.session-container {
+  background-color: white;
+}
+
+.session-container.horizontal.ui.grid {
+  margin: 0px !important;
+}
+
+.session-container.horizontal .menu-column .item.new {
+  padding: 0.78571429em 1.1em !important;
+}
+
+.session-container.horizontal .ui.vertical.menu .item > i.icon {
+  margin: 0 0.35714286em 0 0 !important;
+}
+
+.session-container.horizontal .session-layout > .ui.divider {
+  margin: 5px 0px 0px 0px;
+}
+
+.session-container.vertical {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+}
+.session-layout {
+  flex: 100 100 auto;
+  display: flex;
+  overflow: hidden;
+}
+
+.session-container.horizontal .session-layout {
+  flex-direction: column;
+}
+
+.session-container.vertical .menu-bar {
+  justify-content: space-between;
+  margin: 0px !important;
+}
+
+.session-container.vertical .menu-bar .content-left {
+  width: 100%;
+}
+
+.session-container.vertical .menu-bar .close-button.item:before {
+  background: none !important;
+}
+
+.session-container.vertical .menu-bar .close-button.item {
+  box-shadow: none !important;
+}
+
+.session-container.vertical .menu-bar .content-left > .ui.dropdown {
+  float: left;
+}
+
+.session-container.vertical .menu-bar .content-left > .ui.dropdown .menu {
+  max-height: calc(100dvh - 140px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-width: calc(100vw - 30px);
+}
+
+.session-container.vertical .session-item .count.label {
+  margin-left: 1em !important;
+}
+
+.session-container.vertical .session-header {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.session-container.vertical .session-header > div {
+  max-width: 90%; /* Hack, auto width won't work without "overflow: hidden", but that would prevent viewing the menu items  */
+  padding: 0.82857143em 0.4285714em;
+  line-height: 1.2;
+}
+
+.session-container.vertical .session-header > div:before {
+  background: none !important;
+}
+
+.session-container.vertical .session-header > i {
+  margin-left: 10px;
+}
+
+.session-container.vertical .session-header .ui.dropdown > i {
+  margin: 0px 5px;
+}
+
+/* Fix a few inconsistencies between 'icon' and 'icons' classnames */
+.session-container.horizontal .session-header .header > i,
+.session-container.vertical .session-header > i {
+  width: inherit !important;
+  font-size: 1.5em;
+}
+
+.session-container.horizontal .session-header .ui.header {
+  align-items: center;
+}
+
+.session-container.vertical .menu-bar {
+  border-radius: 0px !important;
+  padding-bottom: 0px;
+}
+
+.session-container,
+.session-layout,
+.session-container.horizontal .column {
+  height: 100%;
+}
+
+.session-container.horizontal .column > div {
+  max-height: 100%;
+}
+
+.session-container .session-item {
+  overflow: hidden;
+  display: flex !important;
+  align-items: center;
+  padding: 0.68571429em 0.92857143em !important;
+  height: 35px;
+}
+
+.session-container .session-item .session-status {
+  float: none !important;
+  margin: 0 0.5em 0 0 !important;
+}
+
+.session-container .session-item span.name {
+  overflow: hidden;
+  flex: 1 1 100%;
+  line-height: 1.2;
+}
+
+.session-container .session-status {
+  margin-right: 5px;
+  margin-top: 3px;
+}
+
+.session-container.horizontal .menu-column {
+  display: flex !important;
+  flex-direction: column;
+  padding-right: 0px !important;
+}
+
+.session-container.horizontal .menu-column .menu {
+  width: initial !important;
+  overflow-y: auto;
+  padding-top: 10px;
+  flex: 1;
+}
+
+.session-container.horizontal .menu-column .session-item span.name,
+.session-container .session-header .ui.dropdown .caption {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.session-container .session-header .title .ui.dropdown {
+  width: 100%;
+}
+
+.session-layout .sub.header {
+  overflow: hidden;
+}
+
+.session-layout .sub.header img {
+  vertical-align: text-top;
+}
+
+.session-footer .info-grid {
+  margin-top: 7px !important;
+  font-size: small;
+  color: grey;
+  display: flex;
+  flex: 1;
+  align-items: flex-end;
+}
+
+.session-footer .info-grid > div {
+  flex: 1;
+}
+
+.session-footer .info-grid > div:last-child > div {
+  float: right;
+}
+
+.session-footer .info-grid > div:only-child > div {
+  float: inherit;
+}
+
+.session-footer .ui.checkbox {
+  min-height: inherit !important;
+}
+
+.session-footer .divider {
+  margin-top: 8px;
+  margin-bottom: 0px;
+}
+
+/* New session layout */
+.session.new {
+  flex: 100 100 0%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: hidden;
+  margin-top: 20px;
+  padding: 1px;
+}
+
+.session.new .recents {
+  flex: 100 100 0%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  overflow-y: hidden;
+}
+
+.session.new .recents .list {
+  padding: 3px 5px;
+  flex: 100 100 0%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}

@@ -1,0 +1,1038 @@
+/* AuroraYgg Theme — Apple-inspired dark UI override for Fomantic UI */
+@import './aurora-design-tokens.css';
+
+/* ============================================================
+   GLOBAL RESET
+   ============================================================ */
+
+* {
+  text-overflow: ellipsis;
+}
+
+body {
+  background: var(--aurora-bg-primary) !important;
+  color: var(--aurora-text-primary) !important;
+  font-family: var(--aurora-font) !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--aurora-accent);
+  color: white;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--aurora-bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--aurora-bg-hover);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+
+/* ============================================================
+   NAVIGATION — Glass morphism header
+   ============================================================ */
+
+.ui.fixed.inverted.menu.site-header,
+.ui.fixed.menu.site-header {
+  background: var(--aurora-glass-bg) !important;
+  -webkit-backdrop-filter: var(--aurora-glass-blur) !important;
+  backdrop-filter: var(--aurora-glass-blur) !important;
+  border-bottom: 1px solid var(--aurora-border) !important;
+  box-shadow: none !important;
+  height: 48px !important;
+  min-height: 48px !important;
+}
+
+.ui.fixed.menu.site-header .item,
+.ui.fixed.inverted.menu.site-header .item {
+  color: var(--aurora-text-primary) !important;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.08px;
+  transition: opacity var(--aurora-transition) !important;
+  padding: 0 14px !important;
+}
+
+.ui.fixed.menu.site-header .item:hover {
+  opacity: 0.8 !important;
+  background: transparent !important;
+}
+
+.ui.fixed.menu.site-header .active.item,
+.ui.fixed.inverted.menu.site-header .active.item {
+  background: transparent !important;
+  color: var(--aurora-text-primary) !important;
+  font-weight: 500 !important;
+}
+
+.ui.fixed.menu.site-header .logo {
+  height: 22px !important;
+  filter: brightness(0) invert(1);
+}
+
+
+/* ============================================================
+   SIDEBAR / SIDE MENU
+   ============================================================ */
+
+.sidebar,
+.side-menu,
+.ui.vertical.menu:not(.fixed) {
+  background: var(--aurora-bg-secondary) !important;
+  border-right: 1px solid var(--aurora-border) !important;
+  box-shadow: none !important;
+}
+
+.sidebar .item,
+.side-menu .item,
+.ui.vertical.menu .item {
+  color: var(--aurora-text-secondary) !important;
+  background: transparent !important;
+  border-radius: var(--aurora-radius-sm) !important;
+  margin: 2px 8px !important;
+  padding: 8px 12px !important;
+  transition: all var(--aurora-transition) !important;
+  border: none !important;
+}
+
+.sidebar .item:hover,
+.side-menu .item:hover,
+.ui.vertical.menu .item:hover {
+  color: var(--aurora-text-primary) !important;
+  background: var(--aurora-bg-hover) !important;
+}
+
+.sidebar .active.item,
+.side-menu .active.item,
+.ui.vertical.menu .active.item {
+  color: var(--aurora-text-primary) !important;
+  background: var(--aurora-bg-input) !important;
+  font-weight: 500 !important;
+}
+
+.sidebar .item .label,
+.ui.vertical.menu .item .label {
+  background: var(--aurora-accent) !important;
+  color: white !important;
+  border-radius: var(--aurora-radius-pill) !important;
+  font-size: 11px !important;
+  padding: 2px 7px !important;
+}
+
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+
+.ui.button {
+  background: var(--aurora-bg-input) !important;
+  color: var(--aurora-text-primary) !important;
+  border-radius: var(--aurora-radius-md) !important;
+  border: none !important;
+  font-family: var(--aurora-font) !important;
+  font-weight: 400 !important;
+  font-size: 14px !important;
+  letter-spacing: -0.08px;
+  padding: 8px 16px !important;
+  transition: all var(--aurora-transition) !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+.ui.button:hover {
+  background: var(--aurora-bg-hover) !important;
+  color: var(--aurora-text-primary) !important;
+}
+
+.ui.primary.button,
+.ui.blue.button {
+  background: var(--aurora-accent) !important;
+  color: var(--aurora-text-on-accent) !important;
+}
+
+.ui.primary.button:hover,
+.ui.blue.button:hover {
+  background: var(--aurora-accent-hover) !important;
+}
+
+.ui.primary.button:active,
+.ui.blue.button:active {
+  background: var(--aurora-accent-active) !important;
+}
+
+.ui.negative.button,
+.ui.red.button {
+  background: var(--aurora-error) !important;
+  color: white !important;
+}
+
+.ui.positive.button,
+.ui.green.button {
+  background: var(--aurora-success) !important;
+  color: white !important;
+}
+
+.ui.inverted.button {
+  background: transparent !important;
+  border: 1px solid var(--aurora-border) !important;
+  color: var(--aurora-text-primary) !important;
+}
+
+.ui.inverted.button:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+}
+
+.ui.icon.button {
+  padding: 8px !important;
+}
+
+.ui.disabled.button,
+.ui.button.disabled {
+  opacity: 0.4 !important;
+}
+
+
+/* ============================================================
+   SEGMENTS / CARDS
+   ============================================================ */
+
+.ui.segment {
+  background: var(--aurora-bg-card) !important;
+  color: var(--aurora-text-primary) !important;
+  border: 1px solid var(--aurora-border) !important;
+  border-radius: var(--aurora-radius-lg) !important;
+  box-shadow: none !important;
+  padding: var(--aurora-space-md) !important;
+}
+
+.ui.stacked.segment {
+  border: 1px solid var(--aurora-border) !important;
+  box-shadow: none !important;
+}
+
+.ui.stacked.segment::before,
+.ui.stacked.segment::after {
+  display: none !important;
+}
+
+.ui.card,
+.ui.cards > .card {
+  background: var(--aurora-bg-card) !important;
+  color: var(--aurora-text-primary) !important;
+  border: 1px solid var(--aurora-border) !important;
+  border-radius: var(--aurora-radius-lg) !important;
+  box-shadow: none !important;
+  transition: all var(--aurora-transition) !important;
+}
+
+.ui.card:hover,
+.ui.cards > .card:hover {
+  border-color: rgba(255, 255, 255, 0.15) !important;
+  transform: translateY(-1px);
+}
+
+.ui.card .content,
+.ui.cards > .card .content {
+  background: transparent !important;
+  border-top: 1px solid var(--aurora-border) !important;
+  color: var(--aurora-text-primary) !important;
+}
+
+.ui.card .header,
+.ui.cards > .card .header {
+  color: var(--aurora-text-primary) !important;
+}
+
+.ui.card .meta,
+.ui.card .description,
+.ui.cards > .card .meta {
+  color: var(--aurora-text-secondary) !important;
+}
+
+
+/* ============================================================
+   FORMS & INPUTS
+   ============================================================ */
+
+.ui.form .field > label {
+  color: var(--aurora-text-secondary) !important;
+  font-weight: 500 !important;
+  font-size: 13px !important;
+}
+
+.ui.form input:not([type]),
+.ui.form input[type="text"],
+.ui.form input[type="password"],
+.ui.form input[type="email"],
+.ui.form input[type="number"],
+.ui.form input[type="url"],
+.ui.form input[type="search"],
+.ui.form textarea,
+.ui.form select,
+.ui.input input,
+.ui.input > input {
+  background: var(--aurora-bg-input) !important;
+  color: var(--aurora-text-primary) !important;
+  border: 1px solid var(--aurora-border) !important;
+  border-radius: var(--aurora-radius-md) !important;
+  font-family: var(--aurora-font) !important;
+  font-size: 14px !important;
+  padding: 10px 14px !important;
+  transition: border-color var(--aurora-transition) !important;
+  caret-color: var(--aurora-accent);
+}
+
+.ui.form input:focus,
+.ui.input input:focus,
+.ui.input > input:focus,
+.ui.form textarea:focus {
+  border-color: var(--aurora-accent) !important;
+  background: var(--aurora-bg-input) !important;
+  color: var(--aurora-text-primary) !important;
+  box-shadow: 0 0 0 2px rgba(0, 113, 227, 0.3) !important;
+  outline: none !important;
+}
+
+.ui.form input::placeholder,
+.ui.input input::placeholder {
+  color: var(--aurora-text-tertiary) !important;
+}
+
+.ui.icon.input > i.icon {
+  color: var(--aurora-text-tertiary) !important;
+}
+
+.ui.form .field.error input,
+.ui.form .field.error label {
+  background: var(--aurora-bg-input) !important;
+  border-color: var(--aurora-error) !important;
+  color: var(--aurora-text-primary) !important;
+}
+
+/* Checkbox override */
+.ui.checkbox label,
+.ui.checkbox + label {
+  color: var(--aurora-text-secondary) !important;
+  font-size: 13px !important;
+}
+
+.ui.checkbox label::before {
+  background: var(--aurora-bg-input) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: var(--aurora-radius-sm) !important;
+}
+
+.ui.checkbox input:checked ~ label::before {
+  background: var(--aurora-accent) !important;
+  border-color: var(--aurora-accent) !important;
+}
+
+.ui.toggle.checkbox label::before {
+  background: var(--aurora-bg-hover) !important;
+}
+
+.ui.toggle.checkbox input:checked ~ label::before {
+  background: var(--aurora-accent) !important;
+}
+
+
+/* ============================================================
+   TABLES
+   ============================================================ */
+
+.ui.table {
+  background: var(--aurora-bg-secondary) !important;
+  color: var(--aurora-text-primary) !important;
+  border: none !important;
+  border-radius: var(--aurora-radius-lg) !important;
+}
+
+.ui.table thead th {
+  background: var(--aurora-bg-elevated) !important;
+  color: var(--aurora-text-secondary) !important;
+  border-bottom: 1px solid var(--aurora-border) !important;
+  font-weight: 500 !important;
+  font-size: 12px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  padding: 10px 14px !important;
+}
+
+.ui.table td {
+  border-top: 1px solid var(--aurora-border) !important;
+  color: var(--aurora-text-primary) !important;
+  padding: 10px 14px !important;
+}
+
+.ui.table tr:hover td {
+  background: var(--aurora-bg-hover) !important;
+}
+
+.ui.table .positive td {
+  background: rgba(48, 209, 88, 0.08) !important;
+  color: var(--aurora-success) !important;
+}
+
+.ui.table .negative td {
+  background: rgba(255, 69, 58, 0.08) !important;
+  color: var(--aurora-error) !important;
+}
+
+/* Fixed data table (used for large lists) */
+.fixedDataTableLayout_main,
+.fixedDataTableCellLayout_main,
+.fixedDataTableCellGroupLayout_cellGroup,
+.fixedDataTableCellGroupLayout_cellGroupWrapper,
+.public_fixedDataTableCell_main {
+  background: var(--aurora-bg-secondary) !important;
+  color: var(--aurora-text-primary) !important;
+  border-color: var(--aurora-border) !important;
+}
+
+.fixedDataTableRowLayout_rowWrapper:hover .public_fixedDataTableCell_main {
+  background: var(--aurora-bg-hover) !important;
+}
+
+.public_fixedDataTableRow_highlighted .public_fixedDataTableCell_main {
+  background: rgba(0, 113, 227, 0.12) !important;
+}
+
+.fixedDataTableLayout_header .public_fixedDataTableCell_main {
+  background: var(--aurora-bg-elevated) !important;
+  color: var(--aurora-text-secondary) !important;
+  font-weight: 500 !important;
+  font-size: 12px !important;
+}
+
+
+/* ============================================================
+   MODALS
+   ============================================================ */
+
+.ui.modal {
+  background: var(--aurora-bg-card) !important;
+  color: var(--aurora-text-primary) !important;
+  border-radius: var(--aurora-radius-xl) !important;
+  border: 1px solid var(--aurora-border) !important;
+  box-shadow: var(--aurora-shadow-lg) !important;
+}
+
+.ui.modal > .header {
+  background: transparent !important;
+  color: var(--aurora-text-primary) !important;
+  border-bottom: 1px solid var(--aurora-border) !important;
+  font-family: var(--aurora-font) !important;
+  font-weight: 600 !important;
+}
+
+.ui.modal > .content {
+  background: transparent !important;
+  color: var(--aurora-text-primary) !important;
+}
+
+.ui.modal > .actions {
+  background: var(--aurora-bg-elevated) !important;
+  border-top: 1px solid var(--aurora-border) !important;
+  border-radius: 0 0 var(--aurora-radius-xl) var(--aurora-radius-xl) !important;
+}
+
+.ui.dimmer {
+  background: rgba(0, 0, 0, 0.65) !important;
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+
+
+/* ============================================================
+   DROPDOWNS
+   ============================================================ */
+
+.ui.dropdown .menu {
+  background: var(--aurora-bg-card) !important;
+  border: 1px solid var(--aurora-border) !important;
+  border-radius: var(--aurora-radius-md) !important;
+  box-shadow: var(--aurora-shadow-lg) !important;
+}
+
+.ui.dropdown .menu > .item {
+  color: var(--aurora-text-primary) !important;
+  border-top: none !important;
+  font-size: 13px !important;
+  padding: 8px 14px !important;
+  border-radius: var(--aurora-radius-sm) !important;
+  margin: 2px 4px !important;
+  transition: background var(--aurora-transition) !important;
+}
+
+.ui.dropdown .menu > .item:hover {
+  background: var(--aurora-bg-hover) !important;
+  color: var(--aurora-text-primary) !important;
+}
+
+.ui.dropdown .menu > .active.item {
+  background: rgba(0, 113, 227, 0.15) !important;
+  color: var(--aurora-link) !important;
+  font-weight: 500 !important;
+}
+
+.ui.dropdown .menu > .header {
+  color: var(--aurora-text-tertiary) !important;
+  font-size: 11px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
+
+.ui.dropdown .menu > .divider {
+  border-top: 1px solid var(--aurora-border) !important;
+}
+
+
+/* ============================================================
+   LABELS / BADGES
+   ============================================================ */
+
+.ui.label {
+  background: var(--aurora-bg-input) !important;
+  color: var(--aurora-text-secondary) !important;
+  border: none !important;
+  border-radius: var(--aurora-radius-pill) !important;
+  font-weight: 500 !important;
+  font-size: 12px !important;
+}
+
+.ui.blue.label {
+  background: rgba(0, 113, 227, 0.18) !important;
+  color: var(--aurora-link) !important;
+}
+
+.ui.green.label {
+  background: rgba(48, 209, 88, 0.15) !important;
+  color: var(--aurora-success) !important;
+}
+
+.ui.red.label {
+  background: rgba(255, 69, 58, 0.15) !important;
+  color: var(--aurora-error) !important;
+}
+
+.ui.yellow.label,
+.ui.orange.label {
+  background: rgba(255, 214, 10, 0.15) !important;
+  color: var(--aurora-warning) !important;
+}
+
+
+/* ============================================================
+   HEADERS
+   ============================================================ */
+
+.ui.header,
+h1, h2, h3, h4, h5 {
+  color: var(--aurora-text-primary) !important;
+  font-family: var(--aurora-font) !important;
+  letter-spacing: -0.2px;
+}
+
+.ui.header .sub.header {
+  color: var(--aurora-text-secondary) !important;
+}
+
+.ui.inverted.header {
+  color: var(--aurora-text-primary) !important;
+}
+
+.ui.dividing.header {
+  border-bottom: 1px solid var(--aurora-border) !important;
+}
+
+
+/* ============================================================
+   MESSAGES / ALERTS
+   ============================================================ */
+
+.ui.message {
+  background: var(--aurora-bg-card) !important;
+  color: var(--aurora-text-primary) !important;
+  border: 1px solid var(--aurora-border) !important;
+  border-radius: var(--aurora-radius-md) !important;
+  box-shadow: none !important;
+}
+
+.ui.negative.message,
+.ui.error.message {
+  background: rgba(255, 69, 58, 0.1) !important;
+  border-color: rgba(255, 69, 58, 0.3) !important;
+  color: var(--aurora-error) !important;
+}
+
+.ui.positive.message,
+.ui.success.message {
+  background: rgba(48, 209, 88, 0.1) !important;
+  border-color: rgba(48, 209, 88, 0.3) !important;
+  color: var(--aurora-success) !important;
+}
+
+.ui.info.message {
+  background: rgba(100, 210, 255, 0.1) !important;
+  border-color: rgba(100, 210, 255, 0.3) !important;
+  color: var(--aurora-info) !important;
+}
+
+.ui.warning.message {
+  background: rgba(255, 214, 10, 0.1) !important;
+  border-color: rgba(255, 214, 10, 0.3) !important;
+  color: var(--aurora-warning) !important;
+}
+
+
+/* ============================================================
+   LOGIN PAGE
+   ============================================================ */
+
+.login-grid {
+  background: var(--aurora-bg-primary) !important;
+  min-height: 100dvh !important;
+}
+
+.login-grid .column {
+  max-width: 380px !important;
+}
+
+.login-grid .ui.stacked.segment {
+  background: var(--aurora-glass-bg) !important;
+  -webkit-backdrop-filter: var(--aurora-glass-blur) !important;
+  backdrop-filter: var(--aurora-glass-blur) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: var(--aurora-radius-xl) !important;
+  padding: 32px !important;
+  box-shadow: var(--aurora-shadow-lg) !important;
+}
+
+.login-grid .ui.large.form .ui.button {
+  background: var(--aurora-accent) !important;
+  color: white !important;
+  border-radius: var(--aurora-radius-md) !important;
+  font-weight: 500 !important;
+  font-size: 15px !important;
+  height: 44px;
+  margin-top: 8px !important;
+}
+
+.login-grid .ui.large.form .ui.button:hover {
+  background: var(--aurora-accent-hover) !important;
+}
+
+/* Hide the background image — use pure black */
+section#container-main {
+  background: var(--aurora-bg-primary) !important;
+  background-image: none !important;
+}
+
+#dimmable-page {
+  background: var(--aurora-bg-primary) !important;
+}
+
+#background-wrapper {
+  background-image: none !important;
+  background: var(--aurora-bg-primary) !important;
+}
+
+/* Textarea (Notes widget, chat, etc.) */
+textarea {
+  background: var(--aurora-bg-input) !important;
+  color: var(--aurora-text-primary) !important;
+  border: 1px solid var(--aurora-border) !important;
+  border-radius: var(--aurora-radius-md) !important;
+  font-family: var(--aurora-font) !important;
+}
+
+textarea:focus {
+  border-color: var(--aurora-accent) !important;
+  box-shadow: 0 0 0 2px rgba(0, 113, 227, 0.3) !important;
+  outline: none !important;
+}
+
+
+/* ============================================================
+   LINKS
+   ============================================================ */
+
+a {
+  color: var(--aurora-link) !important;
+  transition: opacity var(--aurora-transition);
+}
+
+a:hover {
+  color: var(--aurora-link) !important;
+  opacity: 0.85;
+}
+
+
+/* ============================================================
+   PROGRESS BARS
+   ============================================================ */
+
+.ui.progress {
+  background: var(--aurora-bg-input) !important;
+  border-radius: var(--aurora-radius-pill) !important;
+}
+
+.ui.progress .bar {
+  background: var(--aurora-accent) !important;
+  border-radius: var(--aurora-radius-pill) !important;
+}
+
+.ui.progress .label {
+  color: var(--aurora-text-secondary) !important;
+}
+
+
+/* ============================================================
+   TABS / POINTING MENU
+   ============================================================ */
+
+.ui.pointing.menu,
+.ui.tabular.menu,
+.ui.secondary.pointing.menu {
+  border-bottom: 1px solid var(--aurora-border) !important;
+  background: transparent !important;
+}
+
+.ui.pointing.menu .item,
+.ui.tabular.menu .item,
+.ui.secondary.pointing.menu .item {
+  color: var(--aurora-text-secondary) !important;
+  border: none !important;
+  background: transparent !important;
+  font-weight: 400 !important;
+  transition: all var(--aurora-transition) !important;
+}
+
+.ui.pointing.menu .active.item,
+.ui.tabular.menu .active.item,
+.ui.secondary.pointing.menu .active.item {
+  color: var(--aurora-text-primary) !important;
+  border-bottom: 2px solid var(--aurora-accent) !important;
+  font-weight: 500 !important;
+  background: transparent !important;
+}
+
+.ui.pointing.menu .item:hover,
+.ui.secondary.pointing.menu .item:hover {
+  color: var(--aurora-text-primary) !important;
+  background: transparent !important;
+}
+
+
+/* ============================================================
+   POPUP / TOOLTIP
+   ============================================================ */
+
+.ui.popup {
+  background: var(--aurora-bg-card) !important;
+  color: var(--aurora-text-primary) !important;
+  border: 1px solid var(--aurora-border) !important;
+  border-radius: var(--aurora-radius-md) !important;
+  box-shadow: var(--aurora-shadow-lg) !important;
+}
+
+.ui.popup::before {
+  background: var(--aurora-bg-card) !important;
+  border: 1px solid var(--aurora-border) !important;
+  box-shadow: none !important;
+}
+
+
+/* ============================================================
+   LOADER
+   ============================================================ */
+
+.ui.loader::after {
+  border-color: var(--aurora-accent) transparent transparent !important;
+}
+
+.ui.loader::before {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+
+/* ============================================================
+   BREADCRUMB
+   ============================================================ */
+
+.ui.breadcrumb {
+  color: var(--aurora-text-secondary) !important;
+}
+
+.ui.breadcrumb a {
+  color: var(--aurora-link) !important;
+}
+
+.ui.breadcrumb .divider {
+  color: var(--aurora-text-tertiary) !important;
+}
+
+.ui.breadcrumb .active.section {
+  color: var(--aurora-text-primary) !important;
+}
+
+
+/* ============================================================
+   DIVIDERS
+   ============================================================ */
+
+.ui.divider {
+  border-top: 1px solid var(--aurora-border) !important;
+  border-bottom: none !important;
+  color: var(--aurora-text-tertiary) !important;
+}
+
+
+/* ============================================================
+   LIST
+   ============================================================ */
+
+.ui.list .item,
+.ui.list .item .header,
+.ui.list .item .description {
+  color: var(--aurora-text-primary) !important;
+}
+
+.ui.list .item .description {
+  color: var(--aurora-text-secondary) !important;
+}
+
+.ui.divided.list .item {
+  border-top: 1px solid var(--aurora-border) !important;
+}
+
+
+/* ============================================================
+   TOAST NOTIFICATIONS
+   ============================================================ */
+
+.notifications-tl {
+  z-index: 9999 !important;
+}
+
+.notification {
+  background: var(--aurora-bg-card) !important;
+  color: var(--aurora-text-primary) !important;
+  border: 1px solid var(--aurora-border) !important;
+  border-radius: var(--aurora-radius-lg) !important;
+  box-shadow: var(--aurora-shadow-lg) !important;
+}
+
+
+/* ============================================================
+   CHAT MESSAGES
+   ============================================================ */
+
+.message-section .message-text {
+  color: var(--aurora-text-primary) !important;
+}
+
+.message-section .time {
+  color: var(--aurora-text-tertiary) !important;
+}
+
+.message-section .nick {
+  color: var(--aurora-link) !important;
+}
+
+.message-composer textarea {
+  background: var(--aurora-bg-input) !important;
+  color: var(--aurora-text-primary) !important;
+  border: 1px solid var(--aurora-border) !important;
+  border-radius: var(--aurora-radius-md) !important;
+}
+
+.message-composer textarea:focus {
+  border-color: var(--aurora-accent) !important;
+  box-shadow: 0 0 0 2px rgba(0, 113, 227, 0.3) !important;
+}
+
+
+/* ============================================================
+   REACT GRID LAYOUT (Dashboard widgets)
+   ============================================================ */
+
+.react-grid-item {
+  background: var(--aurora-bg-card) !important;
+  border: 1px solid var(--aurora-border) !important;
+  border-radius: var(--aurora-radius-lg) !important;
+  overflow: hidden;
+}
+
+.react-grid-item > .ui.card {
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+.react-grid-item .react-resizable-handle::after {
+  border-color: var(--aurora-text-tertiary) !important;
+}
+
+
+/* ============================================================
+   ICONS — ensure visibility on dark bg
+   ============================================================ */
+
+i.icon {
+  color: var(--aurora-text-secondary);
+}
+
+.ui.form i.icon {
+  color: var(--aurora-text-tertiary) !important;
+}
+
+
+/* ============================================================
+   ICON SIDEBAR PANEL (right side: Hubs, Messages, Files...)
+   ============================================================ */
+
+.icon-panel {
+  background: var(--aurora-bg-secondary) !important;
+  border-left: 1px solid var(--aurora-border) !important;
+}
+
+.icon-panel .item {
+  color: var(--aurora-text-secondary) !important;
+  opacity: 0.7;
+  transition: opacity var(--aurora-transition) !important;
+}
+
+.icon-panel .item:hover {
+  opacity: 1;
+}
+
+.icon-panel .item.active {
+  opacity: 1;
+  color: var(--aurora-accent) !important;
+}
+
+.icon-panel .item .label {
+  background: var(--aurora-accent) !important;
+}
+
+
+/* ============================================================
+   MAIN LAYOUT CONTENT AREAS
+   ============================================================ */
+
+.main-layout,
+.ui.site-content,
+.main.content,
+.session-container {
+  background: var(--aurora-bg-primary) !important;
+}
+
+/* Session panels (hub chat, private messages, filelists) */
+.session-layout {
+  background: var(--aurora-bg-primary) !important;
+}
+
+.session-layout .session-footer {
+  background: var(--aurora-bg-secondary) !important;
+  border-top: 1px solid var(--aurora-border) !important;
+}
+
+/* Side menu (left menu when a sidebar item is selected) */
+.side-menu-layout {
+  background: var(--aurora-bg-secondary) !important;
+}
+
+/* Top menu within sidebar sessions */
+.top-menu-layout .ui.menu {
+  background: var(--aurora-bg-secondary) !important;
+  border-bottom: 1px solid var(--aurora-border) !important;
+}
+
+/* Install prompt banner */
+.ui.message.install-prompt,
+.ui.info.message {
+  background: rgba(100, 210, 255, 0.08) !important;
+  border: 1px solid rgba(100, 210, 255, 0.2) !important;
+  color: var(--aurora-text-primary) !important;
+}
+
+
+/* ============================================================
+   MISC OVERRIDES
+   ============================================================ */
+
+/* Inverted segment (used in some places) */
+.ui.inverted.segment {
+  background: var(--aurora-bg-elevated) !important;
+  color: var(--aurora-text-primary) !important;
+  border: 1px solid var(--aurora-border) !important;
+}
+
+/* Footer/status bar areas */
+.session-footer,
+.status-bar {
+  background: var(--aurora-bg-secondary) !important;
+  border-top: 1px solid var(--aurora-border) !important;
+  color: var(--aurora-text-secondary) !important;
+}
+
+/* Grid/container backgrounds */
+.ui.grid {
+  color: var(--aurora-text-primary);
+}
+
+/* Ensure all text inside Fomantic grids is light */
+.ui.grid > .column:not(.row),
+.ui.grid > .row > .column {
+  color: var(--aurora-text-primary);
+}
+
+/* Search */
+.ui.search > .results {
+  background: var(--aurora-bg-card) !important;
+  border: 1px solid var(--aurora-border) !important;
+  border-radius: var(--aurora-radius-md) !important;
+  box-shadow: var(--aurora-shadow-lg) !important;
+}
+
+.ui.search > .results .result {
+  background: transparent !important;
+  color: var(--aurora-text-primary) !important;
+  border-bottom: 1px solid var(--aurora-border) !important;
+}
+
+.ui.search > .results .result:hover {
+  background: var(--aurora-bg-hover) !important;
+}
+
+/* Accordion */
+.ui.accordion .title {
+  color: var(--aurora-text-primary) !important;
+}
+
+.ui.accordion .content {
+  color: var(--aurora-text-secondary) !important;
+}
+
+/* Statistic */
+.ui.statistic .value,
+.ui.statistic .label {
+  color: var(--aurora-text-primary) !important;
+}
+
+.ui.statistic .label {
+  color: var(--aurora-text-secondary) !important;
+}

@@ -1,0 +1,37 @@
+.download-dialog .accordion.download-targets {
+  overflow-y: auto;
+}
+
+.download-dialog .main-content,
+.download-dialog .mobile.layout {
+  display: flex;
+  flex-direction: column;
+}
+
+.download-dialog .main-content .list {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.download-dialog .content > div,
+.download-dialog .ui.grid .column,
+.download-dialog .main-content {
+  height: 100%;
+}
+
+.download-dialog .download-handler {
+  display: flex;
+  align-items: baseline;
+}
+
+.download-dialog .disk-info {
+  color: black;
+  font-size: 90%;
+  font-style: italic;
+}
+
+.download-dialog .normal.layout .four.wide.column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

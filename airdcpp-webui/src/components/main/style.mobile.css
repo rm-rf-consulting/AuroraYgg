@@ -1,0 +1,68 @@
+#mobile-layout .site-content {
+  height: 100%;
+  padding-top: 55px;
+}
+
+#mobile-layout .site-content > .ui.message {
+  margin: 10px 5px;
+}
+
+/* Site header menu */
+#mobile-layout .site-header {
+  height: 55px;
+}
+
+#mobile-layout .site-header .header-content .label {
+  margin-left: 0px;
+}
+
+/* Navigation menu */
+#mobile-menu {
+  z-index: 100 !important;
+  max-width: 200px;
+  padding-bottom: 10px;
+}
+
+#mobile-menu i.navigation.icon {
+  float: none !important;
+  margin: 0 0.5em 0 0 !important;
+}
+
+#mobile-menu .separator {
+  height: 20px;
+}
+
+/* Semantic has issues with right vertical menu */
+#mobile-menu .ui.dropdown.right .menu {
+  right: 100%;
+  border-radius: 0.28571429rem 0 0.28571429rem 0.28571429rem;
+  left: auto !important;
+}
+
+#mobile-menu .icon-panel {
+  display: flex;
+  margin: 10px 20px 10px 20px;
+  align-items: baseline;
+}
+
+#mobile-menu .icon-panel .touch-icons {
+  display: flex;
+  justify-content: flex-end;
+  flex: 1;
+  align-items: center;
+}
+
+#mobile-menu .icon-panel .touch-icons > .icon {
+  margin: 0px 4px !important;
+}
+
+#mobile-menu .icon-panel i {
+  float: none !important;
+}
+
+/* Dialogs */
+.download-dialog .ui.dropdown a.item {
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
+}

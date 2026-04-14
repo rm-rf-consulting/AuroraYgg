@@ -1,0 +1,1075 @@
+{
+  "widgets": {
+    "application": {
+      "widgetName": "Sovellus",
+      "addWidget": "Lisää widgetti...",
+      "loggedInAs": "Kirjautunut käyttäjä",
+      "clientStarted": "Ohjelma käynnistetty",
+      "activeSessions": "Aktiiviset istunnot"
+    },
+    "rss": {
+      "widgetName": "RSS-syöte",
+      "invalidUrl": "Virheellinen URL-osoite",
+      "lastUpdated": "Viimeksi päivitetty: {{time}}",
+      "actions": {
+        "openLink": "Avaa linkki",
+        "search": "Etsi"
+      },
+      "loadingFeed": "Ladataan syötettä",
+      "form": {
+        "feedUrlName": "Syötteen URL-osoite",
+        "feedUrlHelp": "RSS- ja Atom-syötteet ovat tuettuina",
+        "feedCacheMinutesName": "Uudelleenhaun vähimmäisaikaväli (minuutteina)"
+      },
+      "invalidFeed": "Virheellinen/ei-tuettu syöte: {{error}}"
+    },
+    "transfers": {
+      "widgetName": "Siirrot",
+      "trafficBps": "Liikenne (bps)",
+      "downloads": "Lataukset",
+      "uploads": "Lähetykset",
+      "downloaded": "Ladattu",
+      "uploaded": "Lähetetty",
+      "downloadLimit": "Latausraja",
+      "uploadLimit": "Lähetysraja"
+    },
+    "notepad": {
+      "widgetName": "Muistio"
+    },
+    "extensions": {
+      "widgetName": "Lisäosien julkaisut",
+      "updatedAgo": "Päivitetty {{date}}"
+    },
+    "actions": {
+      "editWidget": "Muokkaa widgettiä",
+      "removeWidget": "Poista widgetti",
+      "prompts": {
+        "removeApprove": "Poista widgetti",
+        "removeReject": "Älä poista",
+        "removeContent": "Haluatko varmasti poistaa widgetin {{item.settings.name}}?"
+      }
+    },
+    "form": {
+      "nameName": "Nimi"
+    },
+    "widgetPositionHint": "Widgetit ja niiden sijainnit ovat selainkohtaisia",
+    "accessDenied": "Sinulla ei ole oikeuksia käyttää tätä widgettiä",
+    "settingsMissing": "Widgetin asetukset puuttuvat"
+  },
+  "events": {
+    "events": "Tapahtumat",
+    "loadingMessages": "Ladataan viestejä",
+    "noMessagesToShow": "Ei näytettäviä viestejä",
+    "actions": {
+      "clear": "Tyhjennä"
+    },
+    "notifications": {
+      "information": "Ilmoitus",
+      "info": "TIETOA",
+      "warning": "VAROITUS",
+      "error": "VIRHE",
+      "verbose": "YKSITYISKOHTAINEN",
+      "actions": {
+        "viewEvents": "Näytä tapahtumat"
+      }
+    }
+  },
+  "table": {
+    "filter": {
+      "filter": "Suodata",
+      "matchType": "Osuman tyyppi",
+      "partial": "Osittainen",
+      "regex": "Regex",
+      "wildcard": "Jokerimerkki",
+      "exact": "Eksakti",
+      "filterByProfile": "Suodata profiilin perusteella",
+      "allProfiles": "Kaikki profiilit"
+    }
+  },
+  "search": {
+    "table": {
+      "name": "Nimi",
+      "size": "Koko",
+      "relevance": "Relevanssi",
+      "type": "Tyyppi",
+      "connection": "Yhteys",
+      "users": "Käyttäjät",
+      "time": "Viimeksi muokattu",
+      "slots": "Latauspaikat"
+    },
+    "actions": {
+      "resultDetails": "Osuman tiedot",
+      "browseContent": "Selaa sisältöä"
+    },
+    "form": {
+      "fileTypeName": "Tiedostotyyppi",
+      "hubUrlsName": "Hubit",
+      "maxSizeName": "Maksimikoko",
+      "minSizeName": "Minimikoko",
+      "sizeLimitsName": "Kokorajat"
+    },
+    "actionsCaption": "Toiminnot...",
+    "searchActions": "Hakutoiminnot",
+    "resetAll": "Nollaa kaikki",
+    "user": "Käyttäjä",
+    "hubs": "Hubit",
+    "connection": "Yhteys",
+    "slots": "Latauspaikat",
+    "ip": "IP",
+    "path": "Polku",
+    "searchOffline": "Sinun on oltava vähintään yhdessä hubissa, jotta voit tehdä hakua",
+    "enterSearchString": "Syötä hakusana...",
+    "search": "Etsi",
+    "usersCount": "Käyttäjä ({{count}})",
+    "usersCount_plural": "Käyttäjät ({{count}})",
+    "xUsersNicks": "{{count}} käyttäjä ({{user.nicks}})",
+    "xUsersNicks_plural": "{{count}} käyttäjää ({{user.nicks}})",
+    "noResults": "Hakusanalla \"{{searchString}}\" ei löytynyt tuloksia",
+    "noResultsHint": "<0><0>Varmista, että sanat on kirjoitettu oikein</0><1>Käytä toisia hakusanoja</1><2>Haet liian usein (hubeissa on usein vähimmäisaika hakujen välillä)</2><3>Jos et saa ikinä hakutuloksia, tarkista että ohjelman yhteysasetukset on määritetty oikein</3></0>"
+  },
+  "share": {
+    "table": {
+      "path": "Polku",
+      "size": "Koko",
+      "virtual_name": "Virtuaalinen nimi",
+      "profiles": "Profiilit",
+      "last_refresh_time": "Viimeksi päivitetty",
+      "type": "Sisältö",
+      "virtualName": "Virtuaalinen nimi",
+      "lastRefreshTime": "Viimeksi päivitetty"
+    },
+    "actions": {
+      "editDirectory": "Muokkaa kansiota",
+      "removeDirectory": "Poista kansio",
+      "addDirectory": "Lisää kansio",
+      "refreshAll": "Päivitä kaikki",
+      "prompts": {
+        "removeRootApprove": "Poista kansio",
+        "removeRootReject": "Älä poista",
+        "removeRootContent": "Haluatko varmasti poistaa kansion {{item.virtual_name}} jaosta? Se poistetaan kaikista jakoprofiileista."
+      }
+    },
+    "actionsCaption": "Toiminnot...",
+    "shareActions": "Jakotoiminnot",
+    "hashingInformation": "Indeksoinnin tiedot",
+    "hashingInformationDesc": "<0>Uudet tiedostot ilmestyvät jakoon vasta kun ne on indeksoitu (ohjelma on laskenut niille tarkistussummat). Indeksointiprosessin edistymisestä ilmoitetaan tapahtumalokissa.</0>",
+    "addShareDirectory": "Lisää jakokansio",
+    "editShareDirectory": "Muokkaa jakokansiota",
+    "unknown": "Tuntematon",
+    "form": {
+      "pathName": "Polku",
+      "virtualNameName": "Virtuaalinen nimi",
+      "virtualNameHelp": "Samannimiset kansiot yhdistetään tiedostolistassa",
+      "profilesName": "Jakoprofiilit",
+      "profilesHelp": "Uusi jakoprofiileja voi luoda ohjelman asetuksissa",
+      "incomingName": "tuleva"
+    }
+  },
+  "favoriteHubs": {
+    "actions": {
+      "addNew": "Lisää uusi",
+      "setPassword": "Aseta salasana",
+      "edit": "Muokkaa",
+      "remove": "Poista",
+      "changePassword": "Muuta salasanaa",
+      "removePassword": "Poista salasana",
+      "prompts": {
+        "changePasswordPlaceholder": "Syötä salasana",
+        "changePasswordApprove": "Päivitä salasana",
+        "changePasswordContent": "Syötä uusi salasana hubille {{item.name}}",
+        "removePasswordApprove": "Poista salasana",
+        "removePasswordReject": "Älä poista",
+        "removePasswordContent": "Haluatko varmasti nollata salasanan hubille {{item.name}}?",
+        "createPasswordPlaceholder": "Syötä salasana",
+        "createPasswordApprove": "Aseta salasana",
+        "createPasswordContent": "Aseta salasana hubille {{item.name}}",
+        "removeApprove": "Poista suosikkihubi",
+        "removeReject": "Älä poista",
+        "removeContent": "Haluatko varmasti poistaa suosikkihubin {{item.name}}?"
+      }
+    },
+    "table": {
+      "connectState": "Tila",
+      "name": "Nimi",
+      "autoConnect": "Autom. yhdistäminen",
+      "nick": "Nimimerkki",
+      "hasPassword": "Salasana",
+      "hubUrl": "Osoite",
+      "shareProfile": "Jakoprofiili"
+    },
+    "notSet": "Ei asetettu",
+    "set": "Asetettu",
+    "globalDefault": "Yleinen oletus",
+    "addFavoriteHub": "Lisää suosikkihubi",
+    "editFavoriteHub": "Muokkaa suosikkihubia",
+    "actionsCaption": "Toiminnot...",
+    "favoriteHubActions": "Suosikkihubien toiminnot",
+    "form": {
+      "genericName": "Hubin tiedot",
+      "nameName": "Nimi",
+      "hubUrlName": "Hubin osoite",
+      "hubDescriptionName": "Hubin kuvaus",
+      "shareProfileName": "Jakoprofiili",
+      "shareProfileHelp": "Mukautettuja jakoprofiileja voidaan valita vasta ADC-hubiosoitteen syöttämisen jälkeen (osoite alkaa adc:// tai adcs://)",
+      "autoConnectName": "Autom. yhdistäminen",
+      "userName": "Käyttäjän ohittamat asetukset",
+      "nickName": "Nimimerkki",
+      "userDescriptionName": "Käyttäjän ominaisuudet",
+      "connectivityV4Name": "Ohitetut yhteysasetukset (IPv4)",
+      "connectionModeV4Name": "Yhteystila",
+      "connectionModeV4Option-1": "Ei käytössä",
+      "connectionModeV4Option0": "Aktiivitila",
+      "connectionModeV4Option2": "Passiivitila",
+      "connectionIpV4Name": "IP-osoite",
+      "connectivityV6Name": "Ohitetut yhteysasetukset (IPv6)",
+      "connectionModeV6Name": "Yhteystila",
+      "connectionModeV6Option-1": "Ei käytössä",
+      "connectionModeV6Option0": "Aktiivitila",
+      "connectionModeV6Option2": "Passiivitila",
+      "connectionIpV6Name": "IP-osoite",
+      "miscName": "Sekalaiset ohitetut asetukset",
+      "useMainChatNotifyName": "Käytä viesti-ilmoitusta",
+      "awayMessageName": "Poissa-viesti",
+      "showJoinsName": "Näytä saapuvat/poistuvat"
+    }
+  },
+  "filelists": {
+    "new": "Avaa tiedostolista",
+    "newDesc": "Aloita uuden tiedostolistan selaaminen",
+    "offlineMessage": "Sinun on oltava yhteydessä vähintään yhteen hubiin, jotta voit ladata tiedostolistoja muilta käyttäjiltä",
+    "directorySize": "Kansion koko",
+    "totalListSize": "Listan yhteiskoko",
+    "browseOwnShare": "Selaa omia jakoja...",
+    "root": "Juuri",
+    "userOffline": "Käyttäjä offline-tilassa",
+    "userOfflineDesc": "Voit jatkaa selaamista, kun käyttäjä on jälleen online-tilassa",
+    "noContentToDisplay": "Ei näytettävää sisältöä",
+    "theDirectoryIsEmpty": "Kansio on tyhjä",
+    "updatingView": "Päivitetään näkymää",
+    "downloadFailed": "Lataus epäonnistui",
+    "confirmLeave": "Vahvista toiminto",
+    "confirmLeaveDesc": "Poistu tiedostolistasta napsauttamalla paluupainiketta uudestaan",
+    "table": {
+      "name": "Nimi",
+      "size": "Koko",
+      "time": "Viimeksi muokattu",
+      "type": "Tyyppi"
+    },
+    "actions": {
+      "reload": "Lataa uudestaan",
+      "refreshInShare": "Päivitä jaoissa",
+      "close": "Sulje",
+      "details": "Tiedot"
+    }
+  },
+  "common": {
+    "actions": {
+      "copy": "Kopioi",
+      "copyPath": "Kopioi polku",
+      "copySize": "Kopioi koko",
+      "copyTth": "Kopioi TTH",
+      "download": "Lataa",
+      "downloadTo": "Lataa kohteeseen...",
+      "findNfo": "Hae NFO",
+      "search": "Etsi",
+      "sendMessage": "Lähetä viesti",
+      "browseShare": "Selaa jakoja",
+      "ignoreMessages": "Estä viestit",
+      "viewAsText": "Näytä tekstinä",
+      "playVideo": "Toista video",
+      "viewImage": "Näytä kuva",
+      "playAudio": "Toista audio",
+      "copyMagnetLink": "Kopioi magnet-linkki",
+      "shutDownApplication": "Sammuta ohjelma",
+      "restartWebServer": "Käynnistä web-palvelin uudestaan",
+      "unignoreMessages": "Poista viestien esto",
+      "closeAndDontShowAgain": "Sulje ja älä näytä uudestaan",
+      "notifications": {
+        "ignoreUserSuccess": "Käyttäjä {{item.nicks}} lisättiin hylättyihin käyttäjiin",
+        "unignoreUserSuccess": "Käyttäjä {{item.nicks}} poistettiin hylätyistä käyttäjistä",
+        "copyPathSuccess": "Polku kopioitiin leikepöydälle",
+        "copySizeSuccess": "Koko kopioitiin leikepöydälle",
+        "copyTTHSuccess": "TTH kopioitiin leikepöydälle",
+        "copyMagnetSuccess": "Magnet-linkki kopioitiin leikepöydälle",
+        "copySuccess": "Teksti kopioitiin leikepöydälle",
+        "grantHourUserSuccess": "Granted slot for user {{item.nicks}}"
+      },
+      "grantExtraSlot10Min": "Anna ylimääräinen latauspaikka (10 min)",
+      "grantExtraSlotHour": "Anna ylimääräinen latauspaikka (tunti)",
+      "grantExtraSlotDay": "Anna ylimääräinen latauspaikka (päivä)",
+      "grantExtraSlotWeek": "Anna ylimääräinen latauspaikka (viikko)",
+      "prompts": {
+        "restartWebSystemApprove": "Jatka ja käynnistä uudestaan",
+        "restartWebSystemReject": "Älä käynnistä uudestaan",
+        "restartWebSystemContent": "Osoiteasetuksia muutettaessa on suositeltavaa käynnistää web-palvelin uudestaan vain silloin, kun sinulla on pääsy palvelimeen vikatilanteiden selvittämistä varten. Mikäli palvelin ei palaa takaisin online-tilaan, käynnistä ohjelma manuaalisesti, jotta näet mahdolliset virheviestit. Mikäli asetustiedostoa täytyy muokata käsin, tiedosto sijaitsee oletuksena järjestelmän käyttäjäkansiossa (.airdc++-kansiossa).",
+        "shutdownSystemApprove": "Jatka ja sammuta",
+        "shutdownSystemReject": "Peruuta",
+        "shutdownSystemContent": "Haluatko varmasti sammuttaa sovelluksen?"
+      }
+    },
+    "units": {
+      "b": "t",
+      "kib": "Kt",
+      "mib": "Mt",
+      "gib": "Gt",
+      "tib": "Tt",
+      "pib": "Pt",
+      "eib": "Et",
+      "bits": "bit/s",
+      "kbits": "Kbit/s",
+      "mbits": "Mbit/s",
+      "gbits": "Gbit/s"
+    },
+    "filename": "Tiedostonimi",
+    "xBytes": "{{bytes}} tavua",
+    "unitsPerSecond": "{{units}}/s",
+    "today": "Tänään",
+    "yesterday": "Eilen",
+    "tomorrow": "Huomenna",
+    "lastWeek": "[Viime] {{weekDay}}",
+    "awayModeWasEnabled": "Poissa-tila käytössä",
+    "awayModeWasDisabled": "Poissa-tila pois käytöstä",
+    "actionSucceed": "Toiminto onnistui",
+    "actionFailed": "Toiminto epäonnistui",
+    "queueingFailed": "Kohteen {{item.name}} lisääminen jonoon epäonnistui",
+    "noNfoResultsWereReceived": "Yhtään NFO-tulosta ei vastaanotettu",
+    "networkClientError": "Verkko-/selainvirhe",
+    "failedToFetchData": "Tiedon hakeminen epäonnistui",
+    "failedToLoadContent": "Sisällön lataaminen epäonnistui",
+    "failedToCreateDirectory": "Failed to create directory",
+    "loadingItems": "Ladataan kohteita",
+    "root": "Juuri",
+    "name": "Nimi",
+    "size": "Koko",
+    "path": "Polku",
+    "createDirectory": "Luo kansio",
+    "create": "Luo",
+    "directoryName": "Kansion nimi",
+    "computer": "Tietokone",
+    "history": "Edelliset",
+    "shared": "Jaettu",
+    "favorites": "Suosikit",
+    "dupes": "Kaksoiskappaleet",
+    "browse": "Selaa",
+    "download": "Lataa",
+    "close": "Sulje",
+    "noPathsToDisplay": "Ei näytettäviä polkuja",
+    "spaceFree": "{{freeSpace}} vapaana",
+    "select": "Valitse",
+    "new": "Uusi...",
+    "currentSessions": "Nykyiset istunnot",
+    "closeAll": "Sulje kaikki",
+    "recentSessions": "Viimeaikaiset istunnot",
+    "openedAgo": "Avattu {{timeAgo}}",
+    "waitingForServerResponse": "Odotetaan palvelimen vastausta",
+    "loadingMessages": "Ladataan viestejä",
+    "loadingSession": "Ladataan istuntoa",
+    "yes": "Kyllä",
+    "no": "Ei",
+    "cancel": "Peruuta",
+    "loading": "Ladataan",
+    "loadingData": "Ladataan dataa...",
+    "noOnlineHubs": "Ei yhdistettyjä hubeja",
+    "installAsLocalApplication": "Asenna paikalliseksi sovellukseksi",
+    "pwaInstallDesc": "Tämä web-sovellus voidaan asentaa paikallisesti, mikä tarjoaa paremman käyttökokemuksen",
+    "install": "Asenna",
+    "dontInstall": "Älä asenna",
+    "statisticsNotAvailable": "Tilastot eivät ole käytettävissä",
+    "save": "Tallenna",
+    "enterNick": "Syötä nimimerkki...",
+    "disabled": "Ei käytössä",
+    "enterLimitUnit": "Syötä raja ({{unit}}/s)",
+    "enterLimit": "Syötä raja...",
+    "removeLimit": "Poista raja",
+    "tlsOk": "Sertifikaatin aitous on vahvistettu",
+    "tlsOutdatedWarning": "Vanhentunut kryptografinen protokolla, jossa on tunnettuja heikkouksia",
+    "tlsAuthenticityWarning": "Sertifikaatin aitoutta ei voitu vahvistaa",
+    "upload": "Lähetys",
+    "sendFiles": "Lähetä tiedostoja",
+    "removeSharedFile": "Poista jaettu tiedosto",
+    "fileNoLongerShared": "Tiedosto {{file.name}} ei ole enää jaettu",
+    "fileTooLarge": "Tiedosto on liian iso (maksimikoko on {{maxSize}})",
+    "previewIsNotAvailable": "Esikatselu ei ole käytettävissä",
+    "failedToFetchContent": "Sisällön lataaminen epäonnistui",
+    "noItemsToShow": "Ei näytettäviä kohteita",
+    "noSessionEditAccess": "Sinulla ei ole oikeuksia avata uusia istuntoja",
+    "noChatAccess": "Sinulla ei ole oikeuksia lähettää uusia viestejä",
+    "loadingSessions": "Ladataan istuntoja",
+    "typeContent": "Tyyppi/sisältö",
+    "lastModified": "Viimeksi muokattu",
+    "dupeType": "Kaksoiskappaleen tyyppi",
+    "shareFull": "Jako (täysi)",
+    "sharePartial": "Jako (osittainen)",
+    "queueFull": "Latausjono (täysi)",
+    "queuePartial": "Latausjono (osittainen)",
+    "finishedFull": "Valmistunut (täysi)",
+    "finishedPartial": "Valmistunut (osittainen)",
+    "shareAndQueue": "Jako ja latausjono",
+    "shareQueueAndFinished": "Jako, jono ja valmistunut",
+    "queueAndFinished": "Jono ja valmistunut",
+    "shareAndFinished": "Jako ja valmistunut",
+    "dupePaths": "Kaksoiskappaleiden polut",
+    "actionsCaption": "Toiminnot...",
+    "tth": "TTH",
+    "na": "Ei saatavilla",
+    "noActionsAvailable": "Toimintoja ei käytettävissä",
+    "continue": "Jatka",
+    "form": {
+      "browse": "Selaa",
+      "noOptions": "Ei vaihtoehtoja",
+      "fieldOptional": "{{definition.title}} (valinnainen)",
+      "minimumValueError": "Pienin sallittu arvo on {{value}}",
+      "maximumValueError": "Suurin sallittu arvo on {{value}}",
+      "any": "Mikä tahansa",
+      "directory": "Kansio",
+      "file": "Tiedosto",
+      "add": "Lisää",
+      "down": "Alas",
+      "remove": "Poista",
+      "up": "Ylös",
+      "offlineMessage": "Ei yhdistettyjä hubeja",
+      "loading": "Ladataan"
+    }
+  },
+  "hubs": {
+    "table": {
+      "nick": "Nimimerkki",
+      "shareSize": "Jakojen koko",
+      "description": "Kuvaus",
+      "tag": "Tiedot",
+      "uploadSpeed": "Lähetysnopeus",
+      "downloadSpeed": "Latausnopeus",
+      "ip4": "IP (v4)",
+      "ip6": "IP (v6)",
+      "fileCount": "Tiedostot"
+    },
+    "actions": {
+      "reconnect": "Uudelleenyhdistä",
+      "clearChat": "Tyhjennä keskusteluikkuna",
+      "close": "Sulje",
+      "addToFavorites": "Lisää suosikkeihin",
+      "useChatNotification": "Käytä viesti-ilmoitusta",
+      "showJoinsParts": "Näytä saapuvat/poistuvat",
+      "notifications": {
+        "favoriteSuccess": "Hubi {{item.identity.name}} lisättiin suosikkeihin"
+      }
+    },
+    "notifications": {
+      "actions": {
+        "viewChat": "Näytä keskustelu"
+      }
+    },
+    "notificationSettings": "Ilmoitusasetukset",
+    "enterHubAddress": "Syötä hubin osoite...",
+    "connect": "Yhdistä",
+    "notConnectedToTheHub": "Ei yhdistettynä hubiin",
+    "connecting": "Yhdistetään",
+    "loadingUserlist": "Ladataan käyttäjälistaa",
+    "favoriteHubsHint": "Vinkki: mene <url>Suosikkihubit</url>-sivulle, jos haluat yhdistää käyttämällä mukautettuja asetuksia",
+    "new": "Yhdistä",
+    "newDesc": "Yhdistä uuteen hubiin",
+    "userList": "Käyttäjälista",
+    "sharePerUser": "{{total}} ({{average}}/käyttäjä)",
+    "xUsers": "{{count}} käyttäjää",
+    "xUsers_plural": "{{count}} käyttäjää",
+    "redirectRequested": "Uudelleenohjauspyyntö",
+    "acceptRedirect": "Hyväksy uudelleenohjaus osoitteeseen {{url}}",
+    "passwordRequired": "Salasana vaaditaan",
+    "password": "Salasana",
+    "submit": "Lähetä",
+    "passwordPromptHelp": "Tämä yleensä tarkoittaa, että hubissa on käyttämällesi nimimerkille luotu käyttäjätili. Mikäli et muista omaavasi rekisteröityä käyttäjätiliä tässä hubissa, joku muu mahdollisesti käyttää samaa nimimerkkiä."
+  },
+  "queue": {
+    "table": {
+      "name": "Nimi",
+      "size": "Koko",
+      "status": "Tila",
+      "sources": "Lähteet",
+      "secondsLeft": "Aikaa jäljellä",
+      "speed": "Nopeus",
+      "priority": "Prioriteetti",
+      "type": "Tyyppi/sisältö",
+      "timeAdded": "Lisätty",
+      "timeFinished": "Valmistunut"
+    },
+    "actionsCaption": "Toiminnot...",
+    "queueActions": "Latausjonon toiminnot",
+    "pausedForced": "Keskeytetty (pakotettu)",
+    "queueEmpty": "Latausjono on tyhjä",
+    "queueEmptyDesc": "Uusia kohteita voi lisätä jonoon hausta ja tiedostolistoista",
+    "actions": {
+      "removeCompletedBundles": "Poista valmiit bundlet",
+      "pauseAllBundles": "Pysäytä kaikki bundlet",
+      "resumeAllBundles": "Jatka kaikkia latauksia",
+      "manageFiles": "Hallinnoi tiedostoja...",
+      "manageSources": "Hallinnoi lähteitä...",
+      "searchForeground": "Hae (välilehdessä)",
+      "searchForAlternates": "Etsi vaihtoehtoisia lähteitä",
+      "remove": "Poista",
+      "removeSource": "Poista lähde",
+      "rescanForErrors": "Skannaa uudestaan",
+      "forceInShare": "Pakota jakoon",
+      "prompts": {
+        "removeBundleApprove": "Poista bundle",
+        "removeBundleReject": "Älä poista",
+        "removeBundleContent": "Haluatko varmasti poistaa bundlen {{item.name}}?",
+        "removeBundleCheckbox": "Poista valmiit tiedostot",
+        "removeFileApprove": "Poista tiedosto",
+        "removeFileReject": "Älä poista",
+        "removeFileContent": "Haluatko varmasti poistaa tiedoston {{item.name}}?",
+        "removeFileCheckbox": "Poista levyltä"
+      },
+      "notifications": {
+        "removeFileSuccess": "Tiedosto {{item.name}} poistettiin jonosta",
+        "removeCompletedSuccess": "{{result.count}} valmista bundlea poistettiin",
+        "searchAlternatesBundleSuccess": "Bundlelle {{item.name}} haettiin vaihtoehtoisia lähteitä"
+      }
+    },
+    "paused": "Pysäytetty",
+    "lowest": "Matalin",
+    "low": "Matala",
+    "normal": "Normaali",
+    "high": "Korkea",
+    "highest": "Korkein",
+    "auto": "Auto",
+    "sources": "Lähteet",
+    "user": "Käyttäjä",
+    "hubs": "Hubit",
+    "lastKnownSpeed": "Viimeinen nopeus",
+    "files": "Tiedostot",
+    "size": "Koko",
+    "notifications": {
+      "bundleWasAddedInQueue": "Bundle lisättiin latausjonoon",
+      "bundleDownloadError": "Latausvirhe: {{error}}",
+      "bundleContentValidationError": "Bundlen sisältötarkistus epäonnistui: {{error}} ({{hook}})",
+      "validatingDownloadedBundle": "Tarkistetaan ladattua bundlea",
+      "bundleWasCompletedSuccessfully": "Bundle on ladattu onnistuneesti",
+      "bundleWasAddedInShare": "Bundle lisättiin jakoon",
+      "actions": {
+        "viewQueue": "Näytä jono"
+      }
+    }
+  },
+  "transfers": {
+    "table": {
+      "user": "Käyttäjä",
+      "name": "Nimi",
+      "size": "Osa",
+      "status": "Tila",
+      "secondsLeft": "Aikaa jäljellä",
+      "speed": "Nopeus",
+      "flags": "Arvot",
+      "ip": "IP"
+    },
+    "actions": {
+      "forceConnect": "Pakota yhteys",
+      "disconnect": "Katkaise yhteys",
+      "removeFileFromQueue": "Poista tiedosto jonosta",
+      "removeUserFromQueue": "Hylkää lähde latausjonosta",
+      "notifications": {
+        "removeFileSuccess": "Tiedosto {{item.name}} poistettiin jonosta",
+        "removeSourceSuccess": "Käyttäjä {{item.user.nicks}} poistettiin {{result.count}} tiedostolta"
+      }
+    },
+    "actionsCaption": "Toiminnot...",
+    "transferActions": "Siirtojen toiminnot",
+    "noActiveTransfers": "Ei aktiivisia tiedostosiirtoja"
+  },
+  "settings": {
+    "actions": {
+      "detectNow": "Tunnista nyt",
+      "addDirectory": "Lisää kansio",
+      "addUser": "Lisää käyttäjä",
+      "editUser": "Muokkaa käyttäjää",
+      "editDirectory": "Muokkaa kansiota",
+      "removeDirectory": "Poista kansio",
+      "addProfile": "Luo uusi",
+      "cloneProfile": "Monista profiili",
+      "browseFiles": "Selaa tiedostoja",
+      "renameProfile": "Uudelleennimeä profiili",
+      "addPath": "Lisää polku",
+      "removePath": "Poista polku",
+      "removeUser": "Poista käyttäjä",
+      "setAsDefault": "Aseta oletukseksi",
+      "removeProfile": "Poista profiili",
+      "addType": "Lisää tyyppi",
+      "editType": "Muokkaa tyyppiä",
+      "removeType": "Poista tyyppi",
+      "prompts": {
+        "cloneProfilePlaceholder": "Syötä nimi",
+        "cloneProfileApprove": "Luo",
+        "cloneProfileContent": "Syötä nimi profiilille (monistetaan profiilista {{item.name}})",
+        "createProfilePlaceholder": "Syötä nimi",
+        "createProfileApprove": "Luo",
+        "createProfileContent": "Syötä profiilin nimi",
+        "editProfilePlaceholder": "Syötä nimi",
+        "editProfileApprove": "Nimeä uudestaan",
+        "editProfileContent": "Syötä uusi nimi profiilille {{item.name}}",
+        "removeShareExcludeApprove": "Poista polku",
+        "removeShareExcludeReject": "Älä poista",
+        "removeShareExcludeContent": "Haluatko varmasti poistaa piilotetun polun {{item}}?",
+        "removeWebUserApprove": "Poista käyttäjä",
+        "removeWebUserReject": "Älä poista",
+        "removeWebUserContent": "Haluatko varmasti poistaa käyttäjän {{item.username}}?",
+        "removeFavoriteDirectoryApprove": "Poista kansio",
+        "removeFavoriteDirectoryReject": "Älä poista",
+        "removeFavoriteDirectoryContent": "Haluatko varmasti poistaa suosikkikansion {{item.name}}?",
+        "removeSearchTypeApprove": "Poista tyyppi",
+        "removeSearchTypeReject": "Älä poista",
+        "removeSearchTypeContent": "Haluatko varmasti poistaa hakutyypin {{item.name}}?",
+        "removeProfileApprove": "Poista profiili",
+        "removeProfileReject": "Älä poista",
+        "removeProfileContent": "Are you sure that you want to remove the profile {{item.name}}?"
+      }
+    },
+    "navigation": {
+      "profile": "Profiili",
+      "connectivity": "Yhteysasetukset",
+      "speedAndLimits": "Nopeus ja rajat",
+      "downloads": "Lataukset",
+      "sharing": "Jakaminen",
+      "view": "Näytä",
+      "about": "Tietoja",
+      "extensions": "Lisäosat",
+      "extensionEngines": "Lisäosien moottorit",
+      "system": "Järjestelmä",
+      "autoDetection": "Automaattinen tunnistaminen",
+      "iPv4ConnectivityManual": "IPv4-yhteys (manuaalinen)",
+      "iPv6ConnectivityManual": "IPv6-yhteys (manuaalinen)",
+      "portsManual": "Portit (manuaalinen)",
+      "proxies": "Välityspalvelimet",
+      "encryption": "Salaus",
+      "user": "Käyttäjä",
+      "awayMode": "Poissa-tila",
+      "ignoredUsers": "Huomiotta jätetyt käyttäjät",
+      "miscellaneous": "Sekalaiset",
+      "manageInstalled": "Hallitse asennettuja",
+      "extensionCatalog": "Lisäosien katalogi",
+      "extensionOptions": "Lisäosien asetukset",
+      "application": "Sovellus",
+      "transferStatistics": "Siirtotilastot",
+      "shareStatistics": "Jakotilastot",
+      "hubStatistics": "Hubitilastot",
+      "users": "Käyttäjät",
+      "logging": "Lokit",
+      "webServer": "Web-palvelin",
+      "advancedServerSettings": "Palvelimen lisäasetukset",
+      "refreshOptions": "Päivitysasetukset",
+      "shareProfiles": "Jakoprofiilit",
+      "sharingOptions": "Jakamisasetukset",
+      "hashing": "Indeksointi",
+      "excludedPaths": "Piilotetut polut",
+      "connectionSpeed": "Yhteysnopeus",
+      "bandwidthLimiting": "Kaistarajoitukset",
+      "downloadLimits": "Latausnopeus",
+      "uploadLimits": "Lähetysrajat",
+      "perUserLimits": "Käyttäjäkohtaiset rajat",
+      "locations": "Sijainnit",
+      "skippingOptions": "Ohitusasetukset",
+      "searchMatching": "Hakutulosten täsmääminen",
+      "searchTypes": "Hakutyypit",
+      "downloadOptions": "Latausasetukset",
+      "priorities": "Tärkeydet",
+      "notificationsCaption": "Ilmoitukset",
+      "histories": "Historiat",
+      "events": "Tapahtumat",
+      "appearance": "Ulkoasu"
+    },
+    "advanced": "Lisäasetukset",
+    "noUnsavedChanges": "Ei tallentamattomia muutoksia",
+    "noSavePermission": "Ei tallennusoikeuksia",
+    "saveChanges": "Tallenna muutokset",
+    "savingCompleted": "Tallennus valmis",
+    "settingsWereSavedSuccessfully": "Asetukset tallennettiin onnistuneesti",
+    "unsavedChangesPrompt": "Sinulla on tallentamattomia muutoksia. Haluatko varmasti lähteä?",
+    "connectivity": {
+      "detection": {
+        "connectivityDetectionNote": "Mikäli tiedostosiirtojen kanssa on ongelmia, tarkista että TCP-ovat varmasti avoinna käyttämällä esimerkiksi <portChecker>verkon porttitarkistussivustoa</portChecker>. Huomio, että UDP-portin (haut) avoimuutta ei voi tarkistaa verkkosivustojen kautta. Saat lisätietoja eri yhteystiloista <faq>DC++:n ohjesivustolta</faq>.",
+        "currentAutoDetectionStatus": "Automaattisen tunnistamisen tila",
+        "iPv4Connectivity": "IPv4-yhteys",
+        "iPv6Connectivity": "IPv6-yhteys",
+        "manualConfiguration": "{{status}} (manuaaliset määritykset)",
+        "autoDetected": "{{status}} (tunnistettu automaattisesti)",
+        "detecting": "Tunnistetaan...",
+        "transferPort": "Siirtojen portti",
+        "encryptedTransferPort": "Salattujen siirtojen portti",
+        "searchUdpPort": "Haku-/UDP-portti",
+        "boundInterfaceIPv4": "Sidottu osoite (IPv4)",
+        "boundInterfaceIPv6": "Sidottu osoite (IPv6)",
+        "viewAll": "Näytä kaikki"
+      },
+      "ports": {
+        "portsAutoValuesNote": "Porttikarjoitukset (mikäli käytössä) voivat ohittaa tällä sivulla listatut porttinumerot",
+        "form": {
+          "tcpPortHelp": "TCP-porttia käytetään salaamattomille tiedostosiirroille",
+          "udpPortHelp": "UDP-porttia käytetään hauille",
+          "tlsPortHelp": "TLS-porttia (TCP) käytetään salatuille tiedostosiirroille"
+        }
+      },
+      "v6": {
+        "protocolAutoValuesNote": "Yhteysasetusten automaattinen tunnistaminen on tällä hetkellä käytössä; tällä sivulla listattuja arvoja ei käytetä"
+      },
+      "v4": {
+        "protocolAutoValuesNote": "Yhteysasetusten automaattinen tunnistaminen on tällä hetkellä käytössä; tällä sivulla listattuja arvoja ei käytetä"
+      }
+    },
+    "profile": {
+      "user": {
+        "form": {
+          "settingProfileHelp0": "Ohjelmaa käytetään tiedostojen jakamiseen internetin välityksellä normaaleissa yksityisissä tai julkisissa hubeissa. Käytä tätä profiilia, jos olet epävarma.",
+          "settingProfileHelp1": "Ohjelmaa käytetään RAR-arkistoihin pilkottujen tiedostojen (tai muiden pienikokoisten tiedostojen) lataamiseen",
+          "settingProfileHelp2": "Sovellusta käytetään tiedostojen siirtämiseen paikallisverkossa (esim. lanit) tai muussa suljetussa verkossa (esim. yliopistoverkko)",
+          "languageFileHelpRestart": "Sovellus on käynnistettävä uudestaan, jotta uusi kieli tulee käyttöön.",
+          "languageFileHelpTranslate": "Mikäli haluat auttaa nykyisten käännösten parantamisessa tai haluat kääntää ohjelman uudelle kielelle, katso <url>ohjeet kääntäjille</url>."
+        }
+      },
+      "ignoredUsers": {
+        "user": "Käyttäjä",
+        "messagesIgnored": "Estetyt viestit",
+        "noIgnoredUsers": "Ei estettyjä käyttäjiä"
+      },
+      "miscellaneous": {
+        "form": {
+          "nmdcEncodingHelp": "<0>Merkistöasetusta käytetään ainoastaan NMDC-hubeissa. ADC-hubit käyttävät aina UTF-8 -merkistöä.<1></1><2></2><3>Yleisesti käytetyt arvot:<1><0>Keski-Eurooppa: cp1250</0><1>Kyrillinen: cp1251</1><2>Länsi-Eurooppa: cp1252</2><3>Kreikka: cp1253</3><4>Turkki: cp1254</4><5>Heprea: cp1256</5></1></3></0>"
+        }
+      }
+    },
+    "extensions": {
+      "packages": {
+        "byAuthor": "tekijältä {{author}}",
+        "latestVersion": "Viimeisin versio",
+        "installedVersion": "Asennettu versio",
+        "datePublished": "{{version}} (julkaistu {{date}})",
+        "readMore": "Lue lisää",
+        "defaultExtensionEngineMissing": "Lisäosien oletusmoottori <strong>{{engineName}}</strong> ei ole asennettuna järjestelmään. Katso asennusohjeet <url>moottorin kotisivuilta</url> .",
+        "manage": "Hallitse..."
+      },
+      "manage": {
+        "byAuthor": "tekijältä {{author}}",
+        "latestVersion": "Viimeisin versio",
+        "installedVersion": "Asennettu versio",
+        "nonListedExtension": "Listaamaton lisäosa",
+        "readMore": "Lue lisää",
+        "noInstalledExtensions": "Asennettuja lisäosia ei löytynyt. Uusia lisäosia voidaan asentaa <url>Lisäosien katalogi</url> -sivulta.",
+        "defaultExtensionEngineMissing": "Lisäosien oletusmoottori <strong>{{engineName}}</strong> ei ole asennettuna järjestelmään. Katso asennusohjeet <url>moottorin kotisivuilta</url> .",
+        "extensionDirectoryFetchError": "Tiedon hakeminen lisäosien katalogista epäonnistui: {{error}}",
+        "unmanagedExtension": "Ulkoinen lisäosa",
+        "manage": "Hallitse..."
+      }
+    },
+    "about": {
+      "application": {
+        "applicationVersion": "Sovelluksen versio",
+        "webUiVersion": "Web-käyttöliittymän versio",
+        "webUiBuildDate": "Web-käyttöliittymän päiväys",
+        "apiVersion": "API-versio",
+        "apiFeatureLevel": "API:n toiminnallisuustaso",
+        "started": "Käynnistetty",
+        "activeSessions": "Aktiiviset istunnot",
+        "serverThreads": "Palvelinsäikeet",
+        "resources": "Resurssit",
+        "homePage": "Kotisivut",
+        "featureRequestBugTracker": "Toiveet uusista toiminnoista/bugien raportointi",
+        "documentation": "Ohjeet",
+        "thirdPartyCredits": "Kolmannen osapuolen maininnat"
+      },
+      "transfers": {
+        "totalDownloaded": "Ladattu yhteensä",
+        "totalUploaded": "Lähetetty yhteensä",
+        "session": "Istunto",
+        "sessionDownloaded": "Ladattu istunnossa",
+        "sessionUploaded": "Lähetetty istunnossa"
+      },
+      "share": {
+        "noFilesShared": "Ei jaettuja tiedostoja",
+        "totalShareSize": "Jakojen yhteiskoko",
+        "totalFiles": "Tiedostojen yhteismäärä",
+        "totalFilesValue": "{{totalCount}} ({{uniqueCount}} uniikkia)",
+        "totalDirectories": "Kansioiden yhteismäärä",
+        "averageFileAge": "Tiedoston keksimääräinen ikä",
+        "averageFilesPerDirectory": "Tiedostoja kansiossa keskimäärin",
+        "incomingSearches": "Saapuneet haut",
+        "totalSearches": "Hakujen kokonaismäärä",
+        "searchesTotalValue": "{{totalCount}} ({{perSecondCount}} sekunnissa)",
+        "tthSearches": "TTH-haut",
+        "textSearches": "Tekstihaut",
+        "searchesPerSecondValue": "{{totalCount}} ({{matchedCount}} täsmätty sekunnissa)",
+        "filteredTextSearches": "Suodatetut tekstihaut",
+        "searchesFilteredValue": "{{filteredPercentage}} ({{resultPercentage}} täsmätyistä hauista palautti tuloksia)",
+        "averageTextSearchTokensNonFiltered": "Suodattamattomien tekstihakujen tokenien keskiarvo",
+        "searchesAverageTokensValue": "{{tokenCount}} ({{tokenLength}} tavua per token)",
+        "averageMatchingTimePerTextSearch": "Haun keskimääräinen käsittelyaika",
+        "searchesAverageMatchTimeValue": "{{matchTime}} ms"
+      },
+      "hubs": {
+        "noHubsOnline": "Ei yhdistettyjä hubeja",
+        "totalUsers": "Käyttäjien kokonaismäärä",
+        "uniqueUsers": "Uniikit käyttäjät",
+        "activeUsers": "Aktiivitilassa olevat käyttäjät",
+        "totalShare": "Kokonaisjaot",
+        "averageSharePerUser": "Käyttäjäkohtainen jakokeskiarvo",
+        "averageAdcDownloadSpeed": "ADC-latausnopeuden keskiarvo",
+        "clients": "Ohjelmat",
+        "averageAdcUploadSpeed": "ADC-lähetysnopeuden keskiarvo"
+      }
+    },
+    "system": {
+      "logging": {
+        "messages": "Viestit",
+        "transfers": "Siirrot",
+        "variableHelp": "Muuttujien tiedot tiedostonimi- ja muotokentille"
+      },
+      "serverSettings": {
+        "defaultCertNote": "Mikäli sertifikaattien polut ovat tyhjiä, käytetään ohjelman oletussertifikaattia"
+      },
+      "advancedServerSettings": {
+        "hookTimeouts": "Hookkien aikakatkaisut"
+      },
+      "users": {
+        "username": "Käyttäjänimi",
+        "permissions": "Oikeudet",
+        "activeSessions": "Aktiiviset istunnot",
+        "lastLoggedIn": "Viimeksi kirjautunut",
+        "administrator": "Ylläpitäjä",
+        "form": {
+          "usernameName": "Käyttäjänimi",
+          "passwordName": "Salasana",
+          "permissionsName": "Oikeudet"
+        },
+        "permissionSelector": {
+          "administrator": "Ylläpitäjä",
+          "search": "Etsi",
+          "download": "Lataa",
+          "transfers": "Siirrot",
+          "events": "Tapahtumat",
+          "view": "Näytä",
+          "edit": "Muokkaa",
+          "queue": "Jono",
+          "favoriteHubs": "Suosikit",
+          "settings": "Asetukset",
+          "localFilesystem": "Paikallinen tiedostojärjestelmä",
+          "hubs": "Hubit",
+          "sendMessages": "Viestien lähettäminen",
+          "privateChat": "Yksityisviestit",
+          "filelists": "Listat",
+          "viewedFiles": "Näytettävät tiedostot"
+        },
+        "addWebUser": "Lisää web-käyttäjä",
+        "editUser": "Muokkaa käyttäjää",
+        "adminPermissionNote": "Asetusten Järjestelmä-osion käyttämiseen vaaditaan ylläpitäjän oikeudet"
+      }
+    },
+    "sharing": {
+      "excludes": {
+        "shareRefreshNote": "Muutokset tulevat voimaan jakojen päivittämisen jälkeen",
+        "addExcludedPath": "Lisää piilotettu polku",
+        "path": "Polku"
+      },
+      "profiles": {
+        "name": "Nimi",
+        "totalSize": "Yhteiskoko",
+        "totalFiles": "Tiedostojen yhteismäärä",
+        "shareProfilesPartialNote": "Ladatut tiedostot jaetaan kaikissa hubeissa, joissa jakoja ei ole piilotettu, osittaisen tiedostojakotoiminnon avulla asetetuista jakoprofiileista riippumatta.",
+        "shareProfilesHelp": "Jakoprofiilit voidaan määrittää yksittäisille kansioille <url>Jaot</url>-sivulla.",
+        "addProfile": "Lisää profiili",
+        "cloneFromAnExistingProfile": "Luo olemassaolevasta profilista"
+      },
+      "sharingOptions": {
+        "skiplist": "Ohituslista"
+      },
+      "hashing": {
+        "hashDatabase": "Tarkistussummatietokanta",
+        "fileIndexSize": "Tiedostoindeksin koko",
+        "hashStoreSize": "Tarkistussummatietokannan koko",
+        "maintenance": "Operaatiot",
+        "verifyIntegrityOfHashData": "Tarkista tarkistussummatietokannan eheys",
+        "optimizeNow": "Optimoi nyt",
+        "hashDBOptimizeNote": "Tämä operaatio poistaa kaikkien tällä hetkellä jakamattomien tiedostojen tallennetut tarkistussummat. Mikäli jaat tiedostoja verkkolevyiltä tai muulta siirrettävältä tallennusvälineeltä, tarkista, että tiedostot näkyvät tällä hetkellä jaoissa (muutoin ne on indeksoitava uudestaan)."
+      }
+    },
+    "speedLimits": {
+      "speed": {
+        "connectionSpeedNote": "Ole niin tarkka kuin mahdollista ja määritä yhteytesi TODELLINEN nopeus. Voit käyttää yhteyden nopeuden testaamiseen verkkosivustoa, kuten <speedtest>{{name}}</speedtest>."
+      },
+      "uploadLimits": {
+        "manuallySet": "Manuaalisesti asetettu"
+      },
+      "downloadLimits": {
+        "manuallySet": "Manuaalisesti asetettu"
+      }
+    },
+    "downloads": {
+      "locations": {
+        "availablePathVariables": "Käytettävissä olevat polkumuuttujat",
+        "favoriteDownloadDirectories": "Suosikkikansiot",
+        "name": "Nimi",
+        "path": "Polku",
+        "form": {
+          "pathName": "Polku",
+          "nameName": "Nimi"
+        },
+        "addFavoriteDirectory": "Lisää suosikkikansio",
+        "editFavoriteDirectory": "Muokkaa suosikkikansiota"
+      },
+      "skippingOptions": {
+        "skiplist": "Ohituslista"
+      },
+      "priorities": {
+        "filePriorities": "Tiedostojen tärkeydet",
+        "highPriorityFiles": "Korkean tärkeyden tiedostot"
+      },
+      "searchTypes": {
+        "name": "Nimi",
+        "fileExtensions": "Tiedostopäätteet",
+        "default": "Oletus",
+        "searchTypesNote": "Huomio, että itse luotuja hakutyyppejä käytetään hakemiseen ainoastaan ADC-hubeissa! NMDC-hubeissa oletushakutyypeillä haetaan vain esiasetettuja tiedostopäätteitä, joita ei voi muokata, ja itse luoduilla hakutyypeillä hakeminen vastaa minkä tahansa tiedoston hakemista.",
+        "form": {
+          "nameName": "Nimi",
+          "extensionsName": "Tiedostopäätteet"
+        },
+        "addSearchType": "Lisää hakutyyppi",
+        "editSearchType": "Muokkaa hakutyyppiä"
+      },
+      "downloadOptions": {
+        "segments": "Osat",
+        "compression": "Pakkaus",
+        "buffers": "Puskurit"
+      }
+    },
+    "browserSpecificNote": "Tällä sivulla listatut asetukset ovat selainkohtaisia",
+    "view": {
+      "notifications": {
+        "popupNotifications": "Ponnahdusilmoitukset",
+        "form": {
+          "notifyMentionMyNickName": "Oman nimimerkin maininnat",
+          "notifyPmUserName": "Yksityisviestit (käyttäjät)",
+          "notifyPmBotName": "Yksityisviestit (botit)",
+          "notifyHubMessageName": "Hubin keskusteluviestit (vain hubeissa, joissa viesti-ilmoitukset ovat käytössä)",
+          "notifyBundleStatusName": "Bundlen tilamuutokset",
+          "notifyEventsInfoName": "Tietotapahtumat",
+          "notifyEventsWarningName": "Varoitustapahtumat",
+          "notifyEventsErrorName": "Virhetapahtumat"
+        }
+      },
+      "histories": {
+        "maxMessageHistory": "Muistissa pidettävien viestien maksimimäärä",
+        "maxSessionHistory": "Viimeksi avattujen istuntojen maksimimäärä"
+      },
+      "miscellaneous": {
+        "form": {
+          "unreadLabelDelayName": "Viive keskusteluistuntojen merkitsemiselle luetuksi (sekuntia)",
+          "backgroundImageUrlName": "Oman taustakuvan URL-osoite",
+          "noInstallPromptName": "Älä näytä sovelluksen asennuskehoitusta kotinäkymässä"
+        }
+      }
+    }
+  },
+  "extensions": {
+    "actions": {
+      "uninstall": "Poista asennus",
+      "start": "Käynnistä",
+      "installFromUrl": "Asenna osoitteesta",
+      "install": "Asenna",
+      "update": "Päivitä",
+      "stop": "Lopeta",
+      "configure": "Määritä",
+      "enable": "Ota käyttöön",
+      "disable": "Poista käytöstä",
+      "prompts": {
+        "installUrlPlaceholder": "Syötä URL-osoite",
+        "installUrlApprove": "Asenna",
+        "installUrlContent": "Syötä latausosoite",
+        "removeApprove": "Poista lisäosa",
+        "removeReject": "Älä poista",
+        "removeContent": "Haluatko varmasti poistaa lisäosan {{item.name}}? Tämä poistaa myös mahdolliset lisäosakohtaiset asetukset."
+      }
+    }
+  },
+  "navigation": {
+    "home": "Koti",
+    "queue": "Jono",
+    "search": "Etsi",
+    "transfers": "Siirrot",
+    "hubs": "Hubit",
+    "messages": "Viestit",
+    "filelists": "Listat",
+    "files": "Tiedostot",
+    "events": "Tapahtumat",
+    "favoriteHubs": "Suosikit",
+    "share": "Jaot",
+    "settings": "Asetukset",
+    "logout": "Kirjaudu ulos",
+    "more": "Lisää..."
+  },
+  "login": {
+    "username": "Käyttäjänimi",
+    "password": "Salasana",
+    "keepMeLoggedIn": "Pidä minut sisäänkirjautuneena",
+    "login": "Käyttäjätunnus",
+    "authenticationFailed": "Tunnistautuminen epäonnistui: {{lastError}}",
+    "connectingToTheServer": "Yhdistetään palvelimeen...",
+    "reestablishConnection": "Yritetään uudelleenmuodostaa yhteyttä...",
+    "sessionLost": "Istunto katosi",
+    "connectionClosed": "Yhteys suljettu",
+    "privateBrowsingNotSupported": "Tätä sivustoa ei voi käyttää selaimellasi, jos yksityinen selaustila on käytössä",
+    "dataStorageNotSupported": "Tätä sivustoa ei voi käyttää selaimellasi, sillä se ei tue datan tallentamista"
+  },
+  "viewedFiles": {
+    "actions": {
+      "close": "Sulje"
+    },
+    "noFiles": "Ei näytettäviä tiedostoja",
+    "noFilesDesc": "Voit avata näytettäviä teksti- tai mediatiedostoja hausta tai tiedostolistoista",
+    "preparingView": "Valmistellaan näkymää",
+    "opened": "Avattu",
+    "downloaded": "Ladattu",
+    "unsupportedFormat": "Muotoa ei tueta",
+    "downloadFailed": "Lataus epäonnistui",
+    "notifications": {
+      "fileHasFinishedDownloading": "Tiedoston lataus on valmis",
+      "fileWasLoaded": "Tiedosto ladattiin",
+      "actions": {
+        "viewFile": "Näytä tiedosto"
+      }
+    }
+  },
+  "messages": {
+    "actions": {
+      "clearChat": "Tyhjennä keskusteluikkuna",
+      "close": "Sulje",
+      "connect": "Yhdistä",
+      "disconnect": "Katkaise yhteys"
+    },
+    "new": "Uusi istunto",
+    "newDesc": "Avaa uusi yksityisviesti-istunto",
+    "offlineMessage": "Sinun on oltava yhteydessä vähintään yhteen hubiin, jotta voit lähettää yksityisviestejä",
+    "directEncryptedChannelAvailable": "Suora salattu yhteys käytettävissä",
+    "establishingConnection": "Muodostetaan yhteyttä...",
+    "directEncryptedChannelEstablished": "Suora salattu yhteys muodostettu",
+    "notifications": {
+      "actions": {
+        "viewMessage": "Näytä viesti"
+      }
+    }
+  },
+  "home": {
+    "newUserIntro": "Tietoa uudelle käyttäjälle",
+    "newUserIntroDesc": "<0><0>Lisää <1>Jaot</1>-sivulta muutama kansio, jotka jaetaan muille käyttäjille.</0><1>Käy <1>ohjelman asetuksista</1> läpi vähintään osioiden pääsivut ennen aloittamista.  <3>On tärkeää, että <1>määrität yhteytesi nopeuden</1> oikein, sillä ohjelma ei pysty muutoin hyödyntämään kaistaasi täysimääräisesti.</3></1><2>Ohjelmassa ei ole tällä hetkellä listausta julkisista hubeista, joten sinulla on oltava tiedossa osoitteet, joihin haluat yhdistää.</2></0><1>Saat lisätietoja ohjelmasta sekä sen toiminnoista vierailemalla ohjelman <1>kotisivuilla</1>.</1><2>Mikäli sinulla herää kysymyksiä, voit lähettää ne <1>GitHubiin</1> tai liittyä ohjelman kehitys-/tukihubiin: <3></3></2>"
+  },
+  "hash": {
+    "actions": {
+      "pause": "Pysäytä",
+      "resume": "Jatka",
+      "stop": "Lopeta"
+    },
+    "status": "Tila",
+    "paused": "Pysäytetty",
+    "filesLeft": "Tiedostoja jäljellä",
+    "maximumSpeedPerHasher": "Suurin indeksoijakohtainen nopeus",
+    "runningThreads": "Käynnissä ({{threadCount}} säiettä)",
+    "speed": "Nopeus",
+    "timeLeft": "Aikaa jäljellä",
+    "idle": "Toimeton",
+    "hashProgress": "Indeksoinnin tila"
+  }
+}

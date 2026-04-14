@@ -1,0 +1,1071 @@
+{
+  "widgets": {
+    "application": {
+      "widgetName": "Applikasjon",
+      "addWidget": "Add widget...",
+      "loggedInAs": "Logged in as",
+      "clientStarted": "Client started",
+      "activeSessions": "Active sessions"
+    },
+    "rss": {
+      "widgetName": "RSS feed",
+      "invalidUrl": "Invalid URL",
+      "lastUpdated": "Last updated: {{time}}",
+      "actions": {
+        "openLink": "Åpne link",
+        "search": "Søking"
+      },
+      "loadingFeed": "Loading feed",
+      "form": {
+        "feedUrlName": "Feed URL",
+        "feedUrlHelp": "RSS and Atom feeds are supported",
+        "feedCacheMinutesName": "Minimum refetch interval (minutes)"
+      },
+      "invalidFeed": "Invalid/unsupported feed: {{error}}"
+    },
+    "transfers": {
+      "widgetName": "Overføringer",
+      "trafficBps": "Traffic (bps)",
+      "downloads": "Nedlastinger",
+      "uploads": "Uploads",
+      "downloaded": "Nedlastet",
+      "uploaded": "Lastet opp",
+      "downloadLimit": "Nedlastings begrensning",
+      "uploadLimit": "Opplastings grense"
+    },
+    "notepad": {
+      "widgetName": "Notes"
+    },
+    "extensions": {
+      "widgetName": "Extension releases",
+      "updatedAgo": "Updated {{date}}"
+    },
+    "actions": {
+      "editWidget": "Edit widget",
+      "removeWidget": "Remove widget",
+      "prompts": {
+        "removeApprove": "Remove widget",
+        "removeReject": "Don't remove",
+        "removeContent": "Are you sure that you want to remove the widget {{item.settings.name}}?"
+      }
+    },
+    "form": {
+      "nameName": "Navn"
+    },
+    "widgetPositionHint": "Widgets and their positions are browser-specific",
+    "accessDenied": "You aren't allowed to access this widget",
+    "settingsMissing": "Widget settings missing"
+  },
+  "events": {
+    "events": "Events",
+    "loadingMessages": "Loading messages",
+    "noMessagesToShow": "No messages to show",
+    "actions": {
+      "clear": "Tøm"
+    },
+    "notifications": {
+      "information": "Information",
+      "info": "INFO",
+      "warning": "WARNING",
+      "error": "ERROR",
+      "verbose": "VERBOSE",
+      "actions": {
+        "viewEvents": "View events"
+      }
+    }
+  },
+  "table": {
+    "filter": {
+      "filter": "Filter",
+      "matchType": "Matchings Type",
+      "partial": "Partial",
+      "regex": "Regex",
+      "wildcard": "Valgfritt",
+      "exact": "Exact",
+      "filterByProfile": "Filter by profile",
+      "allProfiles": "All profiles"
+    }
+  },
+  "search": {
+    "table": {
+      "name": "Navn",
+      "size": "Størrelse",
+      "relevance": "Relevance",
+      "type": "Type",
+      "connection": "Tilkobling",
+      "users": "Brukere",
+      "time": "Last modified",
+      "slots": "Slotter"
+    },
+    "actions": {
+      "resultDetails": "Result details",
+      "browseContent": "Browse content"
+    },
+    "form": {
+      "fileTypeName": "Filtype",
+      "hubUrlsName": "Hubber",
+      "maxSizeName": "Maximum size",
+      "minSizeName": "Minimum size",
+      "sizeLimitsName": "Size limits"
+    },
+    "actionsCaption": "Actions...",
+    "searchActions": "Search actions",
+    "resetAll": "Reset all",
+    "user": "Bruker",
+    "hubs": "Hubber",
+    "connection": "Tilkobling",
+    "slots": "Slotter",
+    "ip": "IP",
+    "path": "Målmappe",
+    "searchOffline": "You must to be connected to at least one hub in order to perform searches",
+    "enterSearchString": "Enter search string...",
+    "search": "Søking",
+    "usersCount": "User ({{count}})",
+    "usersCount_plural": "Users ({{count}})",
+    "xUsersNicks": "{{count}} user ({{user.nicks}})",
+    "xUsersNicks_plural": "{{count}} users ({{user.nicks}})",
+    "noResults": "No results found for \"{{searchString}}\"",
+    "noResultsHint": "<0><0>Ensure that you spelled the words correctly</0><1>Use different keywords</1><2>You are searching too frequently (hubs often have a minimum search interval)</2><3>If you never receive results for common search terms, make sure that your connectivity settings are configured properly</3></0>"
+  },
+  "share": {
+    "table": {
+      "path": "Målmappe",
+      "size": "Størrelse",
+      "virtual_name": "Virtuellt navn",
+      "profiles": "Profiles",
+      "last_refresh_time": "Last refreshed",
+      "type": "Content",
+      "virtualName": "Virtuellt navn",
+      "lastRefreshTime": "Last refreshed"
+    },
+    "actions": {
+      "editDirectory": "Edit directory",
+      "removeDirectory": "Remove directory",
+      "addDirectory": "Add directory",
+      "refreshAll": "Refresh all",
+      "prompts": {
+        "removeRootApprove": "Remove directory",
+        "removeRootReject": "Don't remove",
+        "removeRootContent": "Are you sure that you want to remove the directory {{item.virtual_name}} from share? It will be removed from all share profiles."
+      }
+    },
+    "actionsCaption": "Actions...",
+    "shareActions": "Share actions",
+    "hashingInformation": "Hashing information",
+    "hashingInformationDesc": "<0>New files will appear in share only after they have finished hashing (the client has calculated checksums for them). Information about hashing progress will be posted to the event log.</0>",
+    "addShareDirectory": "Add share directory",
+    "editShareDirectory": "Edit share directory",
+    "unknown": "Ukjent",
+    "form": {
+      "pathName": "Målmappe",
+      "virtualNameName": "Virtuellt navn",
+      "virtualNameHelp": "Directories with identical virtual names will be merged in filelist",
+      "profilesName": "Delings profiler",
+      "profilesHelp": "New share profiles can be created from application settings",
+      "incomingName": "innkommende"
+    }
+  },
+  "favoriteHubs": {
+    "actions": {
+      "addNew": "Add new",
+      "setPassword": "Set password",
+      "edit": "Rediger",
+      "remove": "Fjern",
+      "changePassword": "Endre passord",
+      "removePassword": "Remove password",
+      "prompts": {
+        "changePasswordPlaceholder": "Enter password",
+        "changePasswordApprove": "Update password",
+        "changePasswordContent": "Enter new password for the hub {{item.name}}",
+        "removePasswordApprove": "Remove password",
+        "removePasswordReject": "Don't remove",
+        "removePasswordContent": "Are you sure that you want to reset the password of the hub {{item.name}}?",
+        "createPasswordPlaceholder": "Enter password",
+        "createPasswordApprove": "Set password",
+        "createPasswordContent": "Set password for the hub {{item.name}}",
+        "removeApprove": "Remove favorite hub",
+        "removeReject": "Don't remove",
+        "removeContent": "Are you sure that you want to remove the favorite hub {{item.name}}?"
+      }
+    },
+    "table": {
+      "connectState": "State",
+      "name": "Navn",
+      "autoConnect": "Auto connect",
+      "nick": "Kallenavn",
+      "hasPassword": "Passord",
+      "hubUrl": "Hub Addresse",
+      "shareProfile": "Delings profil"
+    },
+    "notSet": "Not set",
+    "set": "Set",
+    "globalDefault": "Global default",
+    "addFavoriteHub": "Add favorite hub",
+    "editFavoriteHub": "Edit favorite hub",
+    "actionsCaption": "Actions...",
+    "favoriteHubActions": "Favorite hub actions",
+    "form": {
+      "genericName": "Hub properties",
+      "nameName": "Navn",
+      "hubUrlName": "Hub URL",
+      "hubDescriptionName": "Hub description",
+      "shareProfileName": "Delings profil",
+      "shareProfileHelp": "Custom share profiles can be selected only after entering an ADC hub address (starting with adc:// or adcs://)",
+      "autoConnectName": "Auto connect",
+      "userName": "User setting overrides",
+      "nickName": "Kallenavn",
+      "userDescriptionName": "Bruker Beskrivelse",
+      "connectivityV4Name": "Connectivity setting overrides (IPv4)",
+      "connectionModeV4Name": "Connectivity mode",
+      "connectionModeV4Option-1": "Ute av funksjon",
+      "connectionModeV4Option0": "Aktiv modus",
+      "connectionModeV4Option2": "Passive mode",
+      "connectionIpV4Name": "IP address",
+      "connectivityV6Name": "Connectivity setting overrides (IPv6)",
+      "connectionModeV6Name": "Connectivity mode",
+      "connectionModeV6Option-1": "Ute av funksjon",
+      "connectionModeV6Option0": "Aktiv modus",
+      "connectionModeV6Option2": "Passive mode",
+      "connectionIpV6Name": "IP address",
+      "miscName": "Miscellaneous overrides",
+      "useMainChatNotifyName": "Use chat notification",
+      "awayMessageName": "Away message",
+      "showJoinsName": "Show joins/parts"
+    }
+  },
+  "filelists": {
+    "new": "Open filelist",
+    "newDesc": "Start browsing a new filelist",
+    "offlineMessage": "You must to be connected to at least one hub in order to download filelists from other users",
+    "directorySize": "Directory size",
+    "totalListSize": "Total list size",
+    "browseOwnShare": "Browse own share...",
+    "root": "Root",
+    "userOffline": "Bruker frakoblet",
+    "userOfflineDesc": "You will be able to continue browsing when the user comes back online",
+    "noContentToDisplay": "No content to display",
+    "theDirectoryIsEmpty": "Mappen er tom",
+    "updatingView": "Updating view",
+    "downloadFailed": "Download failed",
+    "confirmLeave": "Confirm action",
+    "confirmLeaveDesc": "Click the back button again to leave this filelist",
+    "table": {
+      "name": "Navn",
+      "size": "Størrelse",
+      "time": "Last modified",
+      "type": "Type"
+    },
+    "actions": {
+      "reload": "Last på nytt",
+      "refreshInShare": "Refresh in share",
+      "close": "Lukk",
+      "details": "Details"
+    }
+  },
+  "common": {
+    "actions": {
+      "copy": "Kopier",
+      "copyPath": "Copy path",
+      "copySize": "Copy size",
+      "copyTth": "Copy TTH",
+      "download": "Last ned",
+      "downloadTo": "Last ned til...",
+      "findNfo": "Find NFO",
+      "search": "Søking",
+      "sendMessage": "Send melding",
+      "browseShare": "Browse share",
+      "ignoreMessages": "Ignore messages",
+      "viewAsText": "Vis som tekst",
+      "playVideo": "Play video",
+      "viewImage": "View image",
+      "playAudio": "Play audio",
+      "copyMagnetLink": "Copy magnet link",
+      "shutDownApplication": "Shut down application",
+      "restartWebServer": "Restart web server",
+      "unignoreMessages": "Unignore messages",
+      "closeAndDontShowAgain": "Close and don't show again",
+      "notifications": {
+        "ignoreUserSuccess": "User {{item.nicks}} was added in ignored users",
+        "unignoreUserSuccess": "User {{item.nicks}} was removed from ignored users",
+        "copyPathSuccess": "Path was copied to clipboard",
+        "copySizeSuccess": "Size was copied to clipboard",
+        "copyTTHSuccess": "TTH was copied to clipboard",
+        "copyMagnetSuccess": "Magnet link was copied to clipboard",
+        "copySuccess": "Text was copied to clipboard",
+        "grantHourUserSuccess": "Granted slot for user {{item.nicks}}"
+      },
+      "grantExtraSlot10Min": "Gi ekstra slott (10 min)",
+      "grantExtraSlotHour": "Gi ekstra slott (time)",
+      "grantExtraSlotDay": "Gi ekstra slott (dag)",
+      "grantExtraSlotWeek": "Gi ekstra slott (uke)",
+      "prompts": {
+        "restartWebSystemApprove": "Continue and restart",
+        "restartWebSystemReject": "Don't restart",
+        "restartWebSystemContent": "When changing the binding options, it's recommended to restart the web server only \n                when you are able to access the server for troubleshooting. If                  the web server won't come back online, you should start the application \n                manually to see if there are any error messages. The configuration file is located in your                 user directory by default (inside .airdc++ directory) in case you need to edit it manually.",
+        "shutdownSystemApprove": "Continue and shut down",
+        "shutdownSystemReject": "Kanseller",
+        "shutdownSystemContent": "Are you sure that you wish to shut down the application?"
+      }
+    },
+    "units": {
+      "b": "B",
+      "kib": "KiB",
+      "mib": "MiB",
+      "gib": "GiB",
+      "tib": "TiB",
+      "pib": "PiB",
+      "eib": "EB",
+      "bits": "bit/s",
+      "kbits": "Kbit/s",
+      "mbits": "Mbit/s",
+      "gbits": "Gbit/s"
+    },
+    "filename": "Fil-type",
+    "xBytes": "{{bytes}} bytes",
+    "unitsPerSecond": "{{units}}/s",
+    "today": "Today",
+    "yesterday": "Yesterday",
+    "tomorrow": "Tomorrow",
+    "lastWeek": "[Last] {{weekDay}}",
+    "awayModeWasEnabled": "Away mode was enabled",
+    "awayModeWasDisabled": "Away mode was disabled",
+    "actionSucceed": "Action succeed",
+    "actionFailed": "Action failed",
+    "queueingFailed": "Failed to queue the item {{item.name}}",
+    "noNfoResultsWereReceived": "No NFO results were received",
+    "networkClientError": "Network/client error",
+    "failedToFetchData": "Failed to fetch data",
+    "failedToLoadContent": "Failed to load content",
+    "loadingItems": "Loading items",
+    "root": "Root",
+    "name": "Navn",
+    "size": "Størrelse",
+    "path": "Målmappe",
+    "createDirectory": "Create directory",
+    "create": "Create",
+    "directoryName": "Directory name",
+    "computer": "Computer",
+    "history": "Previous",
+    "shared": "Delt",
+    "favorites": "Favoritter",
+    "dupes": "Dupes",
+    "browse": "Browse",
+    "download": "Last ned",
+    "close": "Lukk",
+    "noPathsToDisplay": "No paths to display",
+    "spaceFree": "{{freeSpace}} free",
+    "select": "Select",
+    "new": "Ny",
+    "currentSessions": "Current sessions",
+    "closeAll": "Close all",
+    "recentSessions": "Recent sessions",
+    "openedAgo": "Opened {{timeAgo}}",
+    "waitingForServerResponse": "Waiting for server response",
+    "loadingMessages": "Loading messages",
+    "loadingSession": "Loading session",
+    "yes": "Ja",
+    "no": "Nei",
+    "cancel": "Kanseller",
+    "loading": "Loading",
+    "loadingData": "Loading data...",
+    "noOnlineHubs": "No online hubs",
+    "installAsLocalApplication": "Install as local application",
+    "pwaInstallDesc": "This web application can be installed locally, providing a better user experience",
+    "install": "Install",
+    "dontInstall": "Don't install",
+    "statisticsNotAvailable": "Statistics not available",
+    "save": "Save",
+    "enterNick": "Enter nick...",
+    "disabled": "Ute av funksjon",
+    "enterLimitUnit": "Enter limit ({{unit}}/s)",
+    "enterLimit": "Enter limit...",
+    "removeLimit": "Remove limit",
+    "tlsOk": "Authenticity of the certificate is validated",
+    "tlsOutdatedWarning": "Outdated cryptographic protocol with known security vulnerabilities",
+    "tlsAuthenticityWarning": "Authenticity of the certificate could not be validated",
+    "upload": "Opplasting",
+    "sendFiles": "Send files",
+    "removeSharedFile": "Remove shared file",
+    "fileNoLongerShared": "File {{file.name}} is no longer shared",
+    "fileTooLarge": "File is too large (maximum size is {{maxSize}})",
+    "previewIsNotAvailable": "Preview is not available",
+    "failedToFetchContent": "Failed to fetch content",
+    "noItemsToShow": "No items to show",
+    "noSessionEditAccess": "You aren't allowed to open new sessions",
+    "noChatAccess": "You aren't allowed to send new messages",
+    "loadingSessions": "Loading sessions",
+    "typeContent": "Type/content",
+    "lastModified": "Last modified",
+    "dupeType": "Dupe type",
+    "shareFull": "Share (full)",
+    "sharePartial": "Share (partial)",
+    "queueFull": "Queue (full)",
+    "queuePartial": "Queue (partial)",
+    "finishedFull": "Finished (full)",
+    "finishedPartial": "Finished (partial)",
+    "shareAndQueue": "Share and queue",
+    "shareQueueAndFinished": "Share, queue and finished",
+    "queueAndFinished": "Queue and finished",
+    "shareAndFinished": "Share and finished",
+    "dupePaths": "Dupe paths",
+    "actionsCaption": "Actions...",
+    "tth": "TTH",
+    "na": "N/A",
+    "noActionsAvailable": "No actions available",
+    "continue": "Continue",
+    "form": {
+      "browse": "Browse",
+      "noOptions": "No options",
+      "fieldOptional": "{{definition.title}} (optional)",
+      "minimumValueError": "Minimum allowed value is {{value}}",
+      "maximumValueError": "Maximum allowed value is {{value}}",
+      "any": "Enhver",
+      "directory": "Mappe",
+      "file": "Fil",
+      "add": "Legg til",
+      "down": "Ned",
+      "remove": "Fjern",
+      "up": "Up",
+      "offlineMessage": "No connected hubs",
+      "loading": "Loading"
+    }
+  },
+  "hubs": {
+    "table": {
+      "nick": "Kallenavn",
+      "shareSize": "Share size",
+      "description": "Beskrivelse",
+      "tag": "Tag",
+      "uploadSpeed": "Opplastings Hastighet",
+      "downloadSpeed": "Nedlastings hastighet",
+      "ip4": "IP (v4)",
+      "ip6": "IP (v6)",
+      "fileCount": "Filer"
+    },
+    "actions": {
+      "reconnect": "Reconnect",
+      "clearChat": "Tøm dialog",
+      "close": "Lukk",
+      "addToFavorites": "Legg til i favoritter",
+      "useChatNotification": "Use chat notification",
+      "showJoinsParts": "Show joins/parts",
+      "notifications": {
+        "favoriteSuccess": "The hub {{item.identity.name}} was added in favorites"
+      }
+    },
+    "notifications": {
+      "actions": {
+        "viewChat": "View chat"
+      }
+    },
+    "notificationSettings": "Notification settings",
+    "enterHubAddress": "Enter hub address...",
+    "connect": "Koble til",
+    "notConnectedToTheHub": "Not connected to the hub",
+    "connecting": "Connecting",
+    "loadingUserlist": "Loading userlist",
+    "favoriteHubsHint": "Tip: visit the <url>Favorite hubs</url> page to connect using custom settings",
+    "new": "Koble til",
+    "newDesc": "Connect to a new hub",
+    "userList": "Bruker liste",
+    "sharePerUser": "{{total}} ({{average}}/user)",
+    "xUsers": "{{count}} users",
+    "xUsers_plural": "{{count}} users",
+    "redirectRequested": "Redirect requested",
+    "acceptRedirect": "Accept redirect to {{url}}",
+    "passwordRequired": "Password required",
+    "password": "Passord",
+    "submit": "Submit",
+    "passwordPromptHelp": "This usually means that there's a registered account associated with your nick. If you don't remember having a registered account in this hub, there may be someone else using the same nick."
+  },
+  "queue": {
+    "table": {
+      "name": "Navn",
+      "size": "Størrelse",
+      "status": "Status",
+      "sources": "Kilder",
+      "secondsLeft": "Tid igjen",
+      "speed": "Hastighet",
+      "priority": "Prioritet",
+      "type": "Type/content",
+      "timeAdded": "Lagt til",
+      "timeFinished": "Ferdig"
+    },
+    "actionsCaption": "Actions...",
+    "queueActions": "Queue actions",
+    "pausedForced": "Paused (forced)",
+    "queueEmpty": "The queue is empty",
+    "queueEmptyDesc": "New items can be queued from search or filelists",
+    "actions": {
+      "removeCompletedBundles": "Remove completed bundles",
+      "pauseAllBundles": "Pause all bundles",
+      "resumeAllBundles": "Resume all bundles",
+      "manageFiles": "Manage files...",
+      "manageSources": "Manage sources...",
+      "searchForeground": "Search (foreground)",
+      "searchForAlternates": "Søk for alternativer",
+      "remove": "Fjern",
+      "removeSource": "Fjern kilde",
+      "rescanForErrors": "Rescan for errors",
+      "forceInShare": "Force in share",
+      "prompts": {
+        "removeBundleApprove": "Remove bundle",
+        "removeBundleReject": "Don't remove",
+        "removeBundleContent": "Are you sure that you want to remove the bundle {{item.name}}?",
+        "removeBundleCheckbox": "Remove finished files",
+        "removeFileApprove": "Remove file",
+        "removeFileReject": "Don't remove",
+        "removeFileContent": "Are you sure that you want to remove the file {{item.name}}?",
+        "removeFileCheckbox": "Remove on disk"
+      },
+      "notifications": {
+        "removeFileSuccess": "File {{item.name}} was removed from queue",
+        "removeCompletedSuccess": "{{result.count}} completed bundles were removed",
+        "searchAlternatesBundleSuccess": "The bundle {{item.name}} was searched for alternates"
+      }
+    },
+    "paused": "På pause",
+    "lowest": "Lavest",
+    "low": "Lav",
+    "normal": "Normal",
+    "high": "Høy",
+    "highest": "Høyest",
+    "auto": "Automatisk",
+    "sources": "Kilder",
+    "user": "Bruker",
+    "hubs": "Hubber",
+    "lastKnownSpeed": "Last known speed",
+    "files": "Filer",
+    "size": "Størrelse",
+    "notifications": {
+      "bundleWasAddedInQueue": "Bundle was added in queue",
+      "bundleDownloadError": "Download error: {{error}}",
+      "bundleContentValidationError": "Bundle content validation failed: {{error}} ({{hook}})",
+      "validatingDownloadedBundle": "Validating downloaded bundle",
+      "bundleWasCompletedSuccessfully": "Bundle was completed successfully",
+      "bundleWasAddedInShare": "Bundle was added in share",
+      "actions": {
+        "viewQueue": "View queue"
+      }
+    }
+  },
+  "transfers": {
+    "table": {
+      "user": "Bruker",
+      "name": "Navn",
+      "size": "Segment",
+      "status": "Status",
+      "secondsLeft": "Tid igjen",
+      "speed": "Hastighet",
+      "flags": "Flags",
+      "ip": "IP"
+    },
+    "actions": {
+      "forceConnect": "Force connect",
+      "disconnect": "Disconnect",
+      "removeFileFromQueue": "Fjern fil fra nedlastings køen",
+      "removeUserFromQueue": "Fjern bruker i fra nedlastingskøen",
+      "notifications": {
+        "removeFileSuccess": "File {{item.name}} was removed from queue",
+        "removeSourceSuccess": "The user {{item.user.nicks}} was removed from {{result.count}} files"
+      }
+    },
+    "actionsCaption": "Actions...",
+    "transferActions": "Transfer actions",
+    "noActiveTransfers": "No active transfers"
+  },
+  "settings": {
+    "actions": {
+      "detectNow": "Oppdag nå",
+      "addDirectory": "Add directory",
+      "addUser": "Add user",
+      "editUser": "Edit user",
+      "editDirectory": "Edit directory",
+      "removeDirectory": "Remove directory",
+      "addProfile": "Create new",
+      "cloneProfile": "Clone profile",
+      "browseFiles": "Browse files",
+      "renameProfile": "Rename profile",
+      "addPath": "Add path",
+      "removePath": "Remove path",
+      "removeUser": "Remove user",
+      "setAsDefault": "Set as default",
+      "removeProfile": "Remove profile",
+      "addType": "Add type",
+      "editType": "Edit type",
+      "removeType": "Remove type",
+      "prompts": {
+        "cloneProfilePlaceholder": "Enter name",
+        "cloneProfileApprove": "Create",
+        "cloneProfileContent": "Enter name for the profile (cloned from {{item.name}})",
+        "createProfilePlaceholder": "Enter name",
+        "createProfileApprove": "Create",
+        "createProfileContent": "Enter name for the profile",
+        "editProfilePlaceholder": "Enter name",
+        "editProfileApprove": "Bytt navn",
+        "editProfileContent": "Enter new name for the profile {{item.name}}",
+        "removeShareExcludeApprove": "Remove path",
+        "removeShareExcludeReject": "Don't remove",
+        "removeShareExcludeContent": "Are you sure that you want to remove the excluded path {{item}}?",
+        "removeWebUserApprove": "Remove user",
+        "removeWebUserReject": "Don't remove",
+        "removeWebUserContent": "Are you sure that you want to remove the user {{item.username}}?",
+        "removeFavoriteDirectoryApprove": "Remove directory",
+        "removeFavoriteDirectoryReject": "Don't remove",
+        "removeFavoriteDirectoryContent": "Are you sure that you want to remove the favorite directory {{item.name}}?",
+        "removeSearchTypeApprove": "Remove type",
+        "removeSearchTypeReject": "Don't remove",
+        "removeSearchTypeContent": "Are you sure that you want to remove the search type {{item.name}}?"
+      }
+    },
+    "navigation": {
+      "profile": "Profile",
+      "connectivity": "Tilkobling",
+      "speedAndLimits": "Speed and limits",
+      "downloads": "Nedlastinger",
+      "sharing": "Deling",
+      "view": "Vis",
+      "about": "About",
+      "extensions": "Filtyper",
+      "extensionEngines": "Extension engines",
+      "system": "System",
+      "autoDetection": "Auto detection",
+      "iPv4ConnectivityManual": "IPv4 connectivity (manual)",
+      "iPv6ConnectivityManual": "IPv6 connectivity (manual)",
+      "portsManual": "Ports (manual)",
+      "proxies": "Proxies",
+      "encryption": "Kryptering",
+      "user": "Bruker",
+      "awayMode": "Borte tilstand",
+      "ignoredUsers": "Ignorerte brukere",
+      "miscellaneous": "Diverse",
+      "manageInstalled": "Manage installed",
+      "extensionCatalog": "Extension catalog",
+      "extensionOptions": "Extension options",
+      "application": "Applikasjon",
+      "transferStatistics": "Transfer statistics",
+      "shareStatistics": "Share statistics",
+      "hubStatistics": "Hub statistics",
+      "users": "Brukere",
+      "logging": "Loggføring",
+      "webServer": "Internett server",
+      "advancedServerSettings": "Advanced server settings",
+      "refreshOptions": "Refresh options",
+      "shareProfiles": "Delings profiler",
+      "sharingOptions": "Delings valg",
+      "hashing": "Hashing",
+      "excludedPaths": "Excluded paths",
+      "connectionSpeed": "Tilkoblings hastighet",
+      "bandwidthLimiting": "Bandwidth limiting",
+      "downloadLimits": "Nedlastings begrensninger",
+      "uploadLimits": "Opplastings begrensninger (automatisk oppsett)",
+      "perUserLimits": "Per-user limits",
+      "locations": "Locations",
+      "skippingOptions": "Skipping options",
+      "searchMatching": "Search matching",
+      "searchTypes": "Search types",
+      "downloadOptions": "Nedlastings valg",
+      "priorities": "Prioriteter",
+      "notificationsCaption": "Notifications",
+      "histories": "Histories",
+      "events": "Events",
+      "appearance": "Utseende"
+    },
+    "advanced": "Avansert",
+    "noUnsavedChanges": "No unsaved changes",
+    "noSavePermission": "No save permission",
+    "saveChanges": "Save changes",
+    "savingCompleted": "Saving completed",
+    "settingsWereSavedSuccessfully": "Settings were saved successfully",
+    "unsavedChangesPrompt": "You have unsaved changes. Are you sure you want to leave?",
+    "connectivity": {
+      "detection": {
+        "connectivityDetectionNote": "In case of file transfer connectivity issues, please confirm that your TCP ports are really open by using <portChecker>an online port checker</portChecker>. Note that validity of the UDP port (search) can't be checked online. For more information about different connectivity modes, please visit <faq>DC++'s connectivity FAQ</faq>.",
+        "currentAutoDetectionStatus": "Current auto detection status",
+        "iPv4Connectivity": "IPv4 connectivity",
+        "iPv6Connectivity": "IPv6 connectivity",
+        "manualConfiguration": "{{status}} (manual configuration)",
+        "autoDetected": "{{status}} (auto detected)",
+        "detecting": "Detecting...",
+        "transferPort": "Transfer port",
+        "encryptedTransferPort": "Encrypted transfer port",
+        "searchUdpPort": "Search/UDP port",
+        "boundInterfaceIPv4": "Bound interface (IPv4)",
+        "boundInterfaceIPv6": "Bound interface (IPv6)",
+        "viewAll": "View all"
+      },
+      "ports": {
+        "portsAutoValuesNote": "Port numbers listed on this page can be overridden by port mappers (if enabled)",
+        "form": {
+          "tcpPortHelp": "TCP port is used for unencrypted transfers",
+          "udpPortHelp": "UDP port is used for searching",
+          "tlsPortHelp": "TLS port (TCP) is used for encrypted transfers"
+        }
+      },
+      "v6": {
+        "protocolAutoValuesNote": "Connectivity auto detection is currently enabled; setting values listed on this page are not being used"
+      },
+      "v4": {
+        "protocolAutoValuesNote": "Connectivity auto detection is currently enabled; setting values listed on this page are not being used"
+      }
+    },
+    "profile": {
+      "user": {
+        "form": {
+          "settingProfileHelp0": "The client is used in normal private/public hubs for transferring files via internet. Use this profile if unsure.",
+          "settingProfileHelp1": "The client is used for transferring files that are split in RAR archives (or in other small-sized formats)",
+          "settingProfileHelp2": "The client is used for transferring files in local network (e.g. LAN parties) or in another closed network (e.g. university network)",
+          "languageFileHelpRestart": "The application must be restarted for the new language to take effect.",
+          "languageFileHelpTranslate": "If you want to help with improving the existing translations or translate the application into a new language, please see the <url>instructions for translators</url>."
+        }
+      },
+      "ignoredUsers": {
+        "user": "Bruker",
+        "messagesIgnored": "Messages ignored",
+        "noIgnoredUsers": "No ignored users"
+      },
+      "miscellaneous": {
+        "form": {
+          "nmdcEncodingHelp": "<0>Encoding setting is only used in NMDC hubs. ADC hubs will always use UTF-8 encoding.<1></1><2></2><3>Commonly used values:<1><0>Central Europe: cp1250</0><1>Cyrillic: cp1251</1><2>Western Europe: cp1252</2><3>Greek: cp1253</3><4>Turkish: cp1254</4><5>Hebrew: cp1256</5></1></3></0>"
+        }
+      }
+    },
+    "extensions": {
+      "packages": {
+        "byAuthor": "by {{author}}",
+        "latestVersion": "Nyeste versjon",
+        "installedVersion": "Installed version",
+        "datePublished": "{{version}} (published {{date}})",
+        "readMore": "Read more",
+        "defaultExtensionEngineMissing": "The default extension engine <strong>{{engineName}}</strong> is not installed on your system. Please visit <url>engine's home page</url> for installation instructions.",
+        "manage": "Manage..."
+      },
+      "manage": {
+        "byAuthor": "by {{author}}",
+        "latestVersion": "Nyeste versjon",
+        "installedVersion": "Installed version",
+        "nonListedExtension": "Non-listed extension",
+        "readMore": "Read more",
+        "noInstalledExtensions": "No installed extensions were found. New extensions can be installed from the <url>Extension catalog</url> page.",
+        "defaultExtensionEngineMissing": "The default extension engine <strong>{{engineName}}</strong> is not installed on your system. Please visit <url>engine's home page</url> for installation instructions.",
+        "extensionDirectoryFetchError": "Failed to fetch information from the extension directory: {{error}}",
+        "unmanagedExtension": "Unmanaged extension",
+        "manage": "Manage..."
+      }
+    },
+    "about": {
+      "application": {
+        "applicationVersion": "Application version",
+        "webUiVersion": "Web UI version",
+        "webUiBuildDate": "Web UI build date",
+        "apiVersion": "API version",
+        "apiFeatureLevel": "API feature level",
+        "started": "Starta",
+        "activeSessions": "Active sessions",
+        "serverThreads": "Server threads",
+        "resources": "Resources",
+        "homePage": "Home page",
+        "featureRequestBugTracker": "Feature request/bug tracker",
+        "documentation": "Documentation",
+        "thirdPartyCredits": "Third-party credits"
+      },
+      "transfers": {
+        "totalDownloaded": "Total downloaded",
+        "totalUploaded": "Total uploaded",
+        "session": "Session",
+        "sessionDownloaded": "Session downloaded",
+        "sessionUploaded": "Session uploaded"
+      },
+      "share": {
+        "noFilesShared": "No files shared",
+        "totalShareSize": "Total share size",
+        "totalFiles": "Total files",
+        "totalFilesValue": "{{totalCount}} ({{uniqueCount}} unique)",
+        "totalDirectories": "Total directories",
+        "averageFileAge": "Average file age",
+        "averageFilesPerDirectory": "Average files per directory",
+        "incomingSearches": "Incoming searches",
+        "totalSearches": "Total searches",
+        "searchesTotalValue": "{{totalCount}} ({{perSecondCount}} per second)",
+        "tthSearches": "TTH searches",
+        "textSearches": "Text searches",
+        "searchesPerSecondValue": "{{totalCount}} ({{matchedCount}} matched per second)",
+        "filteredTextSearches": "Filtered text searches",
+        "searchesFilteredValue": "{{filteredPercentage}} ({{resultPercentage}} of the matched ones returned results)",
+        "averageTextSearchTokensNonFiltered": "Average text search tokens (non-filtered)",
+        "searchesAverageTokensValue": "{{tokenCount}} ({{tokenLength}} bytes per token)",
+        "averageMatchingTimePerTextSearch": "Average matching time per text search",
+        "searchesAverageMatchTimeValue": "{{matchTime}} ms"
+      },
+      "hubs": {
+        "noHubsOnline": "No hubs online",
+        "totalUsers": "Total users",
+        "uniqueUsers": "Unique users",
+        "activeUsers": "Active users",
+        "totalShare": "Total share",
+        "averageSharePerUser": "Average share per user",
+        "averageAdcDownloadSpeed": "Average ADC download speed",
+        "clients": "Clients",
+        "averageAdcUploadSpeed": "Average ADC upload speed"
+      }
+    },
+    "system": {
+      "logging": {
+        "messages": "Messages",
+        "transfers": "Overføringer",
+        "variableHelp": "Variable information for Filename and Format fields"
+      },
+      "serverSettings": {
+        "defaultCertNote": "The default client certificate is used if the certificate paths are empty"
+      },
+      "advancedServerSettings": {
+        "hookTimeouts": "Hook timeouts"
+      },
+      "users": {
+        "username": "Brukernavn",
+        "permissions": "Permissions",
+        "activeSessions": "Active sessions",
+        "lastLoggedIn": "Last logged in",
+        "administrator": "Administrator",
+        "form": {
+          "usernameName": "User name",
+          "passwordName": "Passord",
+          "permissionsName": "Permissions"
+        },
+        "permissionSelector": {
+          "administrator": "Administrator",
+          "search": "Søking",
+          "download": "Last ned",
+          "transfers": "Overføringer",
+          "events": "Events",
+          "view": "Vis",
+          "edit": "Rediger",
+          "queue": "Nedlastingskøen",
+          "favoriteHubs": "Favoritt Hubber",
+          "settings": "Innstillinger",
+          "localFilesystem": "Local filesystem",
+          "hubs": "Hubber",
+          "sendMessages": "Send messages",
+          "privateChat": "Privat prat",
+          "filelists": "Filelists",
+          "viewedFiles": "Viewed files"
+        },
+        "addWebUser": "Add web user",
+        "editUser": "Edit user",
+        "adminPermissionNote": "Administrator permission is required in order to access the System section in settings"
+      }
+    },
+    "sharing": {
+      "excludes": {
+        "shareRefreshNote": "Share must be refreshed for the changes to take effect",
+        "addExcludedPath": "Add excluded path",
+        "path": "Målmappe"
+      },
+      "profiles": {
+        "name": "Navn",
+        "totalSize": "Total size",
+        "totalFiles": "Total files",
+        "shareProfilesPartialNote": "Queued files are shared via the partial file sharing feature in all hubs where the share has not been hidden, regardless of the configured share profiles.",
+        "shareProfilesHelp": "Share profiles are assigned for individual directories from the <url>Share</url> page.",
+        "addProfile": "Add profile",
+        "cloneFromAnExistingProfile": "Clone from an existing profile"
+      },
+      "sharingOptions": {
+        "skiplist": "Skiplist"
+      },
+      "hashing": {
+        "hashDatabase": "Hashe databasen",
+        "fileIndexSize": "File index size",
+        "hashStoreSize": "Hash store size",
+        "maintenance": "Maintenance",
+        "verifyIntegrityOfHashData": "Verify integrity of hash data",
+        "optimizeNow": "Optimize now",
+        "hashDBOptimizeNote": "This operation will delete all hash information for files that aren't currently in share. If you are sharing files from network disks or from a removable storage, make sure that the files are currently shown in share (otherwise they have to be rehashed)"
+      }
+    },
+    "speedLimits": {
+      "speed": {
+        "connectionSpeedNote": "Please be as accurate as possible and set the ACTUAL speed of your connection. You may use an online tester, such as <speedtest>{{name}}</speedtest>, to test your speed."
+      },
+      "uploadLimits": {
+        "manuallySet": "Manually set"
+      },
+      "downloadLimits": {
+        "manuallySet": "Manually set"
+      }
+    },
+    "downloads": {
+      "locations": {
+        "availablePathVariables": "Available path variables",
+        "favoriteDownloadDirectories": "Favoritt nedlastings mapper",
+        "name": "Navn",
+        "path": "Målmappe",
+        "form": {
+          "pathName": "Målmappe",
+          "nameName": "Navn"
+        },
+        "addFavoriteDirectory": "Add favorite directory",
+        "editFavoriteDirectory": "Edit favorite directory"
+      },
+      "skippingOptions": {
+        "skiplist": "Skiplist"
+      },
+      "priorities": {
+        "filePriorities": "File priorities",
+        "highPriorityFiles": "High priority files"
+      },
+      "searchTypes": {
+        "name": "Navn",
+        "fileExtensions": "File extensions",
+        "default": "Standard",
+        "searchTypesNote": "Note; Custom search types will only be applied to ADC hubs! On NMDC hubs, using a predefined search type will only search for a set of predefined, unconfigurable extensions; using a custom type will default to searching for any extension.",
+        "form": {
+          "nameName": "Navn",
+          "extensionsName": "File extensions"
+        },
+        "addSearchType": "Add search type",
+        "editSearchType": "Edit search type"
+      },
+      "downloadOptions": {
+        "segments": "Segmenter",
+        "compression": "Compression",
+        "buffers": "Buffers"
+      }
+    },
+    "browserSpecificNote": "Settings listed on this page are browser-specific",
+    "view": {
+      "notifications": {
+        "popupNotifications": "Popup notifications",
+        "form": {
+          "notifyMentionMyNickName": "Mentions of my nick",
+          "notifyPmUserName": "Private messages (users)",
+          "notifyPmBotName": "Private messages (bots)",
+          "notifyHubMessageName": "Hub chat messages (only in hubs where chat notifications are enabled)",
+          "notifyBundleStatusName": "Bundle status changes",
+          "notifyEventsInfoName": "Info events",
+          "notifyEventsWarningName": "Warning events",
+          "notifyEventsErrorName": "Error events"
+        }
+      },
+      "histories": {
+        "maxMessageHistory": "Maximum number of messages to cache",
+        "maxSessionHistory": "Maximum number of previously opened sessions"
+      },
+      "miscellaneous": {
+        "form": {
+          "unreadLabelDelayName": "Delay for marking chat sessions as read (seconds)",
+          "backgroundImageUrlName": "Custom background image URL",
+          "noInstallPromptName": "Never show the application install prompt in Home view"
+        }
+      }
+    }
+  },
+  "extensions": {
+    "actions": {
+      "uninstall": "Avinstaller",
+      "start": "Start",
+      "installFromUrl": "Install from URL",
+      "install": "Install",
+      "update": "Oppdater",
+      "stop": "Stopp",
+      "configure": "Konfigurasjon",
+      "enable": "Enable",
+      "disable": "Disable",
+      "prompts": {
+        "installUrlPlaceholder": "Enter URL",
+        "installUrlApprove": "Install",
+        "installUrlContent": "Enter download URL",
+        "removeApprove": "Remove extension",
+        "removeReject": "Don't remove",
+        "removeContent": "Are you sure that you want to remove the extension {{item.name}}? This will also remove possible extension-specific settings."
+      }
+    }
+  },
+  "navigation": {
+    "home": "Home",
+    "queue": "Nedlastingskøen",
+    "search": "Søking",
+    "transfers": "Overføringer",
+    "hubs": "Hubber",
+    "messages": "Messages",
+    "filelists": "Filelists",
+    "files": "Filer",
+    "events": "Events",
+    "favoriteHubs": "Favoritt Hubber",
+    "share": "Share",
+    "settings": "Innstillinger",
+    "logout": "Logout",
+    "more": "More..."
+  },
+  "login": {
+    "username": "Brukernavn",
+    "password": "Passord",
+    "keepMeLoggedIn": "Keep me logged in",
+    "login": "Brukernavn",
+    "authenticationFailed": "Authentication failed: {{lastError}}",
+    "connectingToTheServer": "Connecting to the server...",
+    "reestablishConnection": "Attempting to re-establish connection...",
+    "sessionLost": "Session lost",
+    "connectionClosed": "Tilkobling lukket",
+    "privateBrowsingNotSupported": "This site can't be used with your browser if private browsing mode is enabled",
+    "dataStorageNotSupported": "This site can't be used with your browser because it doesn't support data storage"
+  },
+  "viewedFiles": {
+    "actions": {
+      "close": "Lukk"
+    },
+    "noFiles": "No files to view",
+    "noFilesDesc": "You may open text or media files to be viewed here from search or filelists",
+    "preparingView": "Preparing view",
+    "opened": "Opened",
+    "downloaded": "Nedlastet",
+    "unsupportedFormat": "Unsupported format",
+    "downloadFailed": "Download failed",
+    "notifications": {
+      "fileHasFinishedDownloading": "File has finished downloading",
+      "fileWasLoaded": "File was loaded",
+      "actions": {
+        "viewFile": "View file"
+      }
+    }
+  },
+  "messages": {
+    "actions": {
+      "clearChat": "Tøm dialog",
+      "close": "Lukk",
+      "connect": "Koble til",
+      "disconnect": "Disconnect"
+    },
+    "new": "New session",
+    "newDesc": "Open a new private chat session",
+    "offlineMessage": "You must to be connected to at least one hub in order to send private messages",
+    "directEncryptedChannelAvailable": "Direct encrypted channel available",
+    "establishingConnection": "Establishing connection...",
+    "directEncryptedChannelEstablished": "Direct encrypted channel established",
+    "notifications": {
+      "actions": {
+        "viewMessage": "View message"
+      }
+    }
+  },
+  "home": {
+    "newUserIntro": "Information for new user",
+    "newUserIntroDesc": "<0><0>Add a few directories that are shared to other users from the <1>Share</1> page.</0><1>You might want to go through at least each main page of <1>the client settings</1> before you start.  <3>It's important that you <1>configure your connection speed</1> correctly because the client won't be able to utilize your bandwidth efficiently otherwise.</3></1><2>There is no listing of public hubs yet so you need to know the hub addresses where you wish to connect to.</2></0><1>Visit the <1>home page</1> for more information about the client and its features.</1><2>If you have questions, you may post them on the <1>GitHub tracker</1> or join the dev/support hub: <3></3></2>"
+  },
+  "hash": {
+    "actions": {
+      "pause": "Pause",
+      "resume": "Fortsett",
+      "stop": "Stopp"
+    },
+    "status": "Status",
+    "paused": "På pause",
+    "filesLeft": "Files left",
+    "maximumSpeedPerHasher": "Maximum speed per hasher",
+    "runningThreads": "Running ({{threadCount}} threads)",
+    "speed": "Hastighet",
+    "timeLeft": "Tid igjen",
+    "idle": "Idle",
+    "hashProgress": "Hash progress"
+  }
+}

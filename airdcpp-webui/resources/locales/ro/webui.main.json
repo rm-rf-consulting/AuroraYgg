@@ -1,0 +1,1075 @@
+{
+  "widgets": {
+    "application": {
+      "widgetName": "Aplicatie",
+      "addWidget": "Aduce component",
+      "loggedInAs": "Inregistrat ca",
+      "clientStarted": "Clientul a pornit",
+      "activeSessions": "Sesiuni active"
+    },
+    "rss": {
+      "widgetName": "Alimentare RSS",
+      "invalidUrl": "URL invalid",
+      "lastUpdated": "Ultimul update: {{time}}",
+      "actions": {
+        "openLink": "Deschide legatura",
+        "search": "Cauta"
+      },
+      "loadingFeed": "Alimentare incarcatura",
+      "form": {
+        "feedUrlName": "Incarcatura URL",
+        "feedUrlHelp": "Incarcatura RSS si Atom care sunt suportate",
+        "feedCacheMinutesName": "Aduce din nou minim (minute)"
+      },
+      "invalidFeed": "Invalid/unsupported feed: {{error}}"
+    },
+    "transfers": {
+      "widgetName": "Transferuri",
+      "trafficBps": "Trafic (bps)",
+      "downloads": "Descarcari",
+      "uploads": "Incarcari",
+      "downloaded": "Descarcat",
+      "uploaded": "Incarcat",
+      "downloadLimit": "Limita de descarcare",
+      "uploadLimit": "Limita de incarcare"
+    },
+    "notepad": {
+      "widgetName": "Notes"
+    },
+    "extensions": {
+      "widgetName": "Extension releases",
+      "updatedAgo": "Updated {{date}}"
+    },
+    "actions": {
+      "editWidget": "Editeaza programul",
+      "removeWidget": "Sterge programul",
+      "prompts": {
+        "removeApprove": "Sterge programul",
+        "removeReject": "Nu sterge",
+        "removeContent": "Esti sigur ca doresti sa stergi programelul {{item.settings.name}}?"
+      }
+    },
+    "form": {
+      "nameName": "Nume"
+    },
+    "widgetPositionHint": "Programe si pozitia lor care sunt specific-in cautare",
+    "accessDenied": "Nu ai permisiunea de a accesa acest porgram",
+    "settingsMissing": "Setarile programului lipsesc"
+  },
+  "events": {
+    "events": "Evenimente",
+    "loadingMessages": "Mesaje incarcate",
+    "noMessagesToShow": "Nu sunt mesaje de aratat",
+    "actions": {
+      "clear": "Curata"
+    },
+    "notifications": {
+      "information": "Informatii",
+      "info": "Informatii",
+      "warning": "AVERTIZARE",
+      "error": "EROARE",
+      "verbose": "VERBOSE",
+      "actions": {
+        "viewEvents": "Vezi evenimente"
+      }
+    }
+  },
+  "table": {
+    "filter": {
+      "filter": "Filtru",
+      "matchType": "Potriveste tipul",
+      "partial": "Partial",
+      "regex": "Regex",
+      "wildcard": "Card salbatic",
+      "exact": "Extrage",
+      "filterByProfile": "Filtreaza in functie de profil",
+      "allProfiles": "Toate profilele"
+    }
+  },
+  "search": {
+    "table": {
+      "name": "Nume",
+      "size": "Marime",
+      "relevance": "Relevanta",
+      "type": "Tip",
+      "connection": "Conexiune",
+      "users": "Utilizatori",
+      "time": "Ultimul modificat",
+      "slots": "Sloturi"
+    },
+    "actions": {
+      "resultDetails": "Detalii resultat",
+      "browseContent": "Cauta continut"
+    },
+    "form": {
+      "fileTypeName": "Tipul Fisierului",
+      "hubUrlsName": "Huburi",
+      "maxSizeName": "Maximum size",
+      "minSizeName": "Minimum size",
+      "sizeLimitsName": "Size limits"
+    },
+    "actionsCaption": "Actiuni...",
+    "searchActions": "Search actions",
+    "resetAll": "Reset all",
+    "user": "Utilizator",
+    "hubs": "Huburi",
+    "connection": "Conexiune",
+    "slots": "Sloturi",
+    "ip": "Ip",
+    "path": "Cale",
+    "searchOffline": "Trebuie sa fii conectat cel putin pe un  hub ca sa poti cauta ",
+    "enterSearchString": "Introduce caracterul de cautare ",
+    "search": "Cauta",
+    "usersCount": "Utilizator ({{count}}) ",
+    "usersCount_plural": "Utilizatori ({{count}}) ",
+    "xUsersNicks": "{{count}} utilizator ({{user.nicks}}) ",
+    "xUsersNicks_plural": "{{count}} utilizatori ({{user.nicks}}) ",
+    "noResults": "Nu sunt rezultate pentru  \"{{searchString}}\" ",
+    "noResultsHint": "<0><0>Asigura-te ca ai scris cuvintele corect</0><1>Foloseste cuvinte diferite</1><2>Cauti prea frecvent(huburile deseori au un interval minim de cautare)</2><3>Daca niciodata nu obtii rezultate pentru termeni comuni ,asigura-te ca setarile de conexiune sunt configurate bine </3></0>"
+  },
+  "share": {
+    "table": {
+      "path": "Cale",
+      "size": "Marime",
+      "virtual_name": "Nume virtual",
+      "profiles": "Profil",
+      "last_refresh_time": "Ultimul improspatat",
+      "type": "Continut",
+      "virtualName": "Nume virtual",
+      "lastRefreshTime": "Ultimul improspatat"
+    },
+    "actions": {
+      "editDirectory": "Editeaza directorul",
+      "removeDirectory": "Sterge directorul",
+      "addDirectory": "Introduce director",
+      "refreshAll": "Reimprospateaza toate",
+      "prompts": {
+        "removeRootApprove": "Sterge directorul",
+        "removeRootReject": "Nu sterge",
+        "removeRootContent": "Esti sigur ca doresti sa stergi directorul  {{item.virtual_name}} de la distribuire?Va fi inlaturat din toate profilele distribuite"
+      }
+    },
+    "actionsCaption": "Actiuni...",
+    "shareActions": "Distribuie actiuni...",
+    "hashingInformation": "Indexeaza informatii",
+    "hashingInformationDesc": "<0>Fisierele noi vor aparea in distribuire doar dupa ce va fi terminata indexarea lor(imediat dupa ce clientul a calculat suma) -checksum-pentru ele.Informatia in legatura cu progresul indexarii va fi depusa in inregistrarea evenimentelor -log",
+    "addShareDirectory": "Aduce directorul de distribuire",
+    "editShareDirectory": "Editeaza directorul de distribuire",
+    "unknown": "Necunoscut",
+    "form": {
+      "pathName": "Cale",
+      "virtualNameName": "Nume virtual",
+      "virtualNameHelp": "Directoarele cu nume identice virtuale vor fi introduse in lista fisierelor",
+      "profilesName": "Profile de distribuire",
+      "profilesHelp": "Noile profile de distribuire nu pot fi create din setarile aplicatiilor",
+      "incomingName": "Intrari"
+    }
+  },
+  "favoriteHubs": {
+    "actions": {
+      "addNew": "Aduce nou",
+      "setPassword": "Seteaza parola",
+      "edit": "Editare",
+      "remove": "Inlatura",
+      "changePassword": "Schimba parola",
+      "removePassword": "Elimina parola",
+      "prompts": {
+        "changePasswordPlaceholder": "Introduce parola",
+        "changePasswordApprove": "Actualizeaza parola ",
+        "changePasswordContent": "Introduce o noua parola pentru hub {{item.name}}",
+        "removePasswordApprove": "Elimina parola",
+        "removePasswordReject": "Nu sterge",
+        "removePasswordContent": "Esti sigur ca doresti sa resetezi parola hubului {{item.name}}?",
+        "createPasswordPlaceholder": "Introduce parola",
+        "createPasswordApprove": "Seteaza parola",
+        "createPasswordContent": "Seteaza parola pentru hub {{item.name}} ",
+        "removeApprove": "Elimina hub-ul favorit",
+        "removeReject": "Nu sterge",
+        "removeContent": "Esti sigur ca doresti sa elimini hubul favorit {{item.name}}? "
+      }
+    },
+    "table": {
+      "connectState": "Stare",
+      "name": "Nume",
+      "autoConnect": "Conectare auto",
+      "nick": "Nume",
+      "hasPassword": "Parola",
+      "hubUrl": "Adresa",
+      "shareProfile": "Profil de distributie "
+    },
+    "notSet": "Nu e setat",
+    "set": "Setat",
+    "globalDefault": "Global default",
+    "addFavoriteHub": "Aduce hub-ul favorit",
+    "editFavoriteHub": "Editeaza hub-ul favorit",
+    "actionsCaption": "Actiuni...",
+    "favoriteHubActions": "Favorite hub actions",
+    "form": {
+      "genericName": "Propietatiile hubu-lui",
+      "nameName": "Nume",
+      "hubUrlName": "URL-ul hubului",
+      "hubDescriptionName": "Descrierea hubului",
+      "shareProfileName": "Profil de distributie ",
+      "shareProfileHelp": "Profile de distribuire customizabile care pot fi selectate doar dupa ce introduci o adresa de hub ADC (starting with adc:// or adcs://) ",
+      "autoConnectName": "Conectare auto",
+      "userName": "Setarile utilizatorului suprascriu",
+      "nickName": "Nume",
+      "userDescriptionName": "Descriptie utilizator",
+      "connectivityV4Name": "Setarile de conectivitate se suprascrie (IPv4) ",
+      "connectionModeV4Name": "Mod de conectare",
+      "connectionModeV4Option-1": "Dezactivat",
+      "connectionModeV4Option0": "Mod activ",
+      "connectionModeV4Option2": "Mod pasiv",
+      "connectionIpV4Name": "Adresa IP",
+      "connectivityV6Name": "Setarile de conectivitate se suprascrie (IPv6) ",
+      "connectionModeV6Name": "Mod de conectare",
+      "connectionModeV6Option-1": "Dezactivat",
+      "connectionModeV6Option0": "Mod activ",
+      "connectionModeV6Option2": "Mod pasiv",
+      "connectionIpV6Name": "Adresa IP",
+      "miscName": "Miscellaneous overrides",
+      "useMainChatNotifyName": "Use chat notification",
+      "awayMessageName": "Away message",
+      "showJoinsName": "Show joins/parts"
+    }
+  },
+  "filelists": {
+    "new": "Deschide lista de fisiere",
+    "newDesc": "Porneste cautarea intr-o noua lista",
+    "offlineMessage": "Trebuie sa fi conectat cel putin la un hub ca sa poti descaca fisiere de la alti utilizatori",
+    "directorySize": "Marimea directorului",
+    "totalListSize": "Marimea totala a listei",
+    "browseOwnShare": "Cauta distribuirea ta ",
+    "root": "Radacina",
+    "userOffline": "Utilizator neconectat",
+    "userOfflineDesc": "Vei putea sa continui sa cauti cant utilizatorul va reveni online",
+    "noContentToDisplay": "Nimic de aratat",
+    "theDirectoryIsEmpty": "Directorul este gol",
+    "updatingView": "Vedere la incarcare",
+    "downloadFailed": "Descarcare nereusita",
+    "confirmLeave": "Confirm action",
+    "confirmLeaveDesc": "Click the back button again to leave this filelist",
+    "table": {
+      "name": "Nume",
+      "size": "Marime",
+      "time": "Ultimul modificat",
+      "type": "Tip"
+    },
+    "actions": {
+      "reload": "Reincarcare",
+      "refreshInShare": "Reimprospateaza distributia",
+      "close": "Inchide",
+      "details": "Detalii"
+    }
+  },
+  "common": {
+    "actions": {
+      "copy": "Copiaza",
+      "copyPath": "Copy path",
+      "copySize": "Copy size",
+      "copyTth": "Copy TTH",
+      "download": "Descarca",
+      "downloadTo": "Descarca in...",
+      "findNfo": "Gaseste NFO",
+      "search": "Cauta",
+      "sendMessage": "Trimite mesaj",
+      "browseShare": "Navigheaza distributia",
+      "ignoreMessages": "Ignora mesajele",
+      "viewAsText": "Vezi ca si text",
+      "playVideo": "Reda video",
+      "viewImage": "Vizioneaza imagine",
+      "playAudio": "Reda audio",
+      "copyMagnetLink": "Copiaza legatura magnet",
+      "shutDownApplication": "Inchide aplicatia",
+      "restartWebServer": "Restarteaza serverul web",
+      "unignoreMessages": "Nu ingnora  mesajele",
+      "closeAndDontShowAgain": "Inchide si nu mai arata din nou",
+      "notifications": {
+        "ignoreUserSuccess": "Utilizatorul {{item.nicks}} a fost adaugat in utilizatori ignorati ",
+        "unignoreUserSuccess": "Utilizatorul {{item.nicks}} a fost eliminat din utilizatori ignorati",
+        "copyPathSuccess": "Path was copied to clipboard",
+        "copySizeSuccess": "Size was copied to clipboard",
+        "copyTTHSuccess": "TTH was copied to clipboard",
+        "copyMagnetSuccess": "Legatura magnet a fost copiata in memorie-clipboard",
+        "copySuccess": "Text was copied to clipboard",
+        "grantHourUserSuccess": "Granted slot for user {{item.nicks}}"
+      },
+      "grantExtraSlot10Min": "Ofera extra slot (10 min)",
+      "grantExtraSlotHour": "Ofera extra slot (hora)",
+      "grantExtraSlotDay": "Ofera extra slot (zi)",
+      "grantExtraSlotWeek": "Ofera extra slot (saptamina)",
+      "prompts": {
+        "restartWebSystemApprove": "Contiuua si restarteaza",
+        "restartWebSystemReject": "Nu restarta",
+        "restartWebSystemContent": "Cand optiunile de legatura se schimba ,este recomandat sa restartezi doar serverul web\ndaca poti accesa serverul pentru probleme.Daca serverul web nu revine online,ar trebui sa pornesti aplicatia\nmanual sa vezi daca exista mesaje de eroare .Configuratia este localizata in directorul utilizatorului din fabrica(inauntru .airdc++)in caz ca ai nevoie sa editezi manual.",
+        "shutdownSystemApprove": "Continuua si inchide",
+        "shutdownSystemReject": "Renunta",
+        "shutdownSystemContent": "Esti sigur/a ca doresti sa inchizi aplicatia?"
+      }
+    },
+    "units": {
+      "b": "B",
+      "kib": "KiB",
+      "mib": "MiB",
+      "gib": "GiB",
+      "tib": "TiB",
+      "pib": "PiB",
+      "eib": "EB",
+      "bits": "bit/s",
+      "kbits": "Kbit/s",
+      "mbits": "Mbit/s",
+      "gbits": "Gbit/s"
+    },
+    "filename": "Nume fisier",
+    "xBytes": "{{bytes}} bytes",
+    "unitsPerSecond": "{{units}}/s",
+    "today": "Azi",
+    "yesterday": "Ieri",
+    "tomorrow": "Maine",
+    "lastWeek": "[Ultima] {{zi din saptamana}}",
+    "awayModeWasEnabled": "Modul plecat este activat",
+    "awayModeWasDisabled": "Modul plecat este dezactivat",
+    "actionSucceed": "Actiunea a fost aplicata",
+    "actionFailed": "Actiunea a esuat",
+    "queueingFailed": "Nu a reusit sa pui in lista itemul  {{item.name}}",
+    "noNfoResultsWereReceived": "Nici-un rezultat NFO a fost primit",
+    "networkClientError": "Eroare retea/client",
+    "failedToFetchData": "Eroare de memorare data",
+    "failedToLoadContent": "Failed to load content",
+    "failedToCreateDirectory": "Failed to create directory",
+    "loadingItems": "Incarcare obiect",
+    "root": "Radacina",
+    "name": "Nume",
+    "size": "Marime",
+    "path": "Cale",
+    "createDirectory": "Creaza director",
+    "create": "Creaza",
+    "directoryName": "Nume director",
+    "computer": "Calculator",
+    "history": "In urma",
+    "shared": "Distribuit",
+    "favorites": "Favorit",
+    "dupes": "Dupes",
+    "browse": "Cauta",
+    "download": "Descarca",
+    "close": "Inchide",
+    "noPathsToDisplay": "Nici o cale de aratat",
+    "spaceFree": "{{freeSpace}} liber",
+    "select": "Selecteaza",
+    "new": "Nou...",
+    "currentSessions": "Sesiuni curente",
+    "closeAll": "Inchide toate",
+    "recentSessions": "Sesiuni recente",
+    "openedAgo": "Deschis {{timeAgo}}",
+    "waitingForServerResponse": "Asteptand ca serverul sa raspunda",
+    "loadingMessages": "Mesaje incarcate",
+    "loadingSession": "Incarca sesiunea",
+    "yes": "DA",
+    "no": "Nu",
+    "cancel": "Renunta",
+    "loading": "Incarca",
+    "loadingData": "Incarca data...",
+    "noOnlineHubs": "Nici un hub online ",
+    "installAsLocalApplication": "Instaleaza ca aplicatie locala",
+    "pwaInstallDesc": "Aceasta aplicatie web poate fi instalata local,aratand o mai buna experienta a utilizatorului",
+    "install": "Instaleaza",
+    "dontInstall": "Nu instala",
+    "statisticsNotAvailable": "Statisticile nu sunt disponibile",
+    "save": "Salveaza",
+    "enterNick": "Introduce nume ...",
+    "disabled": "Dezactivat",
+    "enterLimitUnit": "Enter limit ({{unit}}/s)",
+    "enterLimit": "Introduce limita...",
+    "removeLimit": "Elimina limita",
+    "tlsOk": "Autentificarea certificatului este validat",
+    "tlsOutdatedWarning": "Protocol cryptografic vechi cu vulnerabilitati stiute",
+    "tlsAuthenticityWarning": "Autentificarea certificatului nu a putut fi verificat",
+    "upload": "Incarca",
+    "sendFiles": "Trimite fisiere",
+    "removeSharedFile": "Elimina fisierele distribuite",
+    "fileNoLongerShared": "Fisierul  {{file.name}} nu mai este distribuit",
+    "fileTooLarge": "Fisierul este prea mare (maximum size is {{maxSize}})",
+    "previewIsNotAvailable": "Previzionarea nu este disponibila",
+    "failedToFetchContent": "Distribuirea continutului ,esuata",
+    "noItemsToShow": "Niciun obiect de aratat",
+    "noSessionEditAccess": "Nu ai permisiunea sa deschizi o noua sesiune",
+    "noChatAccess": "Nu ai permisiunea sa trimiti un nou mesaj",
+    "loadingSessions": "Sesiuni incarcate",
+    "typeContent": "Tip/continut",
+    "lastModified": "Ultimul modificat",
+    "dupeType": "Tipul duplicate",
+    "shareFull": "Distribuie (full)",
+    "sharePartial": "Distribuie (partial)",
+    "queueFull": "In lista (full)",
+    "queuePartial": "In lista (partial)",
+    "finishedFull": "Terminat (full)",
+    "finishedPartial": "Terminat (partial)",
+    "shareAndQueue": "Distribuie si memoreaza",
+    "shareQueueAndFinished": "Share, queue and finished",
+    "queueAndFinished": "Queue and finished",
+    "shareAndFinished": "Share and finished",
+    "dupePaths": "Legaturi duplicate",
+    "actionsCaption": "Actiuni...",
+    "tth": "TTH",
+    "na": "N/A",
+    "noActionsAvailable": "No actions available",
+    "continue": "Continue",
+    "form": {
+      "browse": "Cauta",
+      "noOptions": "Fara optiuni",
+      "fieldOptional": "{{definition.title}} (optional)",
+      "minimumValueError": "Minimum allowed value is {{value}}",
+      "maximumValueError": "Maximum allowed value is {{value}}",
+      "any": "Oricare",
+      "directory": "Director",
+      "file": "&amp;Fisier",
+      "add": "&amp;Adauga",
+      "down": "Down",
+      "remove": "Inlatura",
+      "up": "Up",
+      "offlineMessage": "No connected hubs",
+      "loading": "Incarca"
+    }
+  },
+  "hubs": {
+    "table": {
+      "nick": "Nume",
+      "shareSize": "Marimea distributie",
+      "description": "Descriptie",
+      "tag": "Tag",
+      "uploadSpeed": "Viteza Descarcare",
+      "downloadSpeed": "Viteza de incaracre",
+      "ip4": "IP (v4)",
+      "ip6": "IP (v6)",
+      "fileCount": "Fisiere"
+    },
+    "actions": {
+      "reconnect": "Reconeacteaza",
+      "clearChat": "Curata mesageria",
+      "close": "Inchide",
+      "addToFavorites": "Adauga la Favorite",
+      "useChatNotification": "Use chat notification",
+      "showJoinsParts": "Show joins/parts",
+      "notifications": {
+        "favoriteSuccess": "The hub {{item.identity.name}} a fost adus in favorite"
+      }
+    },
+    "notifications": {
+      "actions": {
+        "viewChat": "View chat"
+      }
+    },
+    "notificationSettings": "Notification settings",
+    "enterHubAddress": "Introduce adresa hub-ului",
+    "connect": "Conectare",
+    "notConnectedToTheHub": "Neconectat la hub",
+    "connecting": "In conectare...",
+    "loadingUserlist": "Incarcare lista utilizator",
+    "favoriteHubsHint": "Tip: visit the <url>Favorite hubs</url> page to connect using custom settings",
+    "new": "Conectare",
+    "newDesc": "Conectare la hub nou",
+    "userList": "Lista utilizator",
+    "sharePerUser": "{{total}} ({{obisnuit}}/utilizator)",
+    "xUsers": "{{count}} utilizatori",
+    "xUsers_plural": "{{count}} utilizatori",
+    "redirectRequested": "Redirectioneaza cererea",
+    "acceptRedirect": "Acceptare redirectionare la {{url}}",
+    "passwordRequired": "Necesara parola",
+    "password": "Parola",
+    "submit": "Trimite",
+    "passwordPromptHelp": "Inseamna ca exista un cont asociat cu numele tau .Daca nu iti mai aduci aminte sa fi inregistrat un cont pe acest hub,poate ca este cineva care foloseste acelasi nume cu al tau."
+  },
+  "queue": {
+    "table": {
+      "name": "Nume",
+      "size": "Marime",
+      "status": "Status",
+      "sources": "Sursa",
+      "secondsLeft": "Timp ramas",
+      "speed": "Viteza",
+      "priority": "Prioritate",
+      "type": "Tip/continut",
+      "timeAdded": "Adaugat",
+      "timeFinished": "Terminat"
+    },
+    "actionsCaption": "Actiuni...",
+    "queueActions": "Actiuni in lista",
+    "pausedForced": "Pauza (fortat)",
+    "queueEmpty": "Lista este goala",
+    "queueEmptyDesc": "Noile lucruri pot fi memorate din cauta sau lista de fisiere",
+    "actions": {
+      "removeCompletedBundles": "Elimina actiunile finalizate",
+      "pauseAllBundles": "Pune in pauza toate actiunile ",
+      "resumeAllBundles": "Reporneste actiunile ",
+      "manageFiles": "Manipleaza fisierele",
+      "manageSources": "Manipuleaza sursele",
+      "searchForeground": "Cauta(in spate)",
+      "searchForAlternates": "Cauta alternative",
+      "remove": "Inlatura",
+      "removeSource": "Inlatura sursa",
+      "rescanForErrors": "Rescan for errors",
+      "forceInShare": "Force in share",
+      "prompts": {
+        "removeBundleApprove": "Inlatura actiunile finalizate",
+        "removeBundleReject": "Nu sterge",
+        "removeBundleContent": "Esti sigur/a cadoresti sa elimini actiunile finalizate {{item.name}}?",
+        "removeBundleCheckbox": "Elimina fisierele finalizate",
+        "removeFileApprove": "Elimina fisierul",
+        "removeFileReject": "Nu sterge",
+        "removeFileContent": "Esti sigur/a ca doresti sa elimini fisierul {{item.name}}?",
+        "removeFileCheckbox": "Elimina de pe disk"
+      },
+      "notifications": {
+        "removeFileSuccess": "Fisierul  {{item.name}}  a fost eliminat din lista",
+        "removeCompletedSuccess": "{{result.count}} fisierele terminate au fost eliminate",
+        "searchAlternatesBundleSuccess": "Fisierul  {{item.name}} a fost cautat pentru alternative"
+      }
+    },
+    "paused": "Pauza",
+    "lowest": "Cea mai Mica",
+    "low": "Mica",
+    "normal": "Normal",
+    "high": "Mare",
+    "highest": "Cea mai Mare",
+    "auto": "Auto",
+    "sources": "Sursa",
+    "user": "Utilizator",
+    "hubs": "Huburi",
+    "lastKnownSpeed": "Ultima viteza cunoscuta",
+    "files": "Fisiere",
+    "size": "Marime",
+    "notifications": {
+      "bundleWasAddedInQueue": "Lista a fost memorata",
+      "bundleDownloadError": "Eroare de descarcare: {{error}}",
+      "bundleContentValidationError": "Validarea continutului din lista a esuat: {{error}} ({{hook}})",
+      "validatingDownloadedBundle": "Lista de descarcare in verificare ",
+      "bundleWasCompletedSuccessfully": "Actiunea s-a complectat cu succes",
+      "bundleWasAddedInShare": "Iista a fost adusa la distribuire",
+      "actions": {
+        "viewQueue": "Visioneaza lista de descarcare"
+      }
+    }
+  },
+  "transfers": {
+    "table": {
+      "user": "Utilizator",
+      "name": "Nume",
+      "size": "Segment",
+      "status": "Status",
+      "secondsLeft": "Timp ramas",
+      "speed": "Viteza",
+      "flags": "Steaguri",
+      "ip": "Ip"
+    },
+    "actions": {
+      "forceConnect": "Forteaza conectarea",
+      "disconnect": "Deconectare",
+      "removeFileFromQueue": "Inlatura din lista de asteptare",
+      "removeUserFromQueue": "Inlatura user din lista de asteptare",
+      "notifications": {
+        "removeFileSuccess": "Fisierul  {{item.name}}  a fost eliminat din lista",
+        "removeSourceSuccess": "Utilizatorul {{item.user.nicks}} a fost eliminat din {{result.count}} fisiere"
+      }
+    },
+    "actionsCaption": "Actiuni...",
+    "transferActions": "Transfer actions",
+    "noActiveTransfers": "Transfere inactive"
+  },
+  "settings": {
+    "actions": {
+      "detectNow": "Detecteaza acum",
+      "addDirectory": "Introduce director",
+      "addUser": "Introduce utilizator",
+      "editUser": "Editeaza utilizator",
+      "editDirectory": "Editeaza directorul",
+      "removeDirectory": "Sterge directorul",
+      "addProfile": "Create new",
+      "cloneProfile": "Clone profile",
+      "browseFiles": "Cauta fisiere",
+      "renameProfile": "Redenumeste profilul",
+      "addPath": "Introduce calea",
+      "removePath": "Elimina calea",
+      "removeUser": "Elimina utizatorul",
+      "setAsDefault": "Seteaza ca din fabrica",
+      "removeProfile": "Elimina profilul",
+      "addType": "Add type",
+      "editType": "Edit type",
+      "removeType": "Remove type",
+      "prompts": {
+        "cloneProfilePlaceholder": "Enter name",
+        "cloneProfileApprove": "Creaza",
+        "cloneProfileContent": "Enter name for the profile (cloned from {{item.name}})",
+        "createProfilePlaceholder": "Enter name",
+        "createProfileApprove": "Creaza",
+        "createProfileContent": "Enter name for the profile",
+        "editProfilePlaceholder": "Enter name",
+        "editProfileApprove": "Redenumeste",
+        "editProfileContent": "Enter new name for the profile {{item.name}}",
+        "removeShareExcludeApprove": "Elimina calea",
+        "removeShareExcludeReject": "Nu sterge",
+        "removeShareExcludeContent": "Esti sigur/a ca doresti sa elimini calea exclusa {{item}}?",
+        "removeWebUserApprove": "Elimina utizatorul",
+        "removeWebUserReject": "Nu sterge",
+        "removeWebUserContent": "Esti sigur/a ca doresti sa elimini utulizatorul  {{item.username}}?",
+        "removeFavoriteDirectoryApprove": "Sterge directorul",
+        "removeFavoriteDirectoryReject": "Nu sterge",
+        "removeFavoriteDirectoryContent": "Esti sigur/a ca doresti sa elimini directorul favorit  {{item.name}}?",
+        "removeSearchTypeApprove": "Remove type",
+        "removeSearchTypeReject": "Nu sterge",
+        "removeSearchTypeContent": "Are you sure that you want to remove the search type {{item.name}}?",
+        "removeProfileApprove": "Elimina profilul",
+        "removeProfileReject": "Nu sterge",
+        "removeProfileContent": "Are you sure that you want to remove the profile {{item.name}}?"
+      }
+    },
+    "navigation": {
+      "profile": "Profil",
+      "connectivity": "Conexiune",
+      "speedAndLimits": "Viteza si limite",
+      "downloads": "Descarcari",
+      "sharing": "Distributii",
+      "view": "Vezi",
+      "about": "Despre",
+      "extensions": "Extensii",
+      "extensionEngines": "Extension engines",
+      "system": "Sistem",
+      "autoDetection": "Detectare auto",
+      "iPv4ConnectivityManual": "IPv4 conexiune (manual)",
+      "iPv6ConnectivityManual": "IPv6 conexiune  (manual)",
+      "portsManual": "Porturi (manual)",
+      "proxies": "Proxies",
+      "encryption": "Criptari",
+      "user": "Utilizator",
+      "awayMode": "Mod pleact",
+      "ignoredUsers": "Utilizatori ignorati",
+      "miscellaneous": "Miscellaneous",
+      "manageInstalled": "Manipuleaza instalate",
+      "extensionCatalog": "Catalog extensii",
+      "extensionOptions": "Optiuni extensii",
+      "application": "Aplicatie",
+      "transferStatistics": "Statistici transfer",
+      "shareStatistics": "Statistici distributie",
+      "hubStatistics": "Statistici Hub",
+      "users": "Utilizatori",
+      "logging": "Conectare",
+      "webServer": "Server Web",
+      "advancedServerSettings": "Advanced server settings",
+      "refreshOptions": "Optiuni inprospatare",
+      "shareProfiles": "Profile de distribuire",
+      "sharingOptions": "Optiuni de distributie",
+      "hashing": "Indexare",
+      "excludedPaths": "Exclude cai",
+      "connectionSpeed": "Viteza de conexiune",
+      "bandwidthLimiting": "Limitare de banda",
+      "downloadLimits": "Limitare de descarcare",
+      "uploadLimits": "Limitare de incarcare",
+      "perUserLimits": "Limitari pre-utilizator",
+      "locations": "Locatii",
+      "skippingOptions": "Optiuni sarire",
+      "searchMatching": "Cautari potrivite",
+      "searchTypes": "Search types",
+      "downloadOptions": "Optiuni de descarcare",
+      "priorities": "Prioritati",
+      "notificationsCaption": "Notificari",
+      "histories": "Istorie",
+      "events": "Evenimente",
+      "appearance": "Aspect"
+    },
+    "advanced": "Avansat",
+    "noUnsavedChanges": "Nici o schimbare salvata",
+    "noSavePermission": "Fara permisiune de salvare",
+    "saveChanges": "Salveaza schimbarile",
+    "savingCompleted": "Salvare terminata",
+    "settingsWereSavedSuccessfully": "Setarile au fost salvate cu succes",
+    "unsavedChangesPrompt": "Ai schimbari nesalvate.Esti sigur/a ca doresti sa iesi?",
+    "connectivity": {
+      "detection": {
+        "connectivityDetectionNote": "In case of file transfer connectivity issues, please confirm that your TCP ports are really open by using <portChecker>an online port checker</portChecker>. Note that validity of the UDP port (search) can't be checked online. For more information about different connectivity modes, please visit <faq>DC++'s connectivity FAQ</faq>.",
+        "currentAutoDetectionStatus": "Detectarea auto a statusului curent",
+        "iPv4Connectivity": "IPv4 conexiune",
+        "iPv6Connectivity": "IPv6 conexiune",
+        "manualConfiguration": "{{status}} (configurare manuala)",
+        "autoDetected": "{{status}} (auto detectata)",
+        "detecting": "Detecting...",
+        "transferPort": "Transfer port",
+        "encryptedTransferPort": "Encrypted transfer port",
+        "searchUdpPort": "Search/UDP port",
+        "boundInterfaceIPv4": "Bound interface (IPv4)",
+        "boundInterfaceIPv6": "Bound interface (IPv6)",
+        "viewAll": "View all"
+      },
+      "ports": {
+        "portsAutoValuesNote": "Port numbers listed on this page can be overridden by port mappers (if enabled)",
+        "form": {
+          "tcpPortHelp": "Portul TCP este folosit pentru transferuri necriptate",
+          "udpPortHelp": "Portul UDP este folosit pentru cautare",
+          "tlsPortHelp": "Portul TLS (TCP) este folosit pentru transferuri criptate"
+        }
+      },
+      "v6": {
+        "protocolAutoValuesNote": "Connectivity auto detection is currently enabled; setting values listed on this page are not being used"
+      },
+      "v4": {
+        "protocolAutoValuesNote": "Connectivity auto detection is currently enabled; setting values listed on this page are not being used"
+      }
+    },
+    "profile": {
+      "user": {
+        "form": {
+          "settingProfileHelp0": "Clinetul este folosit in normal privat/public hubs pentru trasferarea fisierelor via internet.Foloseste acest profil daca esti nesigur",
+          "settingProfileHelp1": "Clientul este folosit pentru trasferrarea fisierelor care sunt impartite in arhive RAR(sau in alte formate de mici-marimi)",
+          "settingProfileHelp2": "Clientul este folosit pentru transferarea in reteaua locala (e.g. LAN parties)sau in alta retea inchisa (e.g. university network)",
+          "languageFileHelpRestart": "The application must be restarted for the new language to take effect.",
+          "languageFileHelpTranslate": "If you want to help with improving the existing translations or translate the application into a new language, please see the <url>instructions for translators</url>."
+        }
+      },
+      "ignoredUsers": {
+        "user": "Utilizator",
+        "messagesIgnored": "Mesaj ignorat",
+        "noIgnoredUsers": "Nu sunt utilizatori ignorati"
+      },
+      "miscellaneous": {
+        "form": {
+          "nmdcEncodingHelp": "<0>Setarile codate vor fi folosite in huburile NMDC.Huburile ADC vor folosi intotdeauna codarea UTF-8 .<1></1><2></2><3>Valori folosite in mod obisnuit:<1><0>Central Europe: cp1250</0><1>Cyrillic: cp1251</1><2>Western Europe: cp1252</2><3>Greek cp:1253</3><4>Turkish: cp1254</4><5>Hebrew: cp1256</5></1></3></0>"
+        }
+      }
+    },
+    "extensions": {
+      "packages": {
+        "byAuthor": "de {{author}}",
+        "latestVersion": "Ultima versiune",
+        "installedVersion": "Versiune instalata",
+        "datePublished": "{{version}} (published {{date}})",
+        "readMore": "Citeste mai mult",
+        "defaultExtensionEngineMissing": "The default extension engine <strong>{{engineName}}</strong> is not installed on your system. Please visit <url>engine's home page</url> for installation instructions.",
+        "manage": "Manage..."
+      },
+      "manage": {
+        "byAuthor": "de {{author}}",
+        "latestVersion": "Ultima versiune",
+        "installedVersion": "Versiune instalata",
+        "nonListedExtension": "Extensii ne-listate",
+        "readMore": "Citeste mai mult",
+        "noInstalledExtensions": "No installed extensions were found. New extensions can be installed from the <url>Extension catalog</url> page.",
+        "defaultExtensionEngineMissing": "The default extension engine <strong>{{engineName}}</strong> is not installed on your system. Please visit <url>engine's home page</url> for installation instructions.",
+        "extensionDirectoryFetchError": "Esuata afisarea informatiilor din directorul de extensii: {{error}}",
+        "unmanagedExtension": "Unmanaged extension",
+        "manage": "Manage..."
+      }
+    },
+    "about": {
+      "application": {
+        "applicationVersion": "Versiune aplicatie",
+        "webUiVersion": "Versiunea UI web",
+        "webUiBuildDate": "Versiunea web UI date",
+        "apiVersion": "Versiunea API",
+        "apiFeatureLevel": "Nivelul API",
+        "started": "Pornit",
+        "activeSessions": "Sesiuni active",
+        "serverThreads": "Amenintari Server",
+        "resources": "Resources",
+        "homePage": "Home page",
+        "featureRequestBugTracker": "Feature request/bug tracker",
+        "documentation": "Documentation",
+        "thirdPartyCredits": "Third-party credits"
+      },
+      "transfers": {
+        "totalDownloaded": "Descarcare totala",
+        "totalUploaded": "Incarcare totala",
+        "session": "Sesiuni",
+        "sessionDownloaded": "Sesiuni de descarcare",
+        "sessionUploaded": "Sesiuni de incarcare"
+      },
+      "share": {
+        "noFilesShared": "Nici in fisier distribuit ",
+        "totalShareSize": "Marimea totala a distributiei",
+        "totalFiles": "Fisiere totale",
+        "totalFilesValue": "{{totalCount}} ({{uniqueCount}} unique)",
+        "totalDirectories": "Fisierele totale",
+        "averageFileAge": "Vechimea fisierelor totale",
+        "averageFilesPerDirectory": "Fisierele totale oe directoare",
+        "incomingSearches": "Cautari venite",
+        "totalSearches": "Cautari totale",
+        "searchesTotalValue": "{{totalCount}} ({{perSecondCount}} per second)",
+        "tthSearches": "Cautari TTH",
+        "textSearches": "Text searches",
+        "searchesPerSecondValue": "{{totalCount}} ({{matchedCount}} potriviri pe secunda)",
+        "filteredTextSearches": "Cautari text filtrate",
+        "searchesFilteredValue": "{{filteredPercentage}} ({{resultPercentage}} of the matched ones returned results)",
+        "averageTextSearchTokensNonFiltered": "Average text search tokens (non-filtered)",
+        "searchesAverageTokensValue": "{{tokenCount}} ({{tokenLength}} bytes per token)",
+        "averageMatchingTimePerTextSearch": "Potrivirea cautarii pe text -in mare",
+        "searchesAverageMatchTimeValue": "{{matchTime}} ms"
+      },
+      "hubs": {
+        "noHubsOnline": "Nici un hub online",
+        "totalUsers": "Total utilizatori",
+        "uniqueUsers": "Utilizatori unici",
+        "activeUsers": "Utilizatori activi",
+        "totalShare": "Distribuire totala",
+        "averageSharePerUser": "Distribuire -in mare-pe utilizator",
+        "averageAdcDownloadSpeed": "Viteza de descarcare -in mare-ADC",
+        "clients": "Clienti",
+        "averageAdcUploadSpeed": "Viteza de incarcare-in mare-ADC"
+      }
+    },
+    "system": {
+      "logging": {
+        "messages": "Mesaje",
+        "transfers": "Transferuri",
+        "variableHelp": "Informatii variabile pentru nume fisiere si campuri de formate"
+      },
+      "serverSettings": {
+        "defaultCertNote": "Certificatul de client initial este folosit daca caile sunt goale"
+      },
+      "advancedServerSettings": {
+        "hookTimeouts": "Hook timeouts"
+      },
+      "users": {
+        "username": "Nume utilizator",
+        "permissions": "Permisii",
+        "activeSessions": "Sesiuni active",
+        "lastLoggedIn": "Ultima logare",
+        "administrator": "Administrator",
+        "form": {
+          "usernameName": "Nume utilizator",
+          "passwordName": "Parola",
+          "permissionsName": "Permisii"
+        },
+        "permissionSelector": {
+          "administrator": "Administrator",
+          "search": "Cauta",
+          "download": "Descarca",
+          "transfers": "Transferuri",
+          "events": "Evenimente",
+          "view": "Vezi",
+          "edit": "Editare",
+          "queue": "Lista de asteptare",
+          "favoriteHubs": "Huburi Favorite",
+          "settings": "Setari",
+          "localFilesystem": "Fisier de sistem local",
+          "hubs": "Huburi",
+          "sendMessages": "Trimite mesaje",
+          "privateChat": "Chat privat",
+          "filelists": "Lista de fisiere",
+          "viewedFiles": "Fisiere vazute"
+        },
+        "addWebUser": "Introduce utilizator web",
+        "editUser": "Editeaza utilizator",
+        "adminPermissionNote": "Permisiile administratorului sunt necesare in cazul de acesare la sectiunea sistem in setari"
+      }
+    },
+    "sharing": {
+      "excludes": {
+        "shareRefreshNote": "Distribuirea trebuie improspatata ca schimbarile sa aiba efect",
+        "addExcludedPath": "Aduce calea exclusa",
+        "path": "Cale"
+      },
+      "profiles": {
+        "name": "Nume",
+        "totalSize": "Marime totala",
+        "totalFiles": "Fisiere totale",
+        "shareProfilesPartialNote": "Queued files are shared via the partial file sharing feature in all hubs where the share has not been hidden, regardless of the configured share profiles.",
+        "shareProfilesHelp": "Share profiles are assigned for individual directories from the <url>Share</url> page.",
+        "addProfile": "Introduce profil",
+        "cloneFromAnExistingProfile": "Clone from an existing profile"
+      },
+      "sharingOptions": {
+        "skiplist": "Lista evitata"
+      },
+      "hashing": {
+        "hashDatabase": "Baza de date indexata",
+        "fileIndexSize": "Marimea fisierelor indexate",
+        "hashStoreSize": "Marimea imagazinata a indexului",
+        "maintenance": "Intretinere",
+        "verifyIntegrityOfHashData": "Verifica integritatea datelor indexate",
+        "optimizeNow": "Optimizeaza acum",
+        "hashDBOptimizeNote": "Aceasta operatie va sterge toate informatiile indexate care nu sunt in distributie in momentul de fata .Daca distribuii fisiere din reteaua ta sau de la un hdd portabil ,fii sigur ca fisierele sunt aratate la distributie (altfel datele trebuiesc reindexate)"
+      }
+    },
+    "speedLimits": {
+      "speed": {
+        "connectionSpeedNote": "Please be as accurate as possible and set the ACTUAL speed of your connection. You may use an online tester, such as <speedtest>{{name}}</speedtest>, to test your speed."
+      },
+      "uploadLimits": {
+        "manuallySet": "Setare manuala "
+      },
+      "downloadLimits": {
+        "manuallySet": "Setare manuala "
+      }
+    },
+    "downloads": {
+      "locations": {
+        "availablePathVariables": "Calea variablilelor disponibila ",
+        "favoriteDownloadDirectories": "Cai de descarcare favorite",
+        "name": "Nume",
+        "path": "Cale",
+        "form": {
+          "pathName": "Cale",
+          "nameName": "Nume"
+        },
+        "addFavoriteDirectory": "Aduce directorul favorit",
+        "editFavoriteDirectory": "Editeaza directorul favorit"
+      },
+      "skippingOptions": {
+        "skiplist": "Lista evitata"
+      },
+      "priorities": {
+        "filePriorities": "Prioritatile fisierului",
+        "highPriorityFiles": "Prioritate inalta a fisierelor"
+      },
+      "searchTypes": {
+        "name": "Nume",
+        "fileExtensions": "File extensions",
+        "default": "Default",
+        "searchTypesNote": "Note; Custom search types will only be applied to ADC hubs! On NMDC hubs, using a predefined search type will only search for a set of predefined, unconfigurable extensions; using a custom type will default to searching for any extension.",
+        "form": {
+          "nameName": "Nume",
+          "extensionsName": "File extensions"
+        },
+        "addSearchType": "Add search type",
+        "editSearchType": "Edit search type"
+      },
+      "downloadOptions": {
+        "segments": "Segmente",
+        "compression": "Compression",
+        "buffers": "Buffers"
+      }
+    },
+    "browserSpecificNote": "Setarile aratate pe aceasta pagina sunt specific-cautarii",
+    "view": {
+      "notifications": {
+        "popupNotifications": "Notificari care apar",
+        "form": {
+          "notifyMentionMyNickName": "Mentions of my nick",
+          "notifyPmUserName": "Mesaje private (utilizatori)",
+          "notifyPmBotName": "Mesaje private (bots)",
+          "notifyHubMessageName": "Hub chat messages (only in hubs where chat notifications are enabled)",
+          "notifyBundleStatusName": "Schimbarile statusului bundle ",
+          "notifyEventsInfoName": "Evenimente info",
+          "notifyEventsWarningName": "Evenimente de avertizari ",
+          "notifyEventsErrorName": "Evenimente de erori"
+        }
+      },
+      "histories": {
+        "maxMessageHistory": "Numarul maxim de mesaje catre cache",
+        "maxSessionHistory": "Numarul maxim a sesiunilor deschise anterior"
+      },
+      "miscellaneous": {
+        "form": {
+          "unreadLabelDelayName": "Marcarea sesiunilor chat intarziate ca citite(secunde)",
+          "backgroundImageUrlName": "Imagine personalizata URL",
+          "noInstallPromptName": "Nu arata niciodata calea aplicatie instalate pe pagina acasa "
+        }
+      }
+    }
+  },
+  "extensions": {
+    "actions": {
+      "uninstall": "Dezinstaleaza",
+      "start": "Porneste",
+      "installFromUrl": "Instaleaza de la URL",
+      "install": "Instaleaza",
+      "update": "Reinoieste",
+      "stop": "Stop",
+      "configure": "Configurare",
+      "enable": "Enable",
+      "disable": "Disable",
+      "prompts": {
+        "installUrlPlaceholder": "Introduce URL",
+        "installUrlApprove": "Instaleaza",
+        "installUrlContent": "Introduce URL de descarcare",
+        "removeApprove": "Elimina extensia",
+        "removeReject": "Nu sterge",
+        "removeContent": "Esti sigur/a ca doresti sa elimini extensia  {{item.name}}?Acest lucru va elimina deasemenea setarile extensiei-specifica"
+      }
+    }
+  },
+  "navigation": {
+    "home": "Acasa",
+    "queue": "Lista de asteptare",
+    "search": "Cauta",
+    "transfers": "Transferuri",
+    "hubs": "Huburi",
+    "messages": "Mesaje",
+    "filelists": "Lista de fisiere",
+    "files": "Fisiere",
+    "events": "Evenimente",
+    "favoriteHubs": "Huburi Favorite",
+    "share": "Distributie",
+    "settings": "Setari",
+    "logout": "Iesire",
+    "more": "Mai mult..."
+  },
+  "login": {
+    "username": "Nume utilizator",
+    "password": "Parola",
+    "keepMeLoggedIn": "Tine-ma conectat",
+    "login": "Logare",
+    "authenticationFailed": "Autentificare esuata  {{lastError}}",
+    "connectingToTheServer": "Conectare la server...",
+    "reestablishConnection": "Incerc sa respabilesc conexiunea...",
+    "sessionLost": "Sesiune pierduta...",
+    "connectionClosed": "Conexiune inchisa",
+    "privateBrowsingNotSupported": "Acest site nu poate fi folosit cu browserul daca modul de navigare privata este activat",
+    "dataStorageNotSupported": "Acest site nu poate fi folosit cu browserul tau deoarece nu suporta imagazinare de date"
+  },
+  "viewedFiles": {
+    "actions": {
+      "close": "Inchide"
+    },
+    "noFiles": "Nici un fisier de vazut",
+    "noFilesDesc": "Poti deschide fisiere text sau media ca sa fie vazute aici de la inceput sau fisiere ",
+    "preparingView": "Pregatesc vizionarea",
+    "opened": "Deschis",
+    "downloaded": "Descarcat",
+    "unsupportedFormat": "Unsupported format",
+    "downloadFailed": "Descarcare nereusita",
+    "notifications": {
+      "fileHasFinishedDownloading": "Fisierul sa terminat de descarcat",
+      "fileWasLoaded": "File was loaded",
+      "actions": {
+        "viewFile": "Vezi fisier"
+      }
+    }
+  },
+  "messages": {
+    "actions": {
+      "clearChat": "Curata mesageria",
+      "close": "Inchide",
+      "connect": "Conectare",
+      "disconnect": "Deconectare"
+    },
+    "new": "Sesiune noua",
+    "newDesc": "Deschide o noua sesiune privata",
+    "offlineMessage": "Trebuie sa fii conectat cel putin pe un hub ca sa trimiti mesaje private ",
+    "directEncryptedChannelAvailable": "Canal direct criptat disponibil",
+    "establishingConnection": "Stabilire conexiune ",
+    "directEncryptedChannelEstablished": "Canal direct criptat stabilit",
+    "notifications": {
+      "actions": {
+        "viewMessage": "Vezi mesaje"
+      }
+    }
+  },
+  "home": {
+    "newUserIntro": "Informatii despre un nou utilizator",
+    "newUserIntroDesc": "<0><0>Aduce cateva directoare care sa fie distribuite catre alti utilizatori de la <1>pagina de distribuire.</0><1>Poate vei dori sa treci cel putin prin fiecare pagina mai importanta a<1>setarilor clientului</1>inainte sa pornesti <3>Este important ca tu <1>sa configurezi viteza de  conexiune a ta </1>corect ,daca nu clientul tau nu o sa foloseasca la maxim viteza ta reala .</3></1><2>Aici nu ai inca o lista publica a huburilor ,asa ca va trebuii sa introduci manual adresele de hub dorite.</2></0><1>Viziteaza<1> pagina acasa pentru mai multe informatii in legatura cu clientul si cu toate optiunile .</1><2>Daca ai intrebari ,le poti posta pe <1>GitHub tracker</1>sau intra pe dev/support hub:<3></3></2>"
+  },
+  "hash": {
+    "actions": {
+      "pause": "Pauza",
+      "resume": "Reincepe",
+      "stop": "Stop"
+    },
+    "status": "Status",
+    "paused": "Pauza",
+    "filesLeft": "Files left",
+    "maximumSpeedPerHasher": "Maximum speed per hasher",
+    "runningThreads": "Running ({{threadCount}} threads)",
+    "speed": "Viteza",
+    "timeLeft": "Timp ramas",
+    "idle": "Idle",
+    "hashProgress": "Hash progress"
+  }
+}

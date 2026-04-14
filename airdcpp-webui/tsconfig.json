@@ -1,0 +1,44 @@
+{
+  "compilerOptions": {
+    "outDir": "build/dist",
+    "module": "esnext",
+    "target": "es6",
+    "lib": ["dom", "dom.iterable", "esnext.asynciterable", "ES2022", "scripthost" ],
+    "sourceMap": true,
+    "allowJs": true,
+    "jsx": "react-jsx",
+    "moduleResolution": "bundler",
+    "rootDir": "src",
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "src/*",
+      ],
+    },
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "noUnusedLocals": false,
+    "typeRoots": ["./node_modules/@types", "./node_modules/@testing-library"]
+  },
+  "exclude": [
+    "devtools",
+    "dist",
+    "node_modules",
+    "scripts",
+    "webpack",
+    "vitest",
+    "babel.config.js",
+    "vitest.*",
+    "webpack.config.js",
+    "eslint.config.mjs",
+    "src/sw.js",
+    "resources",
+    "*.tmp",
+  ]
+}

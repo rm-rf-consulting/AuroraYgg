@@ -1,0 +1,116 @@
+import * as React from 'react';
+
+import WebUserConstants from '@/constants/WebUserConstants';
+import {
+  WebUserActionModule,
+  WebUserCreateAction,
+  createWebUserEditActionMenu,
+} from '@/actions/ui/system/WebUserActions';
+
+import ActionButton from '@/components/ActionButton';
+import WebUserDialog from '@/routes/Settings/routes/System/components/users/WebUserDialog';
+
+import DataProviderDecorator, {
+  DataProviderDecoratorChildProps,
+} from '@/decorators/DataProviderDecorator';
+
+import { ActionMenu } from '@/components/action-menu';
+
+import * as API from '@/types/api';
+import * as UI from '@/types/ui';
+
+import { SettingPageProps } from '@/routes/Settings/types';
+import { useFormatter } from '@/context/FormatterContext';
+
+interface WebUserRowProps {
+  user: API.WebUser;
+  moduleT: UI.ModuleTranslator;
+  actions: UI.ModuleActions<API.WebUser>;
+}
+
+const WebUserRow: React.FC<WebUserRowProps> = ({ user, moduleT, actions }) => {
+  const { formatRelativeTime } = useFormatter();
+  return (
+    <tr>
+      <td className="name dropdown">
+        <ActionMenu
+          caption={<strong>{user.username}</strong>}
+          actions={actions}
+          itemData={user}
+          contextElement="#setting-scroll-context"
+        />
+      </td>
+      <td className="permissions">
+        {user.permissions.includes(API.AccessEnum.ADMIN)
+          ? moduleT.translate('Administrator')
+          : user.permissions.length}
+      </td>
+      <td className="sessions">{user.active_sessions}</td>
+      <td className="last-login">{formatRelativeTime(user.last_login)}</td>
+    </tr>
+  );
+};
+
+type WebUsersPageProps = SettingPageProps;
+
+interface WebUsersPageDataProps extends DataProviderDecoratorChildProps {
+  users: API.WebUser[];
+}
+
+const WebUsersPage: React.FC<WebUsersPageProps & WebUsersPageDataProps> = ({
+  users,
+  moduleT,
+  session,
+}) => {
+  const actions = React.useMemo(() => {
+    return createWebUserEditActionMenu(session);
+  }, [session]);
+
+  const { translate } = moduleT;
+  return (
+    <div>
+      <ActionButton action={WebUserCreateAction} moduleData={WebUserActionModule} />
+      <table className="ui striped table">
+        <thead>
+          <tr>
+            <th>{translate('Username')}</th>
+            <th>{translate('Permissions')}</th>
+            <th>{translate('Active sessions')}</th>
+            <th>{translate('Last logged in')}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {users.map((user) => (
+            <WebUserRow
+              key={user.username}
+              user={user}
+              moduleT={moduleT}
+              actions={actions}
+            />
+          ))}
+        </tbody>
+      </table>
+      <WebUserDialog moduleT={moduleT} />
+    </div>
+  );
+};
+
+export default DataProviderDecorator<WebUsersPageProps, WebUsersPageDataProps>(
+  WebUsersPage,
+  {
+    urls: {
+      users: WebUserConstants.USERS_URL,
+    },
+    onSocketConnected: (addSocketListener, { refetchData }) => {
+      addSocketListener(WebUserConstants.MODULE_URL, WebUserConstants.ADDED, () =>
+        refetchData(),
+      );
+      addSocketListener(WebUserConstants.MODULE_URL, WebUserConstants.UPDATED, () =>
+        refetchData(),
+      );
+      addSocketListener(WebUserConstants.MODULE_URL, WebUserConstants.REMOVED, () =>
+        refetchData(),
+      );
+    },
+  },
+);

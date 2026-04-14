@@ -1,0 +1,97 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Filelists > downloads > should download directories 1`] = `
+{
+  "data": {
+    "list_path": "/Ubuntu 20.04 Server/",
+    "target_name": "Ubuntu 20.04 Server",
+    "user": {
+      "cid": "HNLUODI2YZ2U7FDWMHFNJU65ERGKUN4MH7GW5LY",
+      "flags": [
+        "asch",
+        "ccpm",
+      ],
+      "hub_names": "ADC hub 1 (ADC hub 3)",
+      "hub_url": "adcs://hub1.adc/?kp=SHA256/H4DUKGI3U3LQHMZXU6SLQA7LF5RVD6HJFGYZBN2R5RRQ5A2RZ4ZA",
+      "hub_urls": [
+        "adcs://hub1.adc/?kp=SHA256/H4DUKGI3U3LQHMZXU6SLQA7LF5RVD6HJFGYZBN2R5RRQ5A2RZ4ZA",
+        "adcs://hub3.adc:2482",
+      ],
+      "nicks": "[Hub1]User1 ([Hub3]User1)",
+    },
+  },
+  "method": "POST",
+  "path": "filelists/directory_downloads",
+}
+`;
+
+exports[`Filelists > downloads > should download files 1`] = `
+{
+  "data": {
+    "size": 2877227008,
+    "target_name": "ubuntu-20.04.2.0-desktop-amd64.iso",
+    "time": 1618062636,
+    "tth": "2E2P2K5JP6KARHNFGUMIFENN4SGBENKLPGQNUAA",
+    "user": {
+      "cid": "HNLUODI2YZ2U7FDWMHFNJU65ERGKUN4MH7GW5LY",
+      "flags": [
+        "asch",
+        "ccpm",
+      ],
+      "hub_names": "ADC hub 1 (ADC hub 3)",
+      "hub_url": "adcs://hub1.adc/?kp=SHA256/H4DUKGI3U3LQHMZXU6SLQA7LF5RVD6HJFGYZBN2R5RRQ5A2RZ4ZA",
+      "hub_urls": [
+        "adcs://hub1.adc/?kp=SHA256/H4DUKGI3U3LQHMZXU6SLQA7LF5RVD6HJFGYZBN2R5RRQ5A2RZ4ZA",
+        "adcs://hub3.adc:2482",
+      ],
+      "nicks": "[Hub1]User1 ([Hub3]User1)",
+    },
+  },
+  "method": "POST",
+  "path": "queue/bundles/file",
+}
+`;
+
+exports[`Filelists > new session > open remote session 1`] = `
+{
+  "data": {
+    "directory": "/",
+    "user": {
+      "cid": "HNLUODI2YZ2U7FDWMHFNJU65ERGKUN4MH7GW5LY",
+      "hub_url": "adcs://hub1.adc/?kp=SHA256/H4DUKGI3U3LQHMZXU6SLQA7LF5RVD6HJFGYZBN2R5RRQ5A2RZ4ZA",
+    },
+  },
+  "method": "POST",
+  "path": "filelists",
+}
+`;
+
+exports[`Filelists > new session > should open local share profile 1`] = `
+{
+  "data": {
+    "share_profile": 535,
+  },
+  "method": "POST",
+  "path": "filelists/self",
+}
+`;
+
+exports[`Filelists > should navigate between directories 1`] = `
+{
+  "data": {
+    "list_path": "/Ubuntu 20.04 Server/",
+  },
+  "method": "POST",
+  "path": "filelists/NJSHVYR4ZHCZFUEZNGA7M2D72S5AB4WQAMPBKFA/directory",
+}
+`;
+
+exports[`Filelists > should navigate between directories 2`] = `
+{
+  "data": {
+    "list_path": "/",
+  },
+  "method": "POST",
+  "path": "filelists/NJSHVYR4ZHCZFUEZNGA7M2D72S5AB4WQAMPBKFA/directory",
+}
+`;

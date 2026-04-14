@@ -1,0 +1,323 @@
+* {
+  text-overflow: ellipsis;
+}
+
+body {
+  background: #eeeeee;
+}
+
+section#container-main {
+  height: 100dvh;
+}
+
+.ui.checkbox.floating {
+  width: 100%;
+  margin: 10px 0px;
+}
+
+.inline-loader > .loader {
+  margin-right: 5px !important;
+}
+
+.ui.dropdown:not(.fluid):not(td),
+.table.dropdown {
+  display: inline-flex !important;
+  max-width: 100%;
+}
+
+.ui.empty.dropdown {
+  cursor: auto !important;
+}
+
+.ui.dropdown {
+  font-size: inherit;
+  max-width: 100%;
+}
+
+.ui.dropdown .menu > .item:not(.submenu) {
+  max-width: 300px;
+  overflow-x: hidden;
+}
+
+
+/*https://github.com/fomantic/Fomantic-UI/issues/3123*/
+.ui.dropdown.upward.pointing .item.submenu > .menu {
+  bottom: 0 !important;
+}
+
+.ui.dropdown.fluid {
+  display: flex !important;
+}
+
+.popup.trigger:hover {
+  cursor: pointer;
+}
+
+.ui.popup:not(.table) {
+  word-break: break-all;
+}
+
+.ui.dropdown.left-icon i.trigger {
+  flex-shrink: 0;
+}
+
+.ui.dropdown i.trigger {
+  align-self: center;
+}
+
+.ui.dropdown .menu {
+  z-index: 1000;
+}
+
+.ui.dropdown .menu .header {
+  display: flex;
+}
+
+.ui.dropdown:not(.button) > .caption {
+  user-select: auto !important;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+td .ui.dropdown > .caption > .icon-caption {
+  display: contents;
+}
+
+
+.divided.list .item .description {
+  font-size: 90%;
+}
+
+/* Layout header start */
+
+.layout.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.layout.header .ui.header {
+  max-width: 100%;
+  padding: 5px 5px;
+  display: inline-flex;
+}
+
+.layout.header.icon .ui.header .content {
+  /* "overflow: hidden" can't be used because of possible dropdowns */
+  width: 90%;
+  flex: 1 1;
+}
+
+.layout.header i.icons i {
+  margin-right: 10px;
+}
+
+.layout.header > div {
+  margin-bottom: 0px;
+}
+
+/* Layout header end */
+
+/* Dialogs start */
+
+.ui.modal.full .layout.header .content {
+  /* https://github.com/airdcpp-web/airdcpp-webclient/issues/324 */
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.ui.modal.full table {
+  table-layout: fixed;
+}
+
+/* Can't be applied to dropdown cells */
+.ui.modal.full td:not(.dropdown) {
+  overflow-x: hidden;
+}
+
+.ui.modal.full > .content {
+  min-height: 350px;
+  height: 65vh;
+}
+
+.ui.modal > .content {
+  overflow-y: auto;
+  max-height: 65vh;
+}
+
+.ui.modal {
+  /* Workaround for https://github.com/Semantic-Org/Semantic-UI/issues/6185 */
+  position: fixed !important;
+}
+
+/* Ensure that open modals are dimmed when a confirm dialog is displayed */
+.ui.dimmer.modals-node {
+  z-index: 1002;
+}
+
+.ui.dimmer.confirms-node {
+  z-index: 1003;
+}
+
+.ui.dimmer.confirms-node:not(:empty) {
+  opacity: 1;
+  display: block;
+}
+
+.confirm-dialog {
+  z-index: 1004 !important;
+}
+
+.confirm-dialog .description,
+.input.dialog {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.input.dialog.basic,
+.confirm-dialog.basic label {
+  color: white !important;
+}
+
+.input.dialog input,
+.confirm-dialog label {
+  margin-top: 20px !important;
+}
+
+.confirm-dialog .description {
+  width: 100% !important;
+}
+
+.limiter-config .remove {
+  margin-top: 10px;
+}
+
+/* Dialogs end */
+
+/* Count label transitions */
+
+.label-transition-exit {
+  opacity: 1;
+}
+
+.label-transition-exit.label-transition-exit-active {
+  opacity: 0.01;
+  transition: opacity 1500ms ease-in;
+}
+
+/* Count label transitions end */
+
+/* Table dropdown transitions start */
+.mainmenu-transition-enter {
+  transform: translateX(100%);
+}
+
+.mainmenu-transition-enter-active {
+  transform: translateX(0);
+  transition: transform 200ms ease-in-out;
+}
+
+.mainmenu-transition-exit {
+  display: none !important;
+}
+
+.mainmenu-transition-exit-active {
+  display: none !important;
+}
+
+.submenu-transition-enter {
+  transform: translateX(-100%);
+}
+
+.submenu-transition-enter-active {
+  transform: translateX(0%);
+  transition: transform 200ms ease-in-out;
+}
+
+.submenu-transition-exit {
+  display: none !important;
+}
+
+.submenu-transition-exit-active {
+  display: none !important;
+}
+
+/* Table dropdown transitions end */
+
+.sidebar .icon-panel .icon.large {
+  font-size: 1.3em;
+}
+
+td:not(.dropdown),
+th {
+  overflow: hidden;
+}
+
+.notifications-tl h4.notification-title {
+  overflow: hidden;
+}
+
+.icon-caption > i {
+  margin-right: 5px;
+}
+
+i.icons .icon:first-child {
+  margin-right: 0.25rem;
+}
+
+.dupe.queue.full,
+.dupe.queue.full span,
+.dupe.queue.full a {
+  color: #ffa500 !important;
+}
+
+.dupe.queue.partial,
+.dupe.queue.partial span,
+.dupe.queue.partial a {
+  color: #ffca68 !important;
+}
+
+.dupe.share.full,
+.dupe.share.full span,
+.dupe.share.full a {
+  color: fuchsia !important;
+}
+
+.dupe.share.partial,
+.dupe.share.partial span,
+.dupe.share.partial a {
+  color: #ffa2ff !important;
+}
+
+.dupe.finished.full,
+.dupe.finished.full span,
+.dupe.finished.full a {
+  color: green !important;
+}
+
+.dupe.finished.partial,
+.dupe.finished.partial span,
+.dupe.finished.partial a {
+  color: #79ff79 !important;
+}
+
+.dupe.finished.share,
+.dupe.finished.share span,
+.dupe.finished.share a {
+  color: color-mix(in lab, green, fuchsia) !important;
+}
+
+.dupe.finished.queue,
+.dupe.finished.queue span,
+.dupe.finished.queue a {
+  color: color-mix(in lab, green, #ffa500) !important;
+}
+
+.dupe.share.queue.finished,
+.dupe.share.queue.finished span,
+.dupe.share.queue.finished a,
+.dupe.share.queue,
+.dupe.share.queue span,
+.dupe.share.queue a {
+  color: color-mix(in lab, fuchsia, #ffa500) !important;
+}

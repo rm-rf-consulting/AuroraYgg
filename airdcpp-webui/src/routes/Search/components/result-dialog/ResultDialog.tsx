@@ -1,0 +1,87 @@
+import { Component } from 'react';
+import RouteModal from '@/components/semantic/RouteModal';
+
+import FileIcon from '@/components/icon/FileIcon';
+
+import DownloadDialog from '@/components/download/DownloadDialog';
+
+import UserResultTable from './UserResultTable';
+
+import ModalRouteDecorator, {
+  ModalRouteDecoratorChildProps,
+} from '@/decorators/ModalRouteDecorator';
+import DataProviderDecorator, {
+  DataProviderDecoratorChildProps,
+} from '@/decorators/DataProviderDecorator';
+import SearchConstants from '@/constants/SearchConstants';
+
+import * as API from '@/types/api';
+import * as UI from '@/types/ui';
+import { FileItemInfoGrid } from '@/components/file-item-info';
+import { searchDownloadHandler } from '@/services/api/SearchApi';
+
+interface ResultDialogProps {
+  searchT: UI.ModuleTranslator;
+  instance: API.SearchInstance;
+}
+
+interface DataProps extends DataProviderDecoratorChildProps {
+  parentResult: API.GroupedSearchResult;
+}
+
+type Props = ResultDialogProps & ModalRouteDecoratorChildProps;
+
+class ResultDialog extends Component<Props & DataProps> {
+  static readonly displayName = 'ResultDialog';
+
+  itemDataGetter: UI.DownloadItemDataGetter<API.GroupedSearchResult> = (
+    itemId,
+    socket,
+  ) => {
+    const { instance } = this.props;
+    return socket.get(
+      `${SearchConstants.INSTANCES_URL}/${instance.id}/results/${itemId}`,
+    );
+  };
+
+  render() {
+    const { parentResult, instance } = this.props;
+    return (
+      <RouteModal
+        className="result"
+        title={parentResult.name}
+        closable={true}
+        icon={<FileIcon typeInfo={parentResult.type} />}
+        fullHeight={true}
+      >
+        <DownloadDialog
+          downloadHandler={searchDownloadHandler}
+          itemDataGetter={this.itemDataGetter}
+          sessionItem={instance}
+        />
+        <FileItemInfoGrid
+          fileItem={parentResult}
+          downloadHandler={searchDownloadHandler}
+          user={parentResult.users.user}
+          showPath={false}
+          sessionItem={instance}
+        />
+        <UserResultTable parentResult={parentResult} instanceId={instance.id} />
+      </RouteModal>
+    );
+  }
+}
+
+const Decorated = ModalRouteDecorator<ResultDialogProps>(
+  DataProviderDecorator<Props, DataProps>(ResultDialog, {
+    urls: {
+      parentResult: ({ params, instance }, socket) =>
+        socket.get(
+          `${SearchConstants.INSTANCES_URL}/${instance.id}/results/${params.resultId}`,
+        ),
+    },
+  }),
+  '/result/:resultId',
+);
+
+export { Decorated as ResultDialog };

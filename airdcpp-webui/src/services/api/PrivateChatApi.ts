@@ -1,0 +1,35 @@
+import { APISocket } from '@/services/SocketService';
+
+import * as API from '@/types/api';
+import PrivateChatConstants from '@/constants/PrivateChatConstants';
+import {
+  //sendChatMessageDecorator,
+  clearMessagesDecorator,
+  //setReadDecorator,
+  //fetchMessagesDecorator,
+} from './common/ChatActions';
+
+export const changePrivateChatHubUrl = (
+  privateChat: API.PrivateChat,
+  hubUrl: string,
+  socket: APISocket,
+) => {
+  return socket.patch(PrivateChatConstants.SESSIONS_URL + '/' + privateChat.id, {
+    hub_url: hubUrl,
+  });
+};
+
+export const clearPrivateChatMessages = clearMessagesDecorator(
+  PrivateChatConstants.SESSIONS_URL,
+);
+
+/*export const sendPrivateChatMessage = sendChatMessageDecorator(
+  PrivateChatConstants.SESSIONS_URL,
+);
+export const fetchPrivateChatMessages = fetchMessagesDecorator(
+  PrivateChatConstants.SESSIONS_URL,
+);
+
+export const setPrivateChatSessionRead = setReadDecorator(
+  PrivateChatConstants.SESSIONS_URL,
+);*/

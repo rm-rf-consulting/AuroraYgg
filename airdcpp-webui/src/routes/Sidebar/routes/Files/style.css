@@ -1,0 +1,41 @@
+.file.session {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
+  max-width: 100%;
+  margin-top: 10px;
+}
+
+.file.session .content {
+  flex: 1;
+  overflow: auto;
+}
+
+.file.session .content pre {
+  overflow: initial;
+}
+
+.file.session.nfo .file-content pre {
+  font-family: 'Courier New', 'DejaVu Sans Mono', monospace;
+  font-size: 11px;
+  line-height: 12px;
+  padding: 3px;
+  margin: 0px;
+}
+
+.file.session img,
+.file.session video {
+  max-width: 100%;
+  max-height: 99%;
+}
+
+/* The fullscreen mode conflicts with layout styles in Webkit-based browsers */
+:-webkit-full-screen-ancestor:not(iframe) {
+  max-width: inherit !important;
+  overflow-x: initial;
+}
+
+:-webkit-full-screen-ancestor:not(iframe) #side-menu {
+  visibility: hidden;
+}

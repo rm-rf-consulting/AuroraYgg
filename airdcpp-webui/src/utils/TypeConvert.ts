@@ -1,0 +1,86 @@
+import * as API from '@/types/api';
+import * as UI from '@/types/ui';
+import { ErrorResponse, FieldError } from 'airdcpp-apisocket';
+import { DataFetchError } from '@/decorators/DataProviderDecorator';
+
+export const dupeToStringType = (dupeInfo: API.Dupe | null) => {
+  if (!dupeInfo) {
+    return '';
+  }
+
+  return `dupe ${dupeInfo.id.replaceAll('_', ' ')}`;
+};
+
+export const userOnlineStatusToColor = (flags: Array<API.UserFlag | API.HubUserFlag>) => {
+  if (flags.includes('offline')) {
+    return 'lightgrey';
+  }
+
+  if (flags.includes('bot')) {
+    return 'blue';
+  }
+
+  if (flags.includes('away')) {
+    return 'yellow';
+  }
+
+  return 'green';
+};
+
+export const hubOnlineStatusToColor = (connectState: API.HubConnectStateEnum) => {
+  switch (connectState) {
+    case API.HubConnectStateEnum.CONNECTED:
+      return 'green';
+    case API.HubConnectStateEnum.CONNECTING:
+      return 'yellow';
+    case API.HubConnectStateEnum.KEYPRINT_ERROR:
+      return 'red';
+    case API.HubConnectStateEnum.REDIRECT:
+      return 'orange';
+    case API.HubConnectStateEnum.PASSWORD:
+      return 'olive';
+    case API.HubConnectStateEnum.DISCONNECTED:
+    default:
+      return 'lightgrey';
+  }
+};
+
+export const urgencyToColor = (urgency: number) => {
+  switch (urgency) {
+    case UI.UrgencyEnum.ERROR:
+    case UI.UrgencyEnum.HIGHEST:
+      return 'red';
+    case UI.UrgencyEnum.HIGH:
+      return 'purple';
+    case UI.UrgencyEnum.WARNING:
+      return 'yellow';
+    case UI.UrgencyEnum.NORMAL:
+      return 'blue';
+    case UI.UrgencyEnum.INFO:
+    case UI.UrgencyEnum.LOW:
+      return 'grey';
+    default:
+      return '';
+  }
+};
+
+export const toErrorResponse = (errorCode: number, message: string): ErrorResponse => ({
+  code: errorCode,
+  message,
+  json: {
+    message,
+  },
+});
+
+export const errorResponseToString = (error: DataFetchError): string => {
+  let message = error.message;
+  if (error.code) {
+    message += ` (code ${error.code})`;
+  }
+
+  if (error.json && (error.json as FieldError).field) {
+    message += ` (field ${(error.json as FieldError).field})`;
+  }
+
+  return message;
+};

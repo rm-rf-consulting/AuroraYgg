@@ -1,0 +1,243 @@
+import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
+
+import { checkUnreadMessageCacheInfo, listMessageSort } from '@/utils/MessageUtils';
+
+import * as API from '@/types/api';
+import * as UI from '@/types/ui';
+
+import { messageSessionMapper } from '@/utils/UrgencyUtils';
+import { PrivateMessageUrgencies } from '@/constants/UrgencyConstants';
+import { getMockSession } from '@/tests/mocks/mock-session';
+
+import { initMockSessionStore } from '@/tests/mocks/mock-store';
+import {
+  PrivateChat1,
+  PrivateChat1MessageOther,
+  PrivateChat1MessagesResponse,
+  PrivateChat1MessageStatus,
+} from '@/tests/mocks/api/private-chat';
+import { createSessionStore } from '@/stores/session';
+import { waitFor } from '@testing-library/dom';
+import { getConnectedSocket, getMockServer, MockServer } from '@/tests/mocks/mock-server';
+
+const SESSION_ID = PrivateChat1.id;
+const SESSION_BASE = {
+  id: SESSION_ID,
+};
+
+const chatSessionUnread = {
+  message_counts: {
+    total: 5,
+    unread: {
+      user: 1,
+      bot: 1,
+      status: 1,
+      mention: 1,
+      verbose: 1,
+    },
+  },
+};
+
+const emptyCounts: UI.MessageCounts = {
+  message_counts: {
+    total: 0,
+    unread: {
+      bot: 0,
+      user: 0,
+      status: 0,
+      mention: 0,
+      verbose: 0,
+    },
+  },
+};
+
+describe('message store', () => {
+  let server: MockServer;
+  beforeEach(() => {
+    server = getMockServer();
+  });
+
+  afterEach(() => {
+    server.stop();
+  });
+
+  const createMockSessionStore = async (initProps: UI.SessionStoreInitData) => {
+    const sessionStore = createSessionStore();
+    const mocks = await initMockSessionStore(sessionStore, initProps, server);
+
+    return { sessionStore, mocks };
+  };
+
+  const initStore = async () => {
+    const { socket } = await getConnectedSocket(server);
+    const initProps = {
+      login: getMockSession(),
+      socket,
+    };
+
+    const { sessionStore, mocks } = await createMockSessionStore(initProps);
+    sessionStore.getState().privateChats.init([]);
+    mocks.privateChat.created.fire(PrivateChat1);
+
+    await waitFor(() =>
+      expect(
+        sessionStore.getState().privateChats.getSession(PrivateChat1.id),
+      ).toBeTruthy(),
+    );
+    return { sessionStore, mocks };
+  };
+
+  test('should add individual messages', async () => {
+    const {
+      sessionStore,
+      mocks: { privateChat },
+    } = await initStore();
+
+    for (const message of PrivateChat1MessagesResponse) {
+      if (message.chat_message) {
+        privateChat.chatMessage.fire(message.chat_message, SESSION_ID);
+      } else {
+        privateChat.statusMessage.fire(message.log_message, SESSION_ID);
+      }
+    }
+
+    expect(
+      sessionStore.getState().privateChats.messages.messages.get(SESSION_ID),
+    ).toEqual(PrivateChat1MessagesResponse);
+  });
+
+  test('should clear messages', async () => {
+    const {
+      sessionStore,
+      mocks: { privateChat },
+    } = await initStore();
+
+    // Add message
+    privateChat.statusMessage.fire(PrivateChat1MessageStatus, SESSION_ID);
+
+    // Clear messages
+    privateChat.updated.fire(emptyCounts, SESSION_ID);
+
+    expect(
+      sessionStore.getState().privateChats.messages.messages.get(SESSION_ID)!.length,
+    ).toEqual(0);
+  });
+
+  test('should reset unread counts for active sessions', () => {
+    const setRead = vi.fn();
+
+    const data = checkUnreadMessageCacheInfo(chatSessionUnread.message_counts, setRead);
+
+    expect(setRead).toHaveBeenCalled();
+    expect(data).toEqual({
+      total: 5,
+      unread: {
+        user: 0,
+        bot: 0,
+        status: 0,
+        mention: 0,
+        verbose: 0,
+      },
+    });
+  });
+
+  test('should map message urgencies', () => {
+    const urgencies = messageSessionMapper(chatSessionUnread, PrivateMessageUrgencies);
+
+    expect(urgencies).toEqual({
+      [UI.UrgencyEnum.HIGHEST]: 2, // Mention + user
+      [UI.UrgencyEnum.LOW]: 1, // Bot
+      [UI.UrgencyEnum.HIDDEN]: 2, // Status + verbose
+    });
+  });
+
+  test('should handle messages received during fetching', async () => {
+    const {
+      sessionStore,
+      mocks: { privateChat },
+    } = await initStore();
+
+    // Duplicate message
+    privateChat.statusMessage.fire(PrivateChat1MessageStatus, SESSION_ID);
+
+    // New message that doesn't exist in the list response
+    const ChatMessageReceived = {
+      ...PrivateChat1MessageOther,
+      id: 7,
+      time: PrivateChat1MessageStatus.time + 1,
+    } as API.ChatMessage;
+
+    privateChat.chatMessage.fire(ChatMessageReceived, SESSION_ID);
+
+    sessionStore
+      .getState()
+      .privateChats.messages.onMessagesFetched(
+        SESSION_BASE,
+        PrivateChat1MessagesResponse,
+      );
+
+    // All messages should have been stored
+    expect(
+      sessionStore.getState().privateChats.messages.messages.get(SESSION_ID),
+    ).toEqual(
+      [
+        ...PrivateChat1MessagesResponse,
+        {
+          chat_message: ChatMessageReceived,
+        },
+      ].sort(listMessageSort),
+    );
+  });
+
+  test('should remove duplicates arriving after fetching', async () => {
+    const {
+      sessionStore,
+      mocks: { privateChat },
+    } = await initStore();
+
+    sessionStore
+      .getState()
+      .privateChats.messages.onMessagesFetched(
+        SESSION_BASE,
+        PrivateChat1MessagesResponse,
+      );
+
+    privateChat.chatMessage.fire(PrivateChat1MessageOther, SESSION_ID);
+
+    expect(
+      sessionStore.getState().privateChats.messages.messages.get(SESSION_ID),
+    ).toEqual(PrivateChat1MessagesResponse);
+  });
+
+  test('should remove session data', async () => {
+    const {
+      sessionStore,
+      mocks: { privateChat },
+    } = await initStore();
+
+    sessionStore
+      .getState()
+      .privateChats.messages.onMessagesFetched(
+        SESSION_BASE,
+        PrivateChat1MessagesResponse,
+      );
+
+    expect(
+      sessionStore.getState().privateChats.messages.isSessionInitialized(SESSION_ID),
+    );
+    expect(
+      sessionStore.getState().privateChats.messages.messages.get(SESSION_ID),
+    ).toEqual(PrivateChat1MessagesResponse);
+
+    privateChat.removed.fire({
+      id: SESSION_ID,
+    });
+
+    expect(
+      !sessionStore.getState().privateChats.messages.isSessionInitialized(SESSION_ID),
+    );
+    expect(
+      sessionStore.getState().privateChats.messages.messages.get(SESSION_ID),
+    ).toEqual(undefined);
+  });
+});

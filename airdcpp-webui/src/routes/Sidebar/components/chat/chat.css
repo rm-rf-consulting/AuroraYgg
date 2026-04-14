@@ -1,0 +1,121 @@
+/* Layout */
+
+.chat.session,
+.chat.session .message-view {
+  flex: 100 100 0%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: hidden;
+}
+
+.chat.session .message-list {
+  margin: 10px 10px 10px 0px;
+}
+
+.chat.session .message-view > .ui.message {
+  margin: 10px 0px 0px 0px;
+}
+
+/* Messages common */
+.chat.session .item .time {
+  float: right;
+  color: lightgray;
+  font-size: small;
+}
+
+.chat.session .status.item > .text,
+.chat.session .chat.item .left > .text {
+  /* Avoid cutting text from the bottom with certain browser because of "overflow: hidden" */
+  line-height: initial !important;
+
+  overflow: hidden;
+  white-space: pre-wrap;
+  flex: 1;
+}
+
+/* Chat messages */
+.chat.session .chat.item {
+  margin-top: 5px;
+}
+
+.chat.session .chat.item .author {
+  float: left;
+}
+
+.chat.session .chat.item .left {
+  display: flex;
+}
+
+.chat.session .chat.item .left:not(.third-person) {
+  flex-direction: column;
+}
+
+.chat.session .chat.item .left.third-person > .text {
+  float: left;
+  margin-left: 3px;
+}
+
+.chat.session .chat.item img {
+  vertical-align: middle;
+}
+
+.chat.session .chat.item .third-person .author .ui.dropdown {
+  margin-left: 3px;
+}
+
+.chat.session .chat.item .author .caption {
+  color: steelblue !important;
+}
+
+.chat.session .chat.item.op .author .caption {
+  color: darkgoldenrod !important;
+}
+
+.chat.session .chat.item.self .author .caption {
+  color: black !important;
+}
+
+.chat.session .chat.item.bot .author .caption {
+  color: rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Status messages */
+.chat.session .status.item {
+  width: 100%;
+  display: flex !important;
+  flex-direction: row-reverse;
+}
+
+.chat.session .status.item > .text {
+  font-size: small;
+  color: rgba(0, 0, 0, 0.5);
+  float: left;
+}
+
+.chat.session .status.item i {
+  display: none !important;
+}
+
+.chat.session .status.item.verbose > .text {
+  color: rgba(0, 0, 0, 0.4);
+  font-size: x-small;
+}
+
+.chat.session .status.item.warning > .text {
+  color: orange;
+}
+
+.chat.session .status.item.error > .text {
+  color: red;
+}
+
+.chat.session .status.item.system > .text,
+.chat.session .status.item.history > .text {
+  font-style: italic;
+  font-size: 85%;
+}
+
+.chat.session .status.item.private > .text {
+  color: black;
+  font-size: 85%;
+}

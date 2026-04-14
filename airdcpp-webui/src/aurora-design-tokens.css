@@ -1,0 +1,67 @@
+/* AuroraYgg Design Tokens — Apple-inspired dark design system */
+
+:root {
+  /* Backgrounds */
+  --aurora-bg-primary: #000000;
+  --aurora-bg-secondary: #161617;
+  --aurora-bg-elevated: #1c1c1e;
+  --aurora-bg-card: #1d1d1f;
+  --aurora-bg-input: #2a2a2d;
+  --aurora-bg-hover: #323235;
+  --aurora-bg-surface-light: #f5f5f7;
+
+  /* Accent — single color, Apple Blue */
+  --aurora-accent: #0071e3;
+  --aurora-accent-hover: #0077ed;
+  --aurora-accent-active: #006edb;
+  --aurora-link: #2997ff;
+  --aurora-link-light: #0066cc;
+
+  /* Text */
+  --aurora-text-primary: #f5f5f7;
+  --aurora-text-secondary: rgba(255, 255, 255, 0.70);
+  --aurora-text-tertiary: rgba(255, 255, 255, 0.48);
+  --aurora-text-on-accent: #ffffff;
+
+  /* Borders */
+  --aurora-border: rgba(255, 255, 255, 0.08);
+  --aurora-border-focus: var(--aurora-accent);
+
+  /* Glass */
+  --aurora-glass-bg: rgba(29, 29, 31, 0.72);
+  --aurora-glass-blur: saturate(180%) blur(20px);
+
+  /* Shadows */
+  --aurora-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --aurora-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --aurora-shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.5);
+  --aurora-shadow-card: rgba(0, 0, 0, 0.22) 3px 5px 30px 0px;
+
+  /* Radius — Apple scale */
+  --aurora-radius-sm: 6px;
+  --aurora-radius-md: 8px;
+  --aurora-radius-lg: 12px;
+  --aurora-radius-xl: 16px;
+  --aurora-radius-pill: 980px;
+
+  /* Typography */
+  --aurora-font: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', sans-serif;
+
+  /* Spacing — 8px base */
+  --aurora-space-xs: 4px;
+  --aurora-space-sm: 8px;
+  --aurora-space-md: 16px;
+  --aurora-space-lg: 24px;
+  --aurora-space-xl: 32px;
+  --aurora-space-2xl: 48px;
+
+  /* Transitions */
+  --aurora-transition: 0.2s ease;
+  --aurora-transition-slow: 0.35s ease;
+
+  /* Status colors — muted for dark theme */
+  --aurora-success: #30d158;
+  --aurora-warning: #ffd60a;
+  --aurora-error: #ff453a;
+  --aurora-info: #64d2ff;
+}

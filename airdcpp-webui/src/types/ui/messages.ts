@@ -1,0 +1,32 @@
+import * as API from '@/types/api';
+import * as UI from '@/types/ui';
+
+import { AddItemDownload } from './downloads';
+
+export type MessageType = 'chat_message' | 'log_message';
+
+export type MessageListItem = Partial<ChatMessageListItem & StatusMessageListItem>;
+
+export type ChatMessageListItem = {
+  chat_message: API.ChatMessage;
+};
+
+export type StatusMessageListItem = {
+  log_message: API.StatusMessage;
+};
+
+export interface MessageActionMenuData {
+  addDownload: AddItemDownload;
+  remoteMenuId: string | undefined;
+  entity: UI.SessionItemBase | undefined;
+  position?: string;
+  boundary: string;
+}
+
+export interface MessageStore {
+  hasMessages: () => boolean;
+  hasInitializedSessions: () => boolean;
+
+  getSessionMessages: (sessionId: API.IdType) => MessageListItem[] | undefined;
+  isSessionInitialized: (sessionId: API.IdType) => boolean;
+}

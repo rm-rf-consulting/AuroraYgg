@@ -1,0 +1,33 @@
+.file-browser .table-container {
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex: 1;
+}
+
+.file-browser {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.file-browser .table td:first-child .file-name {
+  float: left;
+  max-width: calc(100% - 25px);
+}
+
+.file-browser .table td:first-child .file-name.selected {
+  font-weight: bold;
+}
+
+.file-browser .table td:first-child > i {
+  float: right;
+}
+
+.file-browser .table th:first-child {
+  width: 80%;
+}
+
+.file-browser a:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}

@@ -1,0 +1,44 @@
+#sidebar .virtual-table {
+  flex: 1 100 100%;
+}
+
+.filelist.session .browser,
+.filelist.session .browser .virtual-table {
+  height: calc(100% - 35px);
+}
+
+#mobile-layout .filelist.session .browser {
+  height: 100%;
+}
+
+#mobile-layout .filelist.session .browser {
+  height: calc(100% - 10px);
+}
+
+@media screen and (min-color-index: 0) and(-webkit-min-device-pixel-ratio:0) {
+  /* Safari specific CSS */
+  .filelist.session .browser {
+    height: calc(100% - 95px);
+  }
+
+  #mobile-layout .filelist.session .browser {
+    height: calc(100% - 60px);
+  }
+}
+
+.filelist.session .browser .ui.segment {
+  margin-bottom: 10px;
+}
+
+.filelist.session {
+  max-height: 100%;
+  overflow: hidden;
+  margin-top: 10px;
+  flex: 1 1 100%;
+}
+
+.session.new .profile.ui.dropdown {
+  margin-top: 10px;
+  color: gray;
+  align-self: flex-end;
+}

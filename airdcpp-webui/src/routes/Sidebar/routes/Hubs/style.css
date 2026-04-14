@@ -1,0 +1,51 @@
+.hub-action-prompt {
+  flex-direction: column;
+  align-items: flex-start !important;
+}
+
+.hub-action-prompt .header {
+  margin: 0 0 1rem !important;
+}
+
+.hub-action-prompt .password.prompt .help {
+  margin-top: 10px;
+}
+
+.hub-action-prompt .redirect.prompt {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.hub.session .virtual-table,
+.hub.session .offline-message,
+.hub.session .loader-wrapper {
+  flex: 1;
+  margin-top: 5px;
+}
+
+.hub.session .cell-wrapper.tag,
+.hub.session .cell-wrapper.nick,
+.hub.session .cell-wrapper.description,
+.hub.session .cell-wrapper.share_size {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.hub.session .cell-wrapper.nick.op {
+  color: steelblue;
+}
+.hub.session .session-footer .actions-wrapper > a,
+.hub.session .session-footer .actions-wrapper > div {
+  /* Don't cut the shadow */
+  padding-left: 1px;
+  padding-bottom: 1px;
+}
+
+.hub.session .session-footer #userlist-toggle label {
+  color: grey;
+  font-size: small;
+}
+
+.hub.session .session-footer .actions-wrapper .dropdown {
+  margin-left: 10px;
+}
