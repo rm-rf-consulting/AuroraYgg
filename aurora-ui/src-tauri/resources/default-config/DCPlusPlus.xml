@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<DCPlusPlus>
+	<Settings>
+		<ConfigVersion type="string">2.14.0</ConfigVersion>
+		<ConfigName type="string">airdcpp-web</ConfigName>
+		<ConfigBuildNumber type="int">0</ConfigBuildNumber>
+		<WizardRunNew type="int">0</WizardRunNew>
+	</Settings>
+	<SearchTypes>
+		<SearchType Id="1">ape;flac;m4a;mid;mp3;mpc;ogg;ra;wav;wma</SearchType>
+		<SearchType Id="2">7z;ace;arj;bz2;gz;lha;lzh;rar;tar;z;zip</SearchType>
+		<SearchType Id="3">doc;docx;htm;html;nfo;odf;odp;ods;odt;pdf;ppt;pptx;rtf;txt;xls;xlsx;xml;xps</SearchType>
+		<SearchType Id="4">app;bat;cmd;com;dll;exe;jar;msi;ps1;vbs;wsf</SearchType>
+		<SearchType Id="5">bmp;cdr;eps;gif;ico;img;jpeg;jpg;png;ps;psd;sfw;tga;tif;webp</SearchType>
+		<SearchType Id="6">3gp;asf;asx;avi;divx;flv;mkv;mov;mp4;mpeg;mpg;ogm;pxp;qt;rm;rmvb;swf;vob;webm;wmv</SearchType>
+	</SearchTypes>
+</DCPlusPlus>

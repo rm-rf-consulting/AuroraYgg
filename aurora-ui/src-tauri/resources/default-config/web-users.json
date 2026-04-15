@@ -1,6 +1,13 @@
 {
   "settings": {
-    "users": [],
+    "users": [
+      {
+        "username": "admin",
+        "password": "aurora",
+        "permissions": ["admin"],
+        "last_login": 0
+      }
+    ],
     "refresh_tokens": [],
     "invites": []
   },

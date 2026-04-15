@@ -46,7 +46,7 @@
   nsExec::ExecToLog '"$INSTDIR\resources\nssm.exe" stop AuroraDaemon'
 
   ; Install service
-  nsExec::ExecToLog '"$INSTDIR\resources\nssm.exe" install AuroraDaemon "$INSTDIR\airdcppd-x86_64-pc-windows-msvc.exe" "-c=$APPDATA\Aurora" "-p=5600"'
+  nsExec::ExecToLog '"$INSTDIR\resources\nssm.exe" install AuroraDaemon "$INSTDIR\airdcppd.exe" "-c=$APPDATA\Aurora" "-p=5600"'
   Pop $0
 
   ${If} $0 == 0
