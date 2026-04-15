@@ -13,6 +13,7 @@ import {
   Radio,
   Bell,
   Plus,
+  ShieldCheck,
 } from 'lucide-react'
 import { NavLink, useLocation } from 'react-router'
 
@@ -35,6 +36,7 @@ const mainNav: NavItem[] = [
 
 const sessionNav: NavItem[] = [
   { label: 'Events', icon: Bell, path: '/events' },
+  { label: 'Admin', icon: ShieldCheck, path: '/admin' },
 ]
 
 export function Sidebar() {

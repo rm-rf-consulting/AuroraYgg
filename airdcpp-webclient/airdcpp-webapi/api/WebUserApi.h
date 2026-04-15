@@ -37,6 +37,12 @@ namespace webserver {
 		api_return handleUpdateUser(ApiRequest& aRequest);
 		api_return handleRemoveUser(ApiRequest& aRequest);
 
+		// Invite system
+		api_return handleGetInvites(ApiRequest& aRequest);
+		api_return handleCreateInvite(ApiRequest& aRequest);
+		api_return handleRemoveInvite(ApiRequest& aRequest);
+		api_return handleRedeemInvite(ApiRequest& aRequest);
+
 		bool updateUserProperties(WebUserPtr& aUser, const json& j, bool aIsNew);
 
 		void on(WebUserManagerListener::UserAdded, const WebUserPtr& aUser) noexcept override;

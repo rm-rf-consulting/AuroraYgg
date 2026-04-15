@@ -67,6 +67,25 @@ namespace webserver {
 		size_t getUserSessionCount() const noexcept;
 		string createRefreshToken(const WebUserPtr& aUser) noexcept;
 
+		// Invite system
+		struct InviteCode {
+			string code;
+			string createdBy;
+			time_t createdAt;
+			time_t expiresAt;
+			StringList permissions;
+			bool used = false;
+			string usedBy;
+
+			using List = vector<InviteCode>;
+		};
+
+		string createInvite(const string& aCreatedBy, const StringList& aPermissions, int aExpiresHours = 72) noexcept;
+		InviteCode::List getInvites() const noexcept;
+		bool removeInvite(const string& aCode) noexcept;
+		optional<InviteCode> validateInvite(const string& aCode) const noexcept;
+		WebUserPtr redeemInvite(const string& aCode, const string& aUsername, const string& aPassword);
+
 		WebUserManager(WebUserManager&) = delete;
 		WebUserManager& operator=(WebUserManager&) = delete;
 
@@ -101,6 +120,7 @@ namespace webserver {
 		std::map<std::string, SessionPtr> sessionsRemoteId;
 		std::map<LocalSessionId, SessionPtr> sessionsLocalId;
 		std::map<string, TokenInfo> refreshTokens;
+		std::map<string, InviteCode> invites;
 
 		void checkExpiredSessions() noexcept;
 		void checkExpiredTokens() noexcept;
@@ -123,6 +143,7 @@ namespace webserver {
 
 		void loadUsers(const json& aJson);
 		void loadRefreshTokens(const json& aJson);
+		void loadInvites(const json& aJson);
 
 		WebServerManager* wsm;
 		void setDirty() noexcept;

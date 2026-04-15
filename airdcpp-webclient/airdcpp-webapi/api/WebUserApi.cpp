@@ -44,6 +44,14 @@ namespace webserver {
 		METHOD_HANDLER(Access::ADMIN, METHOD_PATCH,		(STR_PARAM(USERNAME_PARAM)),	WebUserApi::handleUpdateUser);
 		METHOD_HANDLER(Access::ADMIN, METHOD_DELETE,	(STR_PARAM(USERNAME_PARAM)),	WebUserApi::handleRemoveUser);
 
+		// Invite system
+		METHOD_HANDLER(Access::ADMIN, METHOD_GET,		(EXACT_PARAM("invites")),						WebUserApi::handleGetInvites);
+		METHOD_HANDLER(Access::ADMIN, METHOD_POST,		(EXACT_PARAM("invites")),						WebUserApi::handleCreateInvite);
+		METHOD_HANDLER(Access::ADMIN, METHOD_DELETE,	(EXACT_PARAM("invites"), STR_PARAM("code")),	WebUserApi::handleRemoveInvite);
+
+		// Public: redeem invite (no auth required — handled via ANY access)
+		METHOD_HANDLER(Access::ANY, METHOD_POST,		(EXACT_PARAM("register")),						WebUserApi::handleRedeemInvite);
+
 		um.addListener(this);
 	}
 
@@ -141,6 +149,71 @@ namespace webserver {
 		}
 
 		return http_status::no_content;
+	}
+
+	// Invite handlers
+	api_return WebUserApi::handleGetInvites(ApiRequest& aRequest) {
+		auto invites = um.getInvites();
+		json j = json::array();
+		for (const auto& inv : invites) {
+			j.push_back({
+				{ "code", inv.code },
+				{ "created_by", inv.createdBy },
+				{ "created_at", inv.createdAt },
+				{ "expires_at", inv.expiresAt },
+				{ "permissions", inv.permissions },
+				{ "used", inv.used },
+				{ "used_by", inv.usedBy },
+			});
+		}
+		aRequest.setResponseBody(j);
+		return http_status::ok;
+	}
+
+	api_return WebUserApi::handleCreateInvite(ApiRequest& aRequest) {
+		const auto& reqJson = aRequest.getRequestBody();
+		auto permissions = JsonUtil::getOptionalField<StringList>("permissions", reqJson);
+		auto expiresHours = JsonUtil::getOptionalField<int>("expires_hours", reqJson);
+
+		StringList perms = permissions.value_or(StringList{ "search", "download", "transfers", "hubs_view", "hubs_send", "queue_view", "share_view", "events_view", "favorite_hubs_view", "private_chat_view", "private_chat_send", "filelists_view" });
+		int hours = expiresHours.value_or(72);
+
+		auto createdBy = aRequest.getSession()->getUser()->getUserName();
+		auto code = um.createInvite(createdBy, perms, hours);
+
+		aRequest.setResponseBody({
+			{ "code", code },
+			{ "expires_hours", hours },
+		});
+		return http_status::ok;
+	}
+
+	api_return WebUserApi::handleRemoveInvite(ApiRequest& aRequest) {
+		const auto& code = aRequest.getStringParam("code");
+		if (!um.removeInvite(code)) {
+			aRequest.setResponseErrorStr("Invite code not found");
+			return http_status::not_found;
+		}
+		return http_status::no_content;
+	}
+
+	api_return WebUserApi::handleRedeemInvite(ApiRequest& aRequest) {
+		const auto& reqJson = aRequest.getRequestBody();
+		auto code = JsonUtil::getField<string>("invite_code", reqJson, false);
+		auto username = JsonUtil::getField<string>("username", reqJson, false);
+		auto password = JsonUtil::getField<string>("password", reqJson, false);
+
+		try {
+			auto user = um.redeemInvite(code, username, password);
+			aRequest.setResponseBody({
+				{ "username", user->getUserName() },
+				{ "message", "Account created successfully" },
+			});
+			return http_status::ok;
+		} catch (const std::domain_error& e) {
+			aRequest.setResponseErrorStr(e.what());
+			return http_status::bad_request;
+		}
 	}
 
 	void WebUserApi::on(WebUserManagerListener::UserAdded, const WebUserPtr& aUser) noexcept {

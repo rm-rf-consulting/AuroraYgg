@@ -507,10 +507,117 @@ namespace webserver {
 		}
 	}
 
+	void WebUserManager::loadInvites(const json& aJson) {
+		auto invitesJson = aJson.find("invites");
+		if (invitesJson == aJson.end()) {
+			return;
+		}
+
+		for (const auto& inv : *invitesJson) {
+			InviteCode code;
+			code.code = inv.at("code");
+			code.createdBy = inv.at("created_by");
+			code.createdAt = inv.at("created_at");
+			code.expiresAt = inv.at("expires_at");
+			code.permissions = inv.at("permissions").get<StringList>();
+			code.used = inv.value("used", false);
+			code.usedBy = inv.value("used_by", string());
+
+			if (!code.used && GET_TIME() < code.expiresAt) {
+				invites.try_emplace(code.code, std::move(code));
+			}
+		}
+	}
+
+	string WebUserManager::createInvite(const string& aCreatedBy, const StringList& aPermissions, int aExpiresHours) noexcept {
+		WLock l(cs);
+		InviteCode invite;
+		invite.code = generateUUID();
+		invite.createdBy = aCreatedBy;
+		invite.createdAt = GET_TIME();
+		invite.expiresAt = GET_TIME() + (aExpiresHours * 3600);
+		invite.permissions = aPermissions;
+		invite.used = false;
+
+		auto code = invite.code;
+		invites.try_emplace(code, std::move(invite));
+		setDirty();
+		return code;
+	}
+
+	WebUserManager::InviteCode::List WebUserManager::getInvites() const noexcept {
+		RLock l(cs);
+		InviteCode::List ret;
+		for (const auto& [_, inv] : invites) {
+			ret.push_back(inv);
+		}
+		return ret;
+	}
+
+	bool WebUserManager::removeInvite(const string& aCode) noexcept {
+		WLock l(cs);
+		auto it = invites.find(aCode);
+		if (it == invites.end()) {
+			return false;
+		}
+		invites.erase(it);
+		setDirty();
+		return true;
+	}
+
+	optional<WebUserManager::InviteCode> WebUserManager::validateInvite(const string& aCode) const noexcept {
+		RLock l(cs);
+		auto it = invites.find(aCode);
+		if (it == invites.end()) {
+			return nullopt;
+		}
+		const auto& inv = it->second;
+		if (inv.used || GET_TIME() > inv.expiresAt) {
+			return nullopt;
+		}
+		return inv;
+	}
+
+	WebUserPtr WebUserManager::redeemInvite(const string& aCode, const string& aUsername, const string& aPassword) {
+		if (!WebUser::validateUsername(aUsername)) {
+			throw std::domain_error("The username should only contain alphanumeric characters");
+		}
+		if (aPassword.empty()) {
+			throw std::domain_error("Password is required");
+		}
+
+		WLock l(cs);
+		auto it = invites.find(aCode);
+		if (it == invites.end()) {
+			throw std::domain_error("Invalid invite code");
+		}
+
+		auto& inv = it->second;
+		if (inv.used || GET_TIME() > inv.expiresAt) {
+			throw std::domain_error("Invite code has expired");
+		}
+
+		if (users.find(aUsername) != users.end()) {
+			throw std::domain_error("Username already exists");
+		}
+
+		auto user = std::make_shared<WebUser>(aUsername, aPassword, false);
+		user->setPermissions(inv.permissions);
+
+		users.try_emplace(aUsername, user);
+
+		inv.used = true;
+		inv.usedBy = aUsername;
+
+		setDirty();
+		return user;
+	}
+
 	void WebUserManager::on(WebServerManagerListener::LoadSettings, const MessageCallback& aErrorF) noexcept {
 		WebServerSettings::loadSettingFile(CONFIG_DIR, CONFIG_NAME_JSON, [this](const json& aJson, int) {
 			loadUsers(aJson);
 			loadRefreshTokens(aJson);
+			loadInvites(aJson);
 		}, aErrorF, CONFIG_VERSION);
 	}
 
@@ -543,6 +650,21 @@ namespace webserver {
 					{ "token", t.token },
 					{ "username", t.user->getUserName() },
 					{ "expires_on", t.expiresOn },
+				});
+			}
+		}
+
+		{
+			RLock l(cs);
+			for (const auto& [_, inv] : invites) {
+				settings["invites"].push_back({
+					{ "code", inv.code },
+					{ "created_by", inv.createdBy },
+					{ "created_at", inv.createdAt },
+					{ "expires_at", inv.expiresAt },
+					{ "permissions", inv.permissions },
+					{ "used", inv.used },
+					{ "used_by", inv.usedBy },
 				});
 			}
 		}

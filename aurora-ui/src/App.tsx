@@ -17,6 +17,7 @@ import { MessageSession } from '@/pages/sessions/MessageSession'
 import { FilelistSession } from '@/pages/sessions/FilelistSession'
 import { EventsSession } from '@/pages/sessions/EventsSession'
 import { PeersPage } from '@/pages/PeersPage'
+import { AdminPage } from '@/pages/AdminPage'
 
 function AppBootstrap() {
   const tryReconnect = useAuthStore((s) => s.tryReconnect)
@@ -59,6 +60,7 @@ function AppBootstrap() {
         <Route path="filelists/:id" element={<FilelistSession />} />
         <Route path="events" element={<EventsSession />} />
         <Route path="peers" element={<PeersPage />} />
+        <Route path="admin" element={<AdminPage />} />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
