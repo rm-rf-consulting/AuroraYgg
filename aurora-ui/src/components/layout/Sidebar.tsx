@@ -14,6 +14,7 @@ import {
   Bell,
   Plus,
   ShieldCheck,
+  Link2,
 } from 'lucide-react'
 import { NavLink, useLocation } from 'react-router'
 
@@ -30,6 +31,7 @@ const mainNav: NavItem[] = [
   { label: 'Queue', icon: Download, path: '/queue' },
   { label: 'Transfers', icon: ArrowLeftRight, path: '/transfers' },
   { label: 'Share', icon: FolderOpen, path: '/share' },
+  { label: 'Share Links', icon: Link2, path: '/links' },
   { label: 'Favorites', icon: Heart, path: '/favorites' },
   { label: 'Ygg Peers', icon: Globe, path: '/peers' },
 ]

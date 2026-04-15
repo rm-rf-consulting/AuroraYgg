@@ -1,8 +1,10 @@
 import { useState, useEffect, useRef, type FormEvent } from 'react'
-import { Search, Download, File, Folder, X, Filter, Loader2 } from 'lucide-react'
+import { useSearchParams } from 'react-router'
+import { Search, Download, File, Folder, X, Filter, Loader2, Eye, Clock } from 'lucide-react'
 import { getSocket } from '@/api/socket'
 import { formatBytes } from '@/lib/utils'
 import { toast } from '@/components/shared/Toast'
+import { isPreviewable, MediaPreview } from '@/components/shared/MediaPreview'
 
 interface SearchResult {
   id: number
@@ -36,20 +38,42 @@ const FILE_TYPE_OPTIONS = [
   { id: 'directory', label: 'Folders' },
 ]
 
+const HISTORY_KEY = 'aurora_search_history'
+const MAX_HISTORY = 20
+
+function getSearchHistory(): string[] {
+  try {
+    return JSON.parse(localStorage.getItem(HISTORY_KEY) || '[]')
+  } catch { return [] }
+}
+
+function addToHistory(query: string) {
+  const history = getSearchHistory().filter((h) => h !== query)
+  history.unshift(query)
+  localStorage.setItem(HISTORY_KEY, JSON.stringify(history.slice(0, MAX_HISTORY)))
+}
+
 export function SearchPage() {
-  const [query, setQuery] = useState('')
+  const [searchParams, setSearchParams] = useSearchParams()
+  const [query, setQuery] = useState(searchParams.get('q') || '')
   const [fileType, setFileType] = useState('any')
   const [results, setResults] = useState<SearchResult[]>([])
   const [searching, setSearching] = useState(false)
   const [searchId, setSearchId] = useState<number | null>(null)
   const [resultCount, setResultCount] = useState(0)
+  const [previewFile, setPreviewFile] = useState<{ name: string; url: string } | null>(null)
+  const [showHistory, setShowHistory] = useState(false)
   const listenerRef = useRef<(() => void) | null>(null)
   const inputRef = useRef<HTMLInputElement>(null)
 
-  // Focus search input on mount
+  // Focus search input on mount + auto-search from URL params
   useEffect(() => {
     inputRef.current?.focus()
-  }, [])
+    const q = searchParams.get('q')
+    if (q && !searching && results.length === 0) {
+      setQuery(q)
+    }
+  }, [searchParams])
 
   // Cleanup listener on unmount
   useEffect(() => {
@@ -59,6 +83,8 @@ export function SearchPage() {
   const handleSearch = async (e: FormEvent) => {
     e.preventDefault()
     if (!query.trim()) return
+    setShowHistory(false)
+    addToHistory(query.trim())
 
     const socket = getSocket()
     if (!socket) return

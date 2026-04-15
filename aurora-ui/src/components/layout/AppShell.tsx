@@ -4,6 +4,7 @@ import { useAuthStore } from '@/stores/authStore'
 import { useHubStore } from '@/stores/hubStore'
 import { useTransferStore } from '@/stores/transferStore'
 import { useGlobalHotkeys } from '@/hooks/useHotkeys'
+import { useUriHandler } from '@/hooks/useUriHandler'
 import { ToastContainer } from '@/components/shared/Toast'
 import { CommandPalette } from '@/components/shared/CommandPalette'
 import { GlassNav } from './GlassNav'
@@ -21,6 +22,7 @@ export function AppShell() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
   useGlobalHotkeys()
+  useUriHandler()
 
   // Redirect to login if not authenticated
   useEffect(() => {

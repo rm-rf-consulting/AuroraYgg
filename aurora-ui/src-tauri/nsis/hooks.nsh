@@ -78,13 +78,31 @@
 !macroend
 
 !macro NSIS_HOOK_PREUNINSTALL
-  ; --- Stop and remove the daemon service ---
+  ; --- 1. Stop and remove the daemon service ---
   DetailPrint "Stopping Aurora daemon service..."
   nsExec::ExecToLog '"$INSTDIR\resources\nssm.exe" stop AuroraDaemon'
   nsExec::ExecToLog '"$INSTDIR\resources\nssm.exe" remove AuroraDaemon confirm'
   DetailPrint "Aurora daemon service removed"
 
-  ; NOTE: We do NOT uninstall Yggdrasil — user may use it for other things
-  ; NOTE: We do NOT delete %APPDATA%\Aurora\ — user's config and data
-  ; The NSIS uninstaller will handle removing $INSTDIR files
+  ; --- 2. Uninstall Yggdrasil ---
+  DetailPrint "Removing Yggdrasil..."
+  ; Stop service first
+  nsExec::ExecToLog 'net stop yggdrasil'
+  ; Find and uninstall MSI
+  FindFirst $1 $2 "$INSTDIR\resources\yggdrasil-*.msi"
+  ${If} $2 != ""
+    nsExec::ExecToLog 'msiexec /x "$INSTDIR\resources\$2" /quiet /norestart'
+    Pop $0
+    ${If} $0 == 0
+      DetailPrint "Yggdrasil uninstalled"
+    ${Else}
+      DetailPrint "Yggdrasil removal failed (may have been installed separately)"
+    ${EndIf}
+  ${EndIf}
+  FindClose $1
+
+  ; --- 3. Clean up config directory ---
+  DetailPrint "Removing Aurora configuration..."
+  RMDir /r "$APPDATA\Aurora"
+  DetailPrint "Configuration removed"
 !macroend
