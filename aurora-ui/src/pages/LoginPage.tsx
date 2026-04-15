@@ -84,8 +84,20 @@ export function LoginPage() {
           </button>
         </form>
 
+        {/* Register link */}
+        <p className="text-center mt-6">
+          <span className="text-micro">Have an invite? </span>
+          <button
+            type="button"
+            onClick={() => navigate('/register')}
+            className="text-xs text-(--color-link) hover:underline cursor-pointer"
+          >
+            Create account
+          </button>
+        </p>
+
         {/* Footer */}
-        <p className="text-micro text-center mt-8">
+        <p className="text-micro text-center mt-4">
           Connect to AirDC++ daemon at{' '}
           <span className="text-(--color-text-secondary)">{window.location.host}</span>
         </p>

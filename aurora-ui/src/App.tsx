@@ -18,6 +18,7 @@ import { FilelistSession } from '@/pages/sessions/FilelistSession'
 import { EventsSession } from '@/pages/sessions/EventsSession'
 import { PeersPage } from '@/pages/PeersPage'
 import { AdminPage } from '@/pages/AdminPage'
+import { RegisterPage } from '@/pages/RegisterPage'
 
 function AppBootstrap() {
   const tryReconnect = useAuthStore((s) => s.tryReconnect)
@@ -47,6 +48,7 @@ function AppBootstrap() {
   return (
     <Routes>
       <Route path="/login" element={<LoginPage />} />
+      <Route path="/register" element={<RegisterPage />} />
       <Route element={<AppShell />}>
         <Route index element={<HomePage />} />
         <Route path="search" element={<SearchPage />} />

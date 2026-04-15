@@ -27,6 +27,7 @@
 #include <web-server/JsonUtil.h>
 #include <web-server/Session.h>
 #include <web-server/WebUserManager.h>
+#include <web-server/WebServerManager.h>
 
 #define USERNAME_PARAM "username"
 namespace webserver {
@@ -38,19 +39,17 @@ namespace webserver {
 		createSubscriptions({ "web_user_added", "web_user_updated", "web_user_removed" });
 
 		METHOD_HANDLER(Access::ADMIN, METHOD_GET,		(),								WebUserApi::handleGetUsers);
-
 		METHOD_HANDLER(Access::ADMIN, METHOD_POST,		(),								WebUserApi::handleAddUser);
-		METHOD_HANDLER(Access::ADMIN, METHOD_GET,		(STR_PARAM(USERNAME_PARAM)),	WebUserApi::handleGetUser);
-		METHOD_HANDLER(Access::ADMIN, METHOD_PATCH,		(STR_PARAM(USERNAME_PARAM)),	WebUserApi::handleUpdateUser);
-		METHOD_HANDLER(Access::ADMIN, METHOD_DELETE,	(STR_PARAM(USERNAME_PARAM)),	WebUserApi::handleRemoveUser);
 
-		// Invite system
+		// Invite system (EXACT_PARAM must come BEFORE STR_PARAM to avoid "invites" being matched as username)
 		METHOD_HANDLER(Access::ADMIN, METHOD_GET,		(EXACT_PARAM("invites")),						WebUserApi::handleGetInvites);
 		METHOD_HANDLER(Access::ADMIN, METHOD_POST,		(EXACT_PARAM("invites")),						WebUserApi::handleCreateInvite);
 		METHOD_HANDLER(Access::ADMIN, METHOD_DELETE,	(EXACT_PARAM("invites"), STR_PARAM("code")),	WebUserApi::handleRemoveInvite);
 
-		// Public: redeem invite (no auth required — handled via ANY access)
-		METHOD_HANDLER(Access::ANY, METHOD_POST,		(EXACT_PARAM("register")),						WebUserApi::handleRedeemInvite);
+		// User management (STR_PARAM after EXACT_PARAM)
+		METHOD_HANDLER(Access::ADMIN, METHOD_GET,		(STR_PARAM(USERNAME_PARAM)),	WebUserApi::handleGetUser);
+		METHOD_HANDLER(Access::ADMIN, METHOD_PATCH,		(STR_PARAM(USERNAME_PARAM)),	WebUserApi::handleUpdateUser);
+		METHOD_HANDLER(Access::ADMIN, METHOD_DELETE,	(STR_PARAM(USERNAME_PARAM)),	WebUserApi::handleRemoveUser);
 
 		um.addListener(this);
 	}
@@ -197,11 +196,13 @@ namespace webserver {
 		return http_status::no_content;
 	}
 
-	api_return WebUserApi::handleRedeemInvite(ApiRequest& aRequest) {
+	api_return WebUserApi::handleRedeemInvitePublic(ApiRequest& aRequest) {
 		const auto& reqJson = aRequest.getRequestBody();
 		auto code = JsonUtil::getField<string>("invite_code", reqJson, false);
 		auto username = JsonUtil::getField<string>("username", reqJson, false);
 		auto password = JsonUtil::getField<string>("password", reqJson, false);
+
+		auto& um = WebServerManager::getInstance()->getUserManager();
 
 		try {
 			auto user = um.redeemInvite(code, username, password);

@@ -26,6 +26,7 @@
 #include <web-server/Session.h>
 
 #include <api/SessionApi.h>
+#include <api/WebUserApi.h>
 
 #include <sstream>
 
@@ -42,6 +43,12 @@ namespace webserver {
 			// Special case because we may not have the session yet
 			if (apiRequest.getApiModule() == "sessions" && !apiRequest.getSession()) {
 				return routeAuthRequest(aRequest);
+			}
+
+			// Public invite registration — no auth required
+			if (apiRequest.getApiModule() == "web_users" && !apiRequest.getSession() &&
+				apiRequest.getPathTokenAt(0) == "register" && apiRequest.getMethod() == METHOD_POST) {
+				return WebUserApi::handleRedeemInvitePublic(aRequest.apiRequest);
 			}
 
 			// Require auth for all other modules

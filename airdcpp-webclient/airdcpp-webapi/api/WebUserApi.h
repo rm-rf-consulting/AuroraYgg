@@ -30,6 +30,9 @@ namespace webserver {
 	public:
 		WebUserApi(Session* aSession);
 		~WebUserApi();
+
+		// Public invite redemption (called from ApiRouter without auth)
+		static api_return handleRedeemInvitePublic(ApiRequest& aRequest);
 	private:
 		api_return handleGetUsers(ApiRequest& aRequest);
 		api_return handleAddUser(ApiRequest& aRequest);
@@ -41,7 +44,6 @@ namespace webserver {
 		api_return handleGetInvites(ApiRequest& aRequest);
 		api_return handleCreateInvite(ApiRequest& aRequest);
 		api_return handleRemoveInvite(ApiRequest& aRequest);
-		api_return handleRedeemInvite(ApiRequest& aRequest);
 
 		bool updateUserProperties(WebUserPtr& aUser, const json& j, bool aIsNew);
 
