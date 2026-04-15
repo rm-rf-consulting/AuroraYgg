@@ -4,6 +4,8 @@ import { useAuthStore } from '@/stores/authStore'
 import { useHubStore } from '@/stores/hubStore'
 import { useTransferStore } from '@/stores/transferStore'
 import { useGlobalHotkeys } from '@/hooks/useHotkeys'
+import { ToastContainer } from '@/components/shared/Toast'
+import { CommandPalette } from '@/components/shared/CommandPalette'
 import { GlassNav } from './GlassNav'
 import { Sidebar } from './Sidebar'
 
@@ -18,9 +20,9 @@ export function AppShell() {
 
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
-  // Global keyboard shortcuts
   useGlobalHotkeys()
 
+  // Redirect to login if not authenticated
   useEffect(() => {
     if (!isAuthenticated) {
       navigate('/login', { replace: true })
@@ -48,7 +50,6 @@ export function AppShell() {
     }
     setup()
 
-    // Poll transfer stats every 2s
     const statsInterval = setInterval(fetchStats, 2000)
 
     return () => {
@@ -65,7 +66,6 @@ export function AppShell() {
       <GlassNav onMenuToggle={() => setSidebarOpen(!sidebarOpen)} />
 
       <div className="flex flex-1 pt-12 overflow-hidden">
-        {/* Mobile sidebar overlay */}
         {sidebarOpen && (
           <div
             className="fixed inset-0 bg-black/50 z-(--z-modal-backdrop) lg:hidden"
@@ -73,7 +73,6 @@ export function AppShell() {
           />
         )}
 
-        {/* Sidebar — always visible on lg+, togglable on mobile */}
         <div
           className={`fixed lg:static top-12 bottom-0 left-0 z-(--z-modal) lg:z-auto transition-transform duration-200 ${
             sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
@@ -86,6 +85,9 @@ export function AppShell() {
           <Outlet />
         </main>
       </div>
+
+      <CommandPalette />
+      <ToastContainer />
     </div>
   )
 }

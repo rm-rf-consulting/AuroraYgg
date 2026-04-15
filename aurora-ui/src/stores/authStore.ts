@@ -1,6 +1,9 @@
 import { create } from 'zustand'
 import { createSocket, destroySocket, getSocket } from '@/api/socket'
 
+const TOKEN_KEY = 'aurora_refresh_token'
+const USERNAME_KEY = 'aurora_username'
+
 interface AuthState {
   isAuthenticated: boolean
   isConnecting: boolean
@@ -10,7 +13,7 @@ interface AuthState {
 
   login: (username: string, password: string) => Promise<void>
   logout: () => Promise<void>
-  tryReconnect: () => Promise<void>
+  tryReconnect: () => Promise<boolean>
 }
 
 interface SystemInfo {
@@ -21,7 +24,31 @@ interface SystemInfo {
   client_started: number
 }
 
-export const useAuthStore = create<AuthState>((set, get) => ({
+interface ConnectResponse {
+  refresh_token?: string
+  auth_token?: string
+}
+
+function setupSocket(set: (partial: Partial<AuthState>) => void) {
+  const socket = createSocket()
+  socket.onDisconnected = (reason, _code, _wasClean) => {
+    set({ isAuthenticated: false, error: reason || 'Disconnected' })
+  }
+  return socket
+}
+
+async function fetchSystemInfo(set: (partial: Partial<AuthState>) => void) {
+  const socket = getSocket()
+  if (!socket) return
+  try {
+    const info = (await socket.get('system/system_info')) as SystemInfo
+    set({ systemInfo: info })
+  } catch {
+    // Non-critical
+  }
+}
+
+export const useAuthStore = create<AuthState>((set) => ({
   isAuthenticated: false,
   isConnecting: false,
   username: null,
@@ -31,22 +58,17 @@ export const useAuthStore = create<AuthState>((set, get) => ({
   login: async (username: string, password: string) => {
     set({ isConnecting: true, error: null })
     try {
-      const socket = createSocket()
+      const socket = setupSocket(set)
+      const result = (await socket.connect(username, password)) as ConnectResponse
 
-      socket.onDisconnected = (reason, _code, _wasClean) => {
-        set({ isAuthenticated: false, error: reason || 'Disconnected' })
+      // Persist session
+      if (result?.refresh_token) {
+        localStorage.setItem(TOKEN_KEY, result.refresh_token)
       }
+      localStorage.setItem(USERNAME_KEY, username)
 
-      await socket.connect(username, password)
       set({ isAuthenticated: true, isConnecting: false, username })
-
-      // Fetch system info
-      try {
-        const info = await socket.get('system/system_info') as SystemInfo
-        set({ systemInfo: info })
-      } catch {
-        // Non-critical
-      }
+      fetchSystemInfo(set)
     } catch (err) {
       destroySocket()
       const message = err instanceof Error ? err.message : 'Connection failed'
@@ -65,6 +87,8 @@ export const useAuthStore = create<AuthState>((set, get) => ({
       }
     }
     destroySocket()
+    localStorage.removeItem(TOKEN_KEY)
+    localStorage.removeItem(USERNAME_KEY)
     set({
       isAuthenticated: false,
       isConnecting: false,
@@ -74,22 +98,43 @@ export const useAuthStore = create<AuthState>((set, get) => ({
     })
   },
 
-  tryReconnect: async () => {
-    const refreshToken = localStorage.getItem('aurora_refresh_token')
-    if (!refreshToken) return
+  tryReconnect: async (): Promise<boolean> => {
+    const refreshToken = localStorage.getItem(TOKEN_KEY)
+    const savedUsername = localStorage.getItem(USERNAME_KEY)
+    if (!refreshToken) return false
 
-    set({ isConnecting: true })
-    try {
-      const socket = createSocket()
-      socket.onDisconnected = (reason) => {
-        set({ isAuthenticated: false, error: reason || 'Disconnected' })
+    set({ isConnecting: true, error: null })
+
+    // Retry up to 3 times with backoff (helps with proxy/startup timing)
+    for (let attempt = 0; attempt < 3; attempt++) {
+      try {
+        if (attempt > 0) {
+          destroySocket()
+          await new Promise((r) => setTimeout(r, 500 * attempt))
+        }
+        const socket = setupSocket(set)
+        const result = (await socket.connectRefreshToken(refreshToken)) as ConnectResponse
+
+        if (result?.refresh_token) {
+          localStorage.setItem(TOKEN_KEY, result.refresh_token)
+        }
+
+        set({
+          isAuthenticated: true,
+          isConnecting: false,
+          username: savedUsername,
+        })
+        fetchSystemInfo(set)
+        return true
+      } catch {
+        // Retry on next iteration
       }
-      await socket.connectRefreshToken(refreshToken)
-      set({ isAuthenticated: true, isConnecting: false })
-    } catch {
-      localStorage.removeItem('aurora_refresh_token')
-      destroySocket()
-      set({ isConnecting: false })
     }
+
+    // All retries failed
+    localStorage.removeItem(TOKEN_KEY)
+    destroySocket()
+    set({ isConnecting: false })
+    return false
   },
 }))

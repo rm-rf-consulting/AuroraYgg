@@ -1,5 +1,7 @@
+import { useState } from 'react'
 import { cn } from '@/lib/utils'
 import { useHubStore } from '@/stores/hubStore'
+import { HubConnectDialog } from '@/components/shared/HubConnectDialog'
 import {
   Home,
   Search,
@@ -10,6 +12,7 @@ import {
   Globe,
   Radio,
   Bell,
+  Plus,
 } from 'lucide-react'
 import { NavLink, useLocation } from 'react-router'
 
@@ -37,25 +40,35 @@ const sessionNav: NavItem[] = [
 export function Sidebar() {
   const hubs = useHubStore((s) => s.hubs)
   const location = useLocation()
+  const [hubDialogOpen, setHubDialogOpen] = useState(false)
 
   return (
-    <aside className="w-52 shrink-0 bg-(--color-surface-1) border-r border-(--color-glass-border) h-full overflow-y-auto flex flex-col">
-      {/* Main navigation */}
-      <div className="p-2.5 flex flex-col gap-0.5">
-        <span className="text-micro uppercase tracking-wider px-2.5 py-1.5 font-medium">
-          Navigate
-        </span>
-        {mainNav.map((item) => (
-          <SidebarLink key={item.path} item={item} />
-        ))}
-      </div>
-
-      {/* Hubs */}
-      {hubs.length > 0 && (
+    <>
+      <aside className="w-52 shrink-0 bg-(--color-surface-1) border-r border-(--color-glass-border) h-full overflow-y-auto flex flex-col">
+        {/* Main navigation */}
         <div className="p-2.5 flex flex-col gap-0.5">
           <span className="text-micro uppercase tracking-wider px-2.5 py-1.5 font-medium">
-            Hubs
+            Navigate
           </span>
+          {mainNav.map((item) => (
+            <SidebarLink key={item.path} item={item} />
+          ))}
+        </div>
+
+        {/* Hubs */}
+        <div className="p-2.5 flex flex-col gap-0.5">
+          <div className="flex items-center justify-between px-2.5 py-1.5">
+            <span className="text-micro uppercase tracking-wider font-medium">
+              Hubs
+            </span>
+            <button
+              onClick={() => setHubDialogOpen(true)}
+              className="text-(--color-text-disabled) hover:text-(--color-link) transition-colors cursor-pointer"
+              title="Connect to hub"
+            >
+              <Plus size={13} />
+            </button>
+          </div>
           {hubs.map((hub) => {
             const unread = hub.message_counts?.unread?.messages || 0
             return (
@@ -70,16 +83,30 @@ export function Sidebar() {
               />
             )
           })}
+          {hubs.length === 0 && (
+            <button
+              onClick={() => setHubDialogOpen(true)}
+              className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs text-(--color-text-disabled) hover:text-(--color-text-tertiary) hover:bg-white/3 transition-colors cursor-pointer"
+            >
+              <Plus size={13} />
+              Connect to hub
+            </button>
+          )}
         </div>
-      )}
 
-      {/* Session nav */}
-      <div className="p-2.5 flex flex-col gap-0.5 mt-auto">
-        {sessionNav.map((item) => (
-          <SidebarLink key={item.path} item={item} />
-        ))}
-      </div>
-    </aside>
+        {/* Session nav */}
+        <div className="p-2.5 flex flex-col gap-0.5 mt-auto">
+          {sessionNav.map((item) => (
+            <SidebarLink key={item.path} item={item} />
+          ))}
+        </div>
+      </aside>
+
+      <HubConnectDialog
+        open={hubDialogOpen}
+        onClose={() => setHubDialogOpen(false)}
+      />
+    </>
   )
 }
 

@@ -193,3 +193,18 @@ body {
   letter-spacing: -0.12px;
   color: var(--color-text-tertiary);
 }
+
+/* ============================================
+   Animations
+   ============================================ */
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
