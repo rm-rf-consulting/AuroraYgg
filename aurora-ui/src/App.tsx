@@ -19,6 +19,7 @@ import { EventsSession } from '@/pages/sessions/EventsSession'
 import { PeersPage } from '@/pages/PeersPage'
 import { AdminPage } from '@/pages/AdminPage'
 import { RegisterPage } from '@/pages/RegisterPage'
+import { SetupWizard } from '@/pages/SetupWizard'
 
 function AppBootstrap() {
   const tryReconnect = useAuthStore((s) => s.tryReconnect)
@@ -49,6 +50,7 @@ function AppBootstrap() {
     <Routes>
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
+      <Route path="/setup" element={<SetupWizard />} />
       <Route element={<AppShell />}>
         <Route index element={<HomePage />} />
         <Route path="search" element={<SearchPage />} />

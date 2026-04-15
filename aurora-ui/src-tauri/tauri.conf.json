@@ -1,7 +1,7 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
   "productName": "Aurora",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "identifier": "net.auroraygg.app",
   "build": {
     "frontendDist": "../dist",
@@ -31,6 +31,13 @@
   "bundle": {
     "active": true,
     "targets": "all",
+    "externalBin": ["binaries/airdcppd"],
+    "resources": {
+      "resources/nssm.exe": "resources/nssm.exe",
+      "resources/dlls/*": "resources/dlls/",
+      "resources/default-config/*": "resources/default-config/",
+      "resources/yggdrasil-*-x64.msi": "resources/"
+    },
     "icon": [
       "icons/32x32.png",
       "icons/128x128.png",
@@ -44,8 +51,21 @@
     "category": "Utility",
     "windows": {
       "nsis": {
-        "displayLanguageSelector": true
+        "displayLanguageSelector": true,
+        "installerHooks": "nsis/hooks.nsh"
       }
+    }
+  },
+  "plugins": {
+    "shell": {
+      "sidecar": true,
+      "scope": [
+        {
+          "name": "airdcppd",
+          "sidecar": true,
+          "args": true
+        }
+      ]
     }
   }
 }
