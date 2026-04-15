@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { getSocket } from '@/api/socket'
 import { Bell, AlertTriangle, Info, AlertCircle } from 'lucide-react'
+import { toast } from '@/components/shared/Toast'
 
 interface LogMessage {
   id: number
@@ -23,7 +24,7 @@ export function EventsSession() {
       try {
         const data = (await socket.get('events/100')) as LogMessage[]
         setMessages(data)
-      } catch {}
+      } catch { toast.error('Failed to load events') }
       setLoading(false)
     }
     fetch()
@@ -39,7 +40,7 @@ export function EventsSession() {
             setMessages((prev) => [...prev, msg])
           }
         )
-      } catch {}
+      } catch { toast.error('Failed to load events') }
     }
     setup()
 

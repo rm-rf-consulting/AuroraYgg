@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { getSocket } from '@/api/socket'
 import { Heart, Plug, Trash2 } from 'lucide-react'
+import { toast } from '@/components/shared/Toast'
 
 interface FavoriteHub {
   id: number
@@ -31,7 +32,7 @@ export function FavoriteHubsPage() {
       const data = (await socket.get('favorite_hubs/0/100')) as FavoriteHub[]
       setFavorites(data)
     } catch {
-      // Ignore
+      toast.error('Failed to load favorite hubs')
     } finally {
       setLoading(false)
     }
@@ -46,7 +47,8 @@ export function FavoriteHubsPage() {
     if (!socket) return
     try {
       await socket.post('hubs', { hub_url: hub.hub_url })
-    } catch {}
+      toast.success(`Connecting to ${hub.name || hub.hub_url}`)
+    } catch { toast.error('Failed to connect') }
   }
 
   const handleRemove = async (hubId: number) => {
@@ -55,7 +57,8 @@ export function FavoriteHubsPage() {
     try {
       await socket.delete(`favorite_hubs/${hubId}`)
       setFavorites((prev) => prev.filter((h) => h.id !== hubId))
-    } catch {}
+      toast.success('Favorite hub removed')
+    } catch { toast.error('Failed to remove favorite') }
   }
 
   return (

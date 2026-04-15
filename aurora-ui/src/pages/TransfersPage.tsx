@@ -1,10 +1,15 @@
 import { useEffect } from 'react'
-import { useTransferStore } from '@/stores/transferStore'
+import { useTransferStore, type Transfer } from '@/stores/transferStore'
+import { getSocket } from '@/api/socket'
 import { formatBytes, formatSpeed } from '@/lib/utils'
+import { toast } from '@/components/shared/Toast'
 import {
   ArrowDownToLine,
   ArrowUpFromLine,
   ArrowLeftRight,
+  X,
+  User,
+  Lock,
 } from 'lucide-react'
 
 export function TransfersPage() {
@@ -18,6 +23,28 @@ export function TransfersPage() {
 
   const downloads = transfers.filter((t) => t.download)
   const uploads = transfers.filter((t) => !t.download)
+
+  const handleDisconnect = async (transfer: Transfer) => {
+    const socket = getSocket()
+    if (!socket) return
+    try {
+      await socket.post(`transfers/${transfer.id}/disconnect`)
+      toast.info(`Disconnected: ${transfer.name}`)
+    } catch {
+      toast.error('Failed to disconnect transfer')
+    }
+  }
+
+  const handleForce = async (transfer: Transfer) => {
+    const socket = getSocket()
+    if (!socket) return
+    try {
+      await socket.post(`transfers/${transfer.id}/force`)
+      toast.info(`Force started: ${transfer.name}`)
+    } catch {
+      toast.error('Failed to force transfer')
+    }
+  }
 
   return (
     <div className="max-w-5xl mx-auto space-y-6">
@@ -39,6 +66,8 @@ export function TransfersPage() {
         icon={ArrowDownToLine}
         transfers={downloads}
         color="text-(--color-success)"
+        onDisconnect={handleDisconnect}
+        onForce={handleForce}
       />
 
       {/* Uploads */}
@@ -47,6 +76,8 @@ export function TransfersPage() {
         icon={ArrowUpFromLine}
         transfers={uploads}
         color="text-(--color-link)"
+        onDisconnect={handleDisconnect}
+        onForce={handleForce}
       />
 
       {transfers.length === 0 && (
@@ -59,21 +90,11 @@ export function TransfersPage() {
   )
 }
 
-function MiniStat({
-  label,
-  value,
-  color,
-}: {
-  label: string
-  value: string
-  color?: string
-}) {
+function MiniStat({ label, value, color }: { label: string; value: string; color?: string }) {
   return (
     <div className="rounded-lg bg-(--color-surface-2) px-3 py-2.5">
       <span className="text-micro block mb-0.5">{label}</span>
-      <span className={`text-sm font-semibold ${color || 'text-(--color-text-primary)'}`}>
-        {value}
-      </span>
+      <span className={`text-sm font-semibold ${color || 'text-(--color-text-primary)'}`}>{value}</span>
     </div>
   )
 }
@@ -83,11 +104,15 @@ function TransferSection({
   icon: Icon,
   transfers,
   color,
+  onDisconnect,
+  onForce,
 }: {
   title: string
   icon: React.ElementType
-  transfers: ReturnType<typeof useTransferStore.getState>['transfers']
+  transfers: Transfer[]
   color: string
+  onDisconnect: (t: Transfer) => void
+  onForce: (t: Transfer) => void
 }) {
   if (transfers.length === 0) return null
 
@@ -100,23 +125,32 @@ function TransferSection({
       </div>
       <div className="divide-y divide-(--color-glass-border)">
         {transfers.map((t) => {
-          const progress =
-            t.size > 0 ? (t.bytes_transferred / t.size) * 100 : 0
+          const progress = t.size > 0 ? (t.bytes_transferred / t.size) * 100 : 0
           return (
-            <div key={t.id} className="px-4 py-2.5 space-y-1.5">
+            <div key={t.id} className="px-4 py-2.5 space-y-1.5 group">
               <div className="flex items-center gap-3">
-                <span className="text-sm text-(--color-text-primary) truncate flex-1">
-                  {t.name}
-                </span>
-                <span className="text-micro shrink-0">{t.user.nick}</span>
+                <span className="text-sm text-(--color-text-primary) truncate flex-1">{t.name}</span>
+                <div className="flex items-center gap-1.5 text-micro shrink-0">
+                  <User size={11} className="text-(--color-text-disabled)" />
+                  {t.user.nick}
+                </div>
+                {t.encryption && (
+                  <span title={t.encryption}><Lock size={11} className="text-(--color-success) shrink-0" /></span>
+                )}
                 <span className="text-micro shrink-0">
                   {formatBytes(t.bytes_transferred)} / {formatBytes(t.size)}
                 </span>
                 {t.speed > 0 && (
-                  <span className={`text-micro shrink-0 ${color}`}>
-                    {formatSpeed(t.speed)}
-                  </span>
+                  <span className={`text-micro shrink-0 font-medium ${color}`}>{formatSpeed(t.speed)}</span>
                 )}
+                {/* Disconnect button */}
+                <button
+                  onClick={() => onDisconnect(t)}
+                  className="p-1 rounded-md opacity-0 group-hover:opacity-100 hover:bg-(--color-error)/10 text-(--color-text-disabled) hover:text-(--color-error) transition-all cursor-pointer"
+                  title="Disconnect"
+                >
+                  <X size={13} />
+                </button>
               </div>
               <div className="h-0.5 rounded-full bg-white/5">
                 <div

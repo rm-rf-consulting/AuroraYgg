@@ -1,38 +1,23 @@
 import { useEffect, useRef, useState } from 'react'
 import { useParams } from 'react-router'
 import { getSocket } from '@/api/socket'
+import { toast } from '@/components/shared/Toast'
 import { Send } from 'lucide-react'
 
 interface PrivateMessage {
   id: number
   text: string
   time: number
-  from: {
-    cid: string
-    nick: string
-    hub_url: string
-    flags: string[]
-  }
+  from: { cid: string; nick: string; hub_url: string; flags: string[] }
   is_read: boolean
-  reply_to: {
-    cid: string
-    nick: string
-    hub_url: string
-  }
+  reply_to: { cid: string; nick: string; hub_url: string }
   is_incoming: boolean
 }
 
 interface PrivateChat {
   id: number
-  user: {
-    cid: string
-    nick: string
-    hub_url: string
-    flags: string[]
-  }
-  message_counts?: {
-    unread: number
-  }
+  user: { cid: string; nick: string; hub_url: string; flags: string[] }
+  message_counts?: { unread: number }
 }
 
 export function MessageSession() {
@@ -47,15 +32,16 @@ export function MessageSession() {
     const socket = getSocket()
     if (!socket) return
 
-    // Fetch chat info
     socket.get(`private_chat/${chatId}`).then((data) => {
       setChat(data as PrivateChat)
-    }).catch(() => {})
+    }).catch(() => toast.error('Failed to load chat info'))
 
-    // Fetch messages
-    socket.get(`private_chat/${chatId}/messages/0`).then((data) => {
+    socket.get(`private_chat/${chatId}/messages/100`).then((data) => {
       setMessages(data as PrivateMessage[])
-    }).catch(() => {})
+    }).catch(() => toast.error('Failed to load messages'))
+
+    // Mark as read
+    socket.post(`private_chat/${chatId}/read`).catch(() => {})
 
     // Subscribe to new messages
     let removeListener: (() => void) | undefined
@@ -71,7 +57,9 @@ export function MessageSession() {
           },
           chatId
         )
-      } catch {}
+      } catch {
+        toast.error('Failed to subscribe to messages')
+      }
     }
     setup()
 
@@ -89,23 +77,31 @@ export function MessageSession() {
     try {
       await socket.post(`private_chat/${chatId}/chat_message`, { text: input })
       setInput('')
-    } catch {}
+    } catch {
+      toast.error('Failed to send message')
+    }
   }
 
   return (
-    <div className="h-full flex flex-col -m-6">
+    <div className="h-full flex flex-col -m-4 md:-m-6">
       {/* Header */}
       <div className="px-4 py-2.5 border-b border-(--color-glass-border) shrink-0">
         <h2 className="text-sm font-medium text-(--color-text-primary)">
           {chat?.user.nick || `Chat #${chatId}`}
         </h2>
+        {chat?.user.hub_url && (
+          <span className="text-micro">{chat.user.hub_url}</span>
+        )}
       </div>
 
       {/* Messages */}
-      <div className="flex-1 overflow-y-auto px-4 py-3 space-y-1">
+      <div className="flex-1 overflow-y-auto px-4 py-3 space-y-0.5">
+        {messages.length === 0 && (
+          <p className="text-caption text-center py-8">No messages yet</p>
+        )}
         {messages.map((msg) => (
           <div key={msg.id} className="flex gap-2 py-0.5">
-            <span className="text-micro shrink-0 opacity-50 pt-0.5">
+            <span className="text-micro shrink-0 opacity-40 pt-0.5 tabular-nums">
               {new Date(msg.time * 1000).toLocaleTimeString([], {
                 hour: '2-digit',
                 minute: '2-digit',
