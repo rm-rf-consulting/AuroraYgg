@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
 import { useParams } from 'react-router'
-import { useHubStore, type ChatMessage } from '@/stores/hubStore'
+import { useHubStore, type HubMessage } from '@/stores/hubStore'
 import { getSocket } from '@/api/socket'
 import { formatBytes } from '@/lib/utils'
 import { toast } from '@/components/shared/Toast'
-import { Send, Users, FileSearch, LogOut } from 'lucide-react'
+import { Send, Users, FileSearch, LogOut, RefreshCw, Lock } from 'lucide-react'
 
 interface HubUser {
   cid: string
@@ -24,6 +24,9 @@ export function HubSession() {
   const messages = useHubStore((s) => s.messages[hubId] || [])
   const fetchMessages = useHubStore((s) => s.fetchMessages)
   const sendMessage = useHubStore((s) => s.sendMessage)
+  const disconnectHub = useHubStore((s) => s.disconnectHub)
+  const reconnectHub = useHubStore((s) => s.reconnectHub)
+  const fetchHubs = useHubStore((s) => s.fetchHubs)
 
   const [input, setInput] = useState('')
   const [users, setUsers] = useState<HubUser[]>([])
@@ -42,15 +45,51 @@ export function HubSession() {
 
     const setup = async () => {
       try {
-        removeListener = await socket.addListener(
+        // Chat messages
+        const r1 = await socket.addListener(
           'hubs',
           'hub_chat_message',
-          (message: ChatMessage, id: number) => {
-            if (id === hubId) {
+          (data: { chat_message: { id: number; text: string; time: number; from: { cid: string; nick: string; flags: string[] }; third_person: boolean } }, id: number) => {
+            if (id === hubId && data.chat_message) {
+              const cm = data.chat_message
+              const msg: HubMessage = {
+                id: cm.id,
+                text: cm.text,
+                time: cm.time,
+                type: 'chat',
+                from: { cid: cm.from.cid, nick: cm.from.nick.trim(), flags: cm.from.flags },
+                third_person: cm.third_person,
+              }
               useHubStore.setState((state) => ({
                 messages: {
                   ...state.messages,
-                  [hubId]: [...(state.messages[hubId] || []), message],
+                  [hubId]: [...(state.messages[hubId] || []), msg],
+                },
+              }))
+            }
+          },
+          hubId
+        )
+        removeListener = r1
+
+        // Status messages
+        await socket.addListener(
+          'hubs',
+          'hub_status_message',
+          (data: { log_message: { id: number; text: string; time: number; severity: string } }, id: number) => {
+            if (id === hubId && data.log_message) {
+              const lm = data.log_message
+              const msg: HubMessage = {
+                id: lm.id,
+                text: lm.text,
+                time: lm.time,
+                type: 'log',
+                severity: lm.severity,
+              }
+              useHubStore.setState((state) => ({
+                messages: {
+                  ...state.messages,
+                  [hubId]: [...(state.messages[hubId] || []), msg],
                 },
               }))
             }
@@ -58,7 +97,7 @@ export function HubSession() {
           hubId
         )
       } catch {
-        toast.error('Failed to subscribe to chat messages')
+        // Non-critical
       }
     }
     setup()
@@ -88,14 +127,16 @@ export function HubSession() {
   }
 
   const handleDisconnect = async () => {
-    const socket = getSocket()
-    if (!socket) return
-    try {
-      await socket.post(`hubs/${hubId}/disconnect`)
-      toast.info('Disconnected from hub')
-    } catch {
-      toast.error('Failed to disconnect')
-    }
+    await disconnectHub(hubId)
+    toast.info('Disconnected from hub')
+    fetchHubs()
+  }
+
+  const handleReconnect = async () => {
+    await reconnectHub(hubId)
+    toast.info('Reconnecting...')
+    fetchHubs()
+    setTimeout(() => fetchMessages(hubId), 2000)
   }
 
   const handleBrowseUser = async (user: HubUser) => {
@@ -133,18 +174,29 @@ export function HubSession() {
         <h2 className="text-sm font-medium text-(--color-text-primary) truncate flex-1">
           {hub.identity.name || hub.hub_url}
         </h2>
-        {hub.identity.description && (
-          <span className="text-micro hidden lg:inline truncate max-w-xs">
-            {hub.identity.description}
+        {hub.encryption && (
+          <span className="flex items-center gap-1 text-[10px] px-1.5 py-0.5 rounded bg-(--color-success)/10 text-(--color-success)">
+            <Lock size={10} />
+            TLS
           </span>
         )}
-        <button
-          onClick={handleDisconnect}
-          className="p-1 rounded-md hover:bg-(--color-error)/10 text-(--color-text-disabled) hover:text-(--color-error) transition-colors cursor-pointer"
-          title="Disconnect"
-        >
-          <LogOut size={13} />
-        </button>
+        {hub.connect_state.id === 'disconnected' ? (
+          <button
+            onClick={handleReconnect}
+            className="flex items-center gap-1 px-2 py-1 rounded-md text-xs text-(--color-text-tertiary) hover:bg-(--color-success)/10 hover:text-(--color-success) transition-colors cursor-pointer"
+            title="Reconnect"
+          >
+            <RefreshCw size={13} />
+          </button>
+        ) : (
+          <button
+            onClick={handleDisconnect}
+            className="p-1 rounded-md hover:bg-(--color-error)/10 text-(--color-text-disabled) hover:text-(--color-error) transition-colors cursor-pointer"
+            title="Disconnect"
+          >
+            <LogOut size={13} />
+          </button>
+        )}
         <button
           onClick={() => setShowUsers(!showUsers)}
           className={`flex items-center gap-1.5 px-2 py-1 rounded-md text-xs transition-colors cursor-pointer ${
@@ -166,20 +218,32 @@ export function HubSession() {
               <p className="text-caption text-center py-8">No messages yet</p>
             )}
             {messages.map((msg) => (
-              <div key={msg.id} className={`flex gap-2 py-0.5 ${msg.third_person ? 'italic' : ''}`}>
-                <span className="text-micro shrink-0 opacity-40 pt-0.5 tabular-nums">
-                  {new Date(msg.time * 1000).toLocaleTimeString([], {
-                    hour: '2-digit',
-                    minute: '2-digit',
-                  })}
-                </span>
-                <span className="text-xs font-medium text-(--color-link) shrink-0 cursor-pointer hover:underline">
-                  {msg.from.nick}
-                </span>
-                <span className="text-xs text-(--color-text-secondary) break-words min-w-0">
-                  {msg.text}
-                </span>
-              </div>
+              msg.type === 'log' ? (
+                <div key={msg.id} className="flex gap-2 py-0.5">
+                  <span className="text-[11px] shrink-0 opacity-40 pt-0.5 tabular-nums font-mono">
+                    {new Date(msg.time * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                  </span>
+                  <span className={`text-xs italic ${
+                    msg.severity === 'error' ? 'text-(--color-error)' :
+                    msg.severity === 'warning' ? 'text-(--color-warning)' :
+                    'text-(--color-text-disabled)'
+                  }`}>
+                    *** {msg.text}
+                  </span>
+                </div>
+              ) : (
+                <div key={msg.id} className={`flex gap-2 py-0.5 ${msg.third_person ? 'italic' : ''}`}>
+                  <span className="text-[11px] shrink-0 opacity-40 pt-0.5 tabular-nums font-mono">
+                    {new Date(msg.time * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                  </span>
+                  <span className="text-xs font-semibold text-(--color-link) shrink-0 cursor-pointer hover:underline">
+                    {msg.from?.nick || '???'}
+                  </span>
+                  <span className="text-xs text-(--color-text-secondary) break-words min-w-0">
+                    {msg.text}
+                  </span>
+                </div>
+              )
             ))}
             <div ref={messagesEndRef} />
           </div>

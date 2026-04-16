@@ -103,6 +103,10 @@ async function main() {
   step('Creating default config')
   ensureDir(CONFIG_DIR)
 
+  // Generate random nick for DC++ identity
+  const randomSuffix = Math.random().toString(36).substring(2, 6).toUpperCase()
+  const nick = `Aurora-${randomSuffix}`
+
   writeFileSync(resolve(CONFIG_DIR, 'web-server.json'), JSON.stringify({
     settings: { web_tls_port: 0 },
     version: 1,
@@ -117,7 +121,29 @@ async function main() {
     },
     version: 1,
   }, null, 2))
-  console.log('  ✓ Default config created')
+
+  // DCPlusPlus.xml with random nick
+  writeFileSync(resolve(CONFIG_DIR, 'DCPlusPlus.xml'),
+`<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<DCPlusPlus>
+  <Settings>
+    <ConfigVersion type="string">2.14.0</ConfigVersion>
+    <ConfigName type="string">airdcpp-web</ConfigName>
+    <Nick type="string">${nick}</Nick>
+    <ConfigBuildNumber type="int">0</ConfigBuildNumber>
+    <WizardRunNew type="int">0</WizardRunNew>
+    <Description type="string">AuroraYgg User</Description>
+  </Settings>
+  <SearchTypes>
+    <SearchType Id="1">ape;flac;m4a;mid;mp3;mpc;ogg;ra;wav;wma</SearchType>
+    <SearchType Id="2">7z;ace;arj;bz2;gz;lha;lzh;rar;tar;z;zip</SearchType>
+    <SearchType Id="3">doc;docx;htm;html;nfo;odf;odp;ods;odt;pdf;ppt;pptx;rtf;txt;xls;xlsx;xml;xps</SearchType>
+    <SearchType Id="4">app;bat;cmd;com;dll;exe;jar;msi;ps1;vbs;wsf</SearchType>
+    <SearchType Id="5">bmp;cdr;eps;gif;ico;img;jpeg;jpg;png;ps;psd;sfw;tga;tif;webp</SearchType>
+    <SearchType Id="6">3gp;asf;asx;avi;divx;flv;mkv;mov;mp4;mpeg;mpg;ogm;pxp;qt;rm;rmvb;swf;vob;webm;wmv</SearchType>
+  </SearchTypes>
+</DCPlusPlus>`)
+  console.log(`  ✓ Default config created (nick: ${nick})`)
 
   // Summary
   console.log('\n✅ Bundle prepared!\n')
