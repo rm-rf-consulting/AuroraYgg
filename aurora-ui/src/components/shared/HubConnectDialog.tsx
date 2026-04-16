@@ -1,5 +1,7 @@
 import { useState, type FormEvent } from 'react'
+import { useNavigate } from 'react-router'
 import { getSocket } from '@/api/socket'
+import { useHubStore } from '@/stores/hubStore'
 import { toast } from '@/components/shared/Toast'
 import { X, Plug } from 'lucide-react'
 
@@ -11,6 +13,8 @@ interface Props {
 export function HubConnectDialog({ open, onClose }: Props) {
   const [url, setUrl] = useState('')
   const [connecting, setConnecting] = useState(false)
+  const fetchHubs = useHubStore((s) => s.fetchHubs)
+  const navigate = useNavigate()
 
   if (!open) return null
 
@@ -23,10 +27,16 @@ export function HubConnectDialog({ open, onClose }: Props) {
 
     setConnecting(true)
     try {
-      await socket.post('hubs', { hub_url: url.trim() })
+      const result = await socket.post('hubs', { hub_url: url.trim() }) as { id: number }
       toast.success(`Connecting to ${url.trim()}`)
       setUrl('')
       onClose()
+      // Refresh hub list so sidebar updates
+      await fetchHubs()
+      // Navigate to the hub chat
+      if (result?.id) {
+        navigate(`/hubs/${result.id}`)
+      }
     } catch (err) {
       toast.error(`Failed to connect: ${err instanceof Error ? err.message : 'Unknown error'}`)
     }
@@ -60,12 +70,12 @@ export function HubConnectDialog({ open, onClose }: Props) {
                 type="text"
                 value={url}
                 onChange={(e) => setUrl(e.target.value)}
-                placeholder="adc://hub.example.com:1511 or adcs://..."
+                placeholder="adc://hub.example.com:1511 or dchub://..."
                 autoFocus
                 className="w-full h-10 px-3 rounded-lg bg-(--color-surface-3) border border-(--color-glass-border) text-(--color-text-primary) text-sm placeholder:text-(--color-text-tertiary) focus:outline-none focus:border-(--color-accent) transition-colors font-mono"
               />
               <p className="text-micro mt-1.5">
-                Supports ADC, ADCS, NMDC, NMDCS protocols
+                Supports ADC, ADCS, NMDC (dchub://), NMDCS protocols
               </p>
             </div>
 
