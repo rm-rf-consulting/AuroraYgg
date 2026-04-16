@@ -1,8 +1,10 @@
 import { useEffect, useState, type FormEvent } from 'react'
 import { getSocket } from '@/api/socket'
 import { toast } from '@/components/shared/Toast'
+import { pickPath, isTauriAvailable } from '@/hooks/useFilePicker'
 import {
   Link2,
+  FolderSearch,
   Plus,
   Trash2,
   Copy,
@@ -178,14 +180,29 @@ export function ShareLinksPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div>
               <label className="text-micro block mb-1">File or Directory Path</label>
-              <input
-                type="text"
-                value={newPath}
-                onChange={(e) => setNewPath(e.target.value)}
-                placeholder="C:\Users\Public\SharedFiles\movie.mp4"
-                autoFocus
-                className="w-full h-9 px-3 rounded-lg bg-(--color-surface-3) border border-(--color-glass-border) text-(--color-text-primary) text-xs font-mono placeholder:text-(--color-text-disabled) focus:outline-none focus:border-(--color-accent) transition-colors"
-              />
+              <div className="flex gap-1.5">
+                <input
+                  type="text"
+                  value={newPath}
+                  onChange={(e) => setNewPath(e.target.value)}
+                  placeholder="C:\Users\Public\SharedFiles\movie.mp4"
+                  autoFocus
+                  className="flex-1 h-9 px-3 rounded-lg bg-(--color-surface-3) border border-(--color-glass-border) text-(--color-text-primary) text-xs font-mono placeholder:text-(--color-text-disabled) focus:outline-none focus:border-(--color-accent) transition-colors"
+                />
+                {isTauriAvailable() && (
+                  <button
+                    type="button"
+                    onClick={async () => {
+                      const path = await pickPath({ title: 'Select file or folder to share' })
+                      if (path) setNewPath(path)
+                    }}
+                    className="h-9 px-3 rounded-lg bg-(--color-surface-4) hover:bg-(--color-surface-5) text-(--color-text-secondary) text-xs transition-colors cursor-pointer shrink-0 flex items-center gap-1.5"
+                  >
+                    <FolderSearch size={14} />
+                    Browse
+                  </button>
+                )}
+              </div>
             </div>
             <div>
               <label className="text-micro block mb-1">Display Name (optional)</label>

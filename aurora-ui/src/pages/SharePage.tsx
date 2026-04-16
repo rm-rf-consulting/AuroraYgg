@@ -2,7 +2,8 @@ import { useEffect, useState, type FormEvent } from 'react'
 import { getSocket } from '@/api/socket'
 import { formatBytes } from '@/lib/utils'
 import { toast } from '@/components/shared/Toast'
-import { FolderOpen, Plus, Trash2, RefreshCw, X, Loader2 } from 'lucide-react'
+import { FolderOpen, Plus, Trash2, RefreshCw, X, Loader2, FolderSearch } from 'lucide-react'
+import { pickFolder, isTauriAvailable } from '@/hooks/useFilePicker'
 
 interface ShareRoot {
   id: number
@@ -139,14 +140,30 @@ export function SharePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div>
               <label className="text-micro block mb-1">Path (required)</label>
-              <input
-                type="text"
-                value={newPath}
-                onChange={(e) => setNewPath(e.target.value)}
-                placeholder="C:\Users\Public\Share or /mnt/data/share"
-                autoFocus
-                className="w-full h-9 px-3 rounded-lg bg-(--color-surface-3) border border-(--color-glass-border) text-(--color-text-primary) text-xs font-mono placeholder:text-(--color-text-disabled) focus:outline-none focus:border-(--color-accent) transition-colors"
-              />
+              <div className="flex gap-1.5">
+                <input
+                  type="text"
+                  value={newPath}
+                  onChange={(e) => setNewPath(e.target.value)}
+                  placeholder="C:\Users\Public\Share or /mnt/data/share"
+                  autoFocus
+                  className="flex-1 h-9 px-3 rounded-lg bg-(--color-surface-3) border border-(--color-glass-border) text-(--color-text-primary) text-xs font-mono placeholder:text-(--color-text-disabled) focus:outline-none focus:border-(--color-accent) transition-colors"
+                />
+                {isTauriAvailable() && (
+                  <button
+                    type="button"
+                    onClick={async () => {
+                      const path = await pickFolder()
+                      if (path) setNewPath(path)
+                    }}
+                    className="h-9 px-3 rounded-lg bg-(--color-surface-4) hover:bg-(--color-surface-5) text-(--color-text-secondary) text-xs transition-colors cursor-pointer shrink-0 flex items-center gap-1.5"
+                    title="Browse..."
+                  >
+                    <FolderSearch size={14} />
+                    Browse
+                  </button>
+                )}
+              </div>
             </div>
             <div>
               <label className="text-micro block mb-1">Virtual Name (optional)</label>

@@ -21,6 +21,7 @@ import { AdminPage } from '@/pages/AdminPage'
 import { RegisterPage } from '@/pages/RegisterPage'
 import { SetupWizard } from '@/pages/SetupWizard'
 import { ShareLinksPage } from '@/pages/ShareLinksPage'
+import { HubDiscoveryPage } from '@/pages/HubDiscoveryPage'
 
 function AppBootstrap() {
   const tryReconnect = useAuthStore((s) => s.tryReconnect)
@@ -67,6 +68,7 @@ function AppBootstrap() {
         <Route path="peers" element={<PeersPage />} />
         <Route path="admin" element={<AdminPage />} />
         <Route path="links" element={<ShareLinksPage />} />
+        <Route path="discovery" element={<HubDiscoveryPage />} />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>

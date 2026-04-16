@@ -15,6 +15,7 @@ import {
   Plus,
   ShieldCheck,
   Link2,
+  Radar,
 } from 'lucide-react'
 import { NavLink, useLocation } from 'react-router'
 
@@ -34,6 +35,7 @@ const mainNav: NavItem[] = [
   { label: 'Share Links', icon: Link2, path: '/links' },
   { label: 'Favorites', icon: Heart, path: '/favorites' },
   { label: 'Ygg Peers', icon: Globe, path: '/peers' },
+  { label: 'Discovery', icon: Radar, path: '/discovery' },
 ]
 
 const sessionNav: NavItem[] = [
