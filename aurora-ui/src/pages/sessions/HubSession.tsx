@@ -103,12 +103,10 @@ export function HubSession() {
     }
     setup()
 
-    // Fetch users
+    // Fetch users (silently fail if hub is disconnected)
     socket.get(`hubs/${hubId}/users/0/1000`).then((data) => {
       setUsers(data as HubUser[])
-    }).catch(() => {
-      toast.error('Failed to load user list')
-    })
+    }).catch(() => {})
 
     return () => removeListener?.()
   }, [hubId, fetchMessages])
