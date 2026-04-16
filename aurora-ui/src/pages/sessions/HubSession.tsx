@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { useParams } from 'react-router'
+import { useParams, useNavigate } from 'react-router'
 import { useHubStore, type HubMessage } from '@/stores/hubStore'
 import { getSocket } from '@/api/socket'
 import { formatBytes } from '@/lib/utils'
@@ -19,6 +19,7 @@ interface HubUser {
 
 export function HubSession() {
   const { id } = useParams<{ id: string }>()
+  const navigate = useNavigate()
   const hubId = Number(id)
   const hub = useHubStore((s) => s.hubs.find((h) => h.id === hubId))
   const messages = useHubStore((s) => s.messages[hubId] || [])
@@ -143,10 +144,14 @@ export function HubSession() {
     const socket = getSocket()
     if (!socket) return
     try {
-      await socket.post('filelists', {
+      const result = await socket.post('filelists', {
         user: { cid: user.cid, hub_url: hub?.hub_url },
-      })
-      toast.success(`Browsing filelist of ${user.nick}`)
+      }) as { id?: number }
+      toast.success(`Loading filelist of ${user.nick}...`)
+      // Navigate to the filelist page
+      if (result?.id) {
+        navigate(`/filelists/${result.id}`)
+      }
     } catch {
       toast.error(`Failed to browse ${user.nick}`)
     }
