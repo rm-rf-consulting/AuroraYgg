@@ -181,8 +181,8 @@ export function HubSession() {
       <div className="px-4 py-2.5 border-b border-(--color-glass-border) flex items-center gap-3 shrink-0">
         <div
           className={`w-2 h-2 rounded-full shrink-0 ${
-            hub.connect_state.id === 'connected' ? 'bg-(--color-success)' :
-            hub.connect_state.id === 'connecting' ? 'bg-(--color-warning) animate-pulse' :
+            hub.connect_state?.id === 'connected' ? 'bg-(--color-success)' :
+            hub.connect_state?.id === 'connecting' ? 'bg-(--color-warning) animate-pulse' :
             'bg-(--color-text-disabled)'
           }`}
         />
@@ -195,7 +195,7 @@ export function HubSession() {
             TLS
           </span>
         )}
-        {hub.connect_state.id === 'disconnected' ? (
+        {hub.connect_state?.id === 'disconnected' ? (
           <button
             onClick={handleReconnect}
             className="flex items-center gap-1 px-2 py-1 rounded-md text-xs text-(--color-text-tertiary) hover:bg-(--color-success)/10 hover:text-(--color-success) transition-colors cursor-pointer"

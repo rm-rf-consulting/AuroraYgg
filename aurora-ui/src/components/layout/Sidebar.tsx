@@ -81,7 +81,7 @@ export function Sidebar() {
               <SidebarLink
                 key={hub.id}
                 item={{
-                  label: hub.identity.name || hub.hub_url,
+                  label: hub.identity?.name || hub.hub_url,
                   icon: Radio,
                   path: `/hubs/${hub.id}`,
                   badge: unread > 0 ? unread : undefined,

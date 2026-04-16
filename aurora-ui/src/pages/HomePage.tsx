@@ -159,9 +159,9 @@ export function HomePage() {
                 >
                   <div
                     className={`w-1.5 h-1.5 rounded-full shrink-0 ${
-                      hub.connect_state.id === 'connected'
+                      hub.connect_state?.id === 'connected'
                         ? 'bg-(--color-success)'
-                        : hub.connect_state.id === 'connecting'
+                        : hub.connect_state?.id === 'connecting'
                           ? 'bg-(--color-warning)'
                           : 'bg-(--color-text-disabled)'
                     }`}
