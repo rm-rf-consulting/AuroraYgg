@@ -9,6 +9,7 @@
 #define DCPLUSPLUS_DCPP_ENCRYPTION_API_H
 
 #include <api/base/ApiModule.h>
+#include <airdcpp/core/thread/CriticalSection.h>
 
 namespace webserver {
 

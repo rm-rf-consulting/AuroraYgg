@@ -12,8 +12,11 @@
 
 #include <api/EncryptionApi.h>
 #include <web-server/JsonUtil.h>
+#include <web-server/Session.h>
 
 #include <airdcpp/util/Util.h>
+#include <airdcpp/util/AppUtil.h>
+#include <airdcpp/core/timer/TimerManager.h>
 
 #include <fstream>
 #include <random>
@@ -118,7 +121,7 @@ namespace webserver {
 	}
 
 	EncryptionApi::EncryptionApi(Session* aSession) :
-		ApiModule(aSession, Access::SETTINGS_VIEW)
+		ApiModule(aSession)
 	{
 		loadKeys();
 

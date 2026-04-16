@@ -11,7 +11,7 @@
 #define DCPLUSPLUS_DCPP_SHARELINK_API_H
 
 #include <api/base/ApiModule.h>
-#include <web-server/WebUserManager.h>
+#include <airdcpp/core/thread/CriticalSection.h>
 
 namespace webserver {
 

@@ -19,8 +19,10 @@
 
 #include <api/MiniHubApi.h>
 #include <web-server/JsonUtil.h>
+#include <web-server/Session.h>
 
 #include <airdcpp/util/Util.h>
+#include <airdcpp/util/AppUtil.h>
 
 #include <fstream>
 
@@ -87,7 +89,7 @@ namespace webserver {
 	}
 
 	MiniHubApi::MiniHubApi(Session* aSession) :
-		ApiModule(aSession, Access::ADMIN)
+		ApiModule(aSession)
 	{
 		loadConfig();
 

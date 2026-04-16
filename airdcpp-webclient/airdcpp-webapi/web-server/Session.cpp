@@ -45,6 +45,10 @@
 #include <api/UserApi.h>
 #include <api/WebUserApi.h>
 #include <api/ViewFileApi.h>
+#include <api/ShareLinkApi.h>
+#include <api/HubDiscoveryApi.h>
+#include <api/EncryptionApi.h>
+#include <api/MiniHubApi.h>
 
 #include <airdcpp/core/timer/TimerManager.h>
 #include <airdcpp/util/ValueGenerator.h>
@@ -84,6 +88,10 @@ namespace webserver {
 		ADD_MODULE("users", UserApi);
 		ADD_MODULE("web_users", WebUserApi);
 		ADD_MODULE("view_files", ViewFileApi);
+		ADD_MODULE("share_links", ShareLinkApi);
+		ADD_MODULE("discovery", HubDiscoveryApi);
+		ADD_MODULE("encryption", EncryptionApi);
+		ADD_MODULE("mini_hub", MiniHubApi);
 	}
 
 	Session::~Session() {

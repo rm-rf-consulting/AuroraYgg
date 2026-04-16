@@ -1,4 +1,4 @@
-use tauri::Emitter;
+use tauri::Manager;
 
 /// Check if the daemon is reachable on the given port
 #[tauri::command]
@@ -29,7 +29,7 @@ fn is_fresh_install() -> Result<bool, String> {
     }
 }
 
-/// Register aurora:// and magnet: protocol handlers in Windows registry
+/// Register aurora:// and magnet: protocol handlers
 #[tauri::command]
 fn register_uri_scheme() -> Result<bool, String> {
     #[cfg(target_os = "windows")]
@@ -44,48 +44,30 @@ fn register_uri_scheme() -> Result<bool, String> {
 
         let hkcu = RegKey::predef(HKEY_CURRENT_USER);
 
-        // Register aurora:// protocol
-        let (key, _) = hkcu
-            .create_subkey("Software\\Classes\\aurora")
-            .map_err(|e| e.to_string())?;
-        key.set_value("", &"URL:Aurora Protocol")
-            .map_err(|e| e.to_string())?;
-        key.set_value("URL Protocol", &"")
-            .map_err(|e| e.to_string())?;
+        let (key, _) = hkcu.create_subkey("Software\\Classes\\aurora").map_err(|e| e.to_string())?;
+        key.set_value("", &"URL:Aurora Protocol").map_err(|e| e.to_string())?;
+        key.set_value("URL Protocol", &"").map_err(|e| e.to_string())?;
+        let (cmd, _) = hkcu.create_subkey("Software\\Classes\\aurora\\shell\\open\\command").map_err(|e| e.to_string())?;
+        cmd.set_value("", &format!("\"{}\" --uri \"%1\"", exe_path)).map_err(|e| e.to_string())?;
 
-        let (cmd_key, _) = hkcu
-            .create_subkey("Software\\Classes\\aurora\\shell\\open\\command")
-            .map_err(|e| e.to_string())?;
-        cmd_key
-            .set_value("", &format!("\"{}\" --uri \"%1\"", exe_path))
-            .map_err(|e| e.to_string())?;
-
-        // Also register magnet: if not already taken
         if hkcu.open_subkey("Software\\Classes\\magnet").is_err() {
-            let (mag_key, _) = hkcu
-                .create_subkey("Software\\Classes\\magnet")
-                .map_err(|e| e.to_string())?;
-            mag_key
-                .set_value("", &"URL:Magnet Protocol")
-                .map_err(|e| e.to_string())?;
-            mag_key
-                .set_value("URL Protocol", &"")
-                .map_err(|e| e.to_string())?;
-
-            let (mag_cmd, _) = hkcu
-                .create_subkey("Software\\Classes\\magnet\\shell\\open\\command")
-                .map_err(|e| e.to_string())?;
-            mag_cmd
-                .set_value("", &format!("\"{}\" --uri \"%1\"", exe_path))
-                .map_err(|e| e.to_string())?;
+            let (mk, _) = hkcu.create_subkey("Software\\Classes\\magnet").map_err(|e| e.to_string())?;
+            mk.set_value("", &"URL:Magnet Protocol").map_err(|e| e.to_string())?;
+            mk.set_value("URL Protocol", &"").map_err(|e| e.to_string())?;
+            let (mc, _) = hkcu.create_subkey("Software\\Classes\\magnet\\shell\\open\\command").map_err(|e| e.to_string())?;
+            mc.set_value("", &format!("\"{}\" --uri \"%1\"", exe_path)).map_err(|e| e.to_string())?;
         }
 
         Ok(true)
     }
-
     #[cfg(not(target_os = "windows"))]
-    {
-        Ok(false)
+    { Ok(false) }
+}
+
+fn show_main_window(app: &tauri::AppHandle) {
+    if let Some(w) = app.get_webview_window("main") {
+        let _: Result<(), _> = w.show();
+        let _: Result<(), _> = w.set_focus();
     }
 }
 
@@ -103,10 +85,41 @@ pub fn run() {
                 )?;
             }
 
-            // Register URI scheme on first run
             let _ = register_uri_scheme();
 
+            // System tray with menu
+            let show_item = tauri::menu::MenuItem::with_id(app, "show", "Open Aurora", true, None::<&str>)?;
+            let quit_item = tauri::menu::MenuItem::with_id(app, "quit", "Quit", true, None::<&str>)?;
+            let tray_menu = tauri::menu::Menu::with_items(app, &[&show_item, &quit_item])?;
+
+            let _tray = tauri::tray::TrayIconBuilder::new()
+                .icon(app.default_window_icon().unwrap().clone())
+                .menu(&tray_menu)
+                .tooltip("Aurora — DC++ for Yggdrasil")
+                .on_menu_event(|app: &tauri::AppHandle, event: tauri::menu::MenuEvent| {
+                    match event.id.as_ref() {
+                        "show" => show_main_window(app),
+                        "quit" => std::process::exit(0),
+                        _ => {}
+                    }
+                })
+                .on_tray_icon_event(|tray: &tauri::tray::TrayIcon, event: tauri::tray::TrayIconEvent| {
+                    if let tauri::tray::TrayIconEvent::Click {
+                        button: tauri::tray::MouseButton::Left,
+                        button_state: tauri::tray::MouseButtonState::Up, ..
+                    } = event {
+                        show_main_window(tray.app_handle());
+                    }
+                })
+                .build(app)?;
+
             Ok(())
+        })
+        .on_window_event(|window, event| {
+            if let tauri::WindowEvent::CloseRequested { api, .. } = event {
+                api.prevent_close();
+                let _ : Result<(), _> = window.hide();
+            }
         })
         .invoke_handler(tauri::generate_handler![
             check_daemon,

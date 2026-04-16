@@ -9,12 +9,17 @@
 
 #include <api/ShareLinkApi.h>
 #include <web-server/JsonUtil.h>
+#include <web-server/Session.h>
+#include <web-server/WebUser.h>
 #include <web-server/WebServerManager.h>
 #include <web-server/WebServerSettings.h>
 
 #include <airdcpp/util/Util.h>
+#include <airdcpp/util/PathUtil.h>
+#include <airdcpp/core/timer/TimerManager.h>
 
 #include <fstream>
+#include <random>
 
 #define LINK_CONFIG_NAME "share-links.json"
 
@@ -135,7 +140,7 @@ namespace webserver {
 	}
 
 	ShareLinkApi::ShareLinkApi(Session* aSession) :
-		ApiModule(aSession, Access::SHARE_EDIT)
+		ApiModule(aSession)
 	{
 		// Load persisted links
 		loadLinks();
@@ -168,7 +173,7 @@ namespace webserver {
 		link.id = generateLinkId();
 		link.path = JsonUtil::getField<string>("path", reqJson, false);
 		link.virtualName = JsonUtil::getOptionalFieldDefault<string>("virtual_name", reqJson, "");
-		link.createdBy = aRequest.getSession()->getUser()->getUserName();
+		link.createdBy = getSession()->getUser()->getUserName();
 		link.createdAt = GET_TIME();
 
 		auto expiresHours = JsonUtil::getOptionalFieldDefault<int>("expires_hours", reqJson, 0);
@@ -182,7 +187,7 @@ namespace webserver {
 		link.active = true;
 
 		// Validate path exists
-		if (!Util::fileExists(link.path) && !Util::directoryExists(link.path)) {
+		if (!PathUtil::fileExists(link.path) && !PathUtil::fileExists(link.path)) {
 			throw RequestException(http_status::bad_request, "Path does not exist: " + link.path);
 		}
 

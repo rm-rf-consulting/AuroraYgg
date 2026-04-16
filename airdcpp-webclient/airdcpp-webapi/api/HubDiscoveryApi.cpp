@@ -12,9 +12,10 @@
 
 #include <api/HubDiscoveryApi.h>
 #include <web-server/JsonUtil.h>
-#include <web-server/WebServerManager.h>
+#include <web-server/Session.h>
 
 #include <airdcpp/util/Util.h>
+#include <airdcpp/util/AppUtil.h>
 
 #include <fstream>
 
@@ -100,7 +101,7 @@ namespace webserver {
 	}
 
 	HubDiscoveryApi::HubDiscoveryApi(Session* aSession) :
-		ApiModule(aSession, Access::HUBS_VIEW)
+		ApiModule(aSession)
 	{
 		loadDiscoveryData();
 
