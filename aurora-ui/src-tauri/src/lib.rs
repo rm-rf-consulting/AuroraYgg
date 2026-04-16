@@ -1,4 +1,4 @@
-use tauri::Manager;
+use tauri::Emitter;
 
 /// Check if the daemon is reachable on the given port
 #[tauri::command]
@@ -29,7 +29,7 @@ fn is_fresh_install() -> Result<bool, String> {
     }
 }
 
-/// Register aurora:// protocol handler in Windows registry
+/// Register aurora:// and magnet: protocol handlers in Windows registry
 #[tauri::command]
 fn register_uri_scheme() -> Result<bool, String> {
     #[cfg(target_os = "windows")]
@@ -85,7 +85,6 @@ fn register_uri_scheme() -> Result<bool, String> {
 
     #[cfg(not(target_os = "windows"))]
     {
-        // Linux: create .desktop file with MimeType
         Ok(false)
     }
 }
@@ -95,7 +94,6 @@ pub fn run() {
     tauri::Builder::default()
         .plugin(tauri_plugin_shell::init())
         .plugin(tauri_plugin_dialog::init())
-        .plugin(tauri_plugin_deep_link::init())
         .setup(|app| {
             if cfg!(debug_assertions) {
                 app.handle().plugin(
@@ -105,17 +103,8 @@ pub fn run() {
                 )?;
             }
 
-            // Handle deep links (aurora://, magnet:)
-            #[cfg(desktop)]
-            {
-                let handle = app.handle().clone();
-                app.handle().plugin(tauri_plugin_deep_link::init())?;
-                app.listen("deep-link://new-url", move |event| {
-                    log::info!("Deep link received: {:?}", event.payload());
-                    // Send to frontend via event
-                    let _ = handle.emit("uri-open", event.payload());
-                });
-            }
+            // Register URI scheme on first run
+            let _ = register_uri_scheme();
 
             Ok(())
         })

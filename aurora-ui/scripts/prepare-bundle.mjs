@@ -108,9 +108,13 @@ async function main() {
     version: 1,
   }, null, 2))
 
-  // Empty web-users.json — wizard will create the first user
+  // Default admin user (password auto-hashed by daemon on first load)
   writeFileSync(resolve(CONFIG_DIR, 'web-users.json'), JSON.stringify({
-    settings: { users: [], refresh_tokens: [], invites: [] },
+    settings: {
+      users: [{ username: 'admin', password: 'aurora', permissions: ['admin'], last_login: 0 }],
+      refresh_tokens: [],
+      invites: [],
+    },
     version: 1,
   }, null, 2))
   console.log('  ✓ Default config created')
