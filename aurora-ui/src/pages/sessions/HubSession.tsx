@@ -157,9 +157,19 @@ export function HubSession() {
     }
   }
 
+  // Sort: online first, then alphabetically
+  const sortedUsers = [...users].sort((a, b) => {
+    const aOnline = !a.flags.includes('offline')
+    const bOnline = !b.flags.includes('offline')
+    if (aOnline !== bOnline) return aOnline ? -1 : 1
+    return a.nick.localeCompare(b.nick)
+  })
+
   const filteredUsers = userFilter
-    ? users.filter((u) => u.nick.toLowerCase().includes(userFilter.toLowerCase()))
-    : users
+    ? sortedUsers.filter((u) => u.nick.toLowerCase().includes(userFilter.toLowerCase()))
+    : sortedUsers
+
+  const onlineCount = users.filter((u) => !u.flags.includes('offline')).length
 
   if (!hub) {
     return <p className="text-caption text-center py-12">Hub not found</p>
@@ -290,14 +300,22 @@ export function HubSession() {
             </div>
             <div className="flex-1 overflow-y-auto p-1">
               <span className="text-micro block px-2 py-1 font-medium">
-                {filteredUsers.length} user{filteredUsers.length !== 1 ? 's' : ''}
+                {onlineCount} online / {users.length} total
               </span>
-              {filteredUsers.map((user) => (
+              {filteredUsers.map((user) => {
+                const isOnline = !user.flags.includes('offline')
+                const isBot = user.flags.includes('bot') || user.flags.includes('hidden')
+                return (
                 <div
                   key={user.cid}
-                  className="group px-2 py-1 text-xs text-(--color-text-secondary) flex items-center gap-1.5 hover:bg-white/3 rounded cursor-default"
+                  className={`group px-2 py-1 text-xs flex items-center gap-1.5 hover:bg-white/3 rounded cursor-default ${
+                    isOnline ? 'text-(--color-text-secondary)' : 'text-(--color-text-disabled)'
+                  }`}
                 >
-                  <span className="truncate flex-1">{user.nick}</span>
+                  <div className={`w-1.5 h-1.5 rounded-full shrink-0 ${
+                    isOnline ? 'bg-(--color-success)' : 'bg-(--color-text-disabled)'
+                  }`} />
+                  <span className={`truncate flex-1 ${isBot ? 'italic' : ''}`}>{user.nick}</span>
                   <span className="text-micro shrink-0 hidden group-hover:inline">
                     {formatBytes(user.share_size)}
                   </span>
@@ -309,7 +327,7 @@ export function HubSession() {
                     <FileSearch size={12} />
                   </button>
                 </div>
-              ))}
+              )})}
             </div>
           </div>
         )}
